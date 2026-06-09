@@ -1,6 +1,6 @@
 # Onyinyechi Alikor — Product Designer Portfolio
 
-A modern, premium, single-page portfolio website for Onyinyechi Alikor — a Product Designer specializing in user-centered digital experiences.
+A modern, premium, single-page portfolio website for Onyinyechi Alikor — a Product Designer specializing in simple, human-centered digital experiences.
 
 ---
 
@@ -11,8 +11,9 @@ A modern, premium, single-page portfolio website for Onyinyechi Alikor — a Pro
 | **HTML5** | Semantic structure & SEO meta tags |
 | **Tailwind CSS** (CDN) | Utility-first styling & responsive layout |
 | **Lucide Icons** (CDN) | Lightweight SVG icon set |
-| **Google Fonts — Inter** | Clean, professional typography |
-| **Vanilla JS** | Animations, dark/light mode, mobile menu |
+| **Google Fonts — DM Sans** | Primary typeface across all body and UI text |
+| **Google Fonts — Instrument Serif** | Italic accent used in process step numbers |
+| **Vanilla JS** | Animations, dark/light mode, modal, mobile menu |
 
 No build tools required — open `index.html` directly in a browser.
 
@@ -21,13 +22,26 @@ No build tools required — open `index.html` directly in a browser.
 ## Sections
 
 1. **Hero** — Headline, subheadline, CTAs, portrait, floating design chips
-2. **About** — Bio, design philosophy, skills grid, tools
-3. **Projects** — BeSafr, SkillEX, Periax, Retwix case study cards
+2. **About** — Personal bio, design philosophy, skills grid, tools
+3. **Projects** — BeSafr, SkillEX, Periax, Retwix — all HNG 2026 internship projects
 4. **Design Process** — 6-step visual flow (Discover → Test & Iterate)
 5. **Testimonials** — Mentor & collaborator quote cards
-6. **Experience** — Timeline + achievements/certifications
+6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements & certifications
 7. **Contact** — Email, LinkedIn, Behance, Resume download
 8. **Footer** — Branding + social links
+
+---
+
+## Projects
+
+| Project | Category | Case Study |
+|---|---|---|
+| **BeSafr** | Safety App | Internal modal |
+| **SkillEX** | Ed-Tech | [Behance →](https://www.behance.net/gallery/250802001/Skill-Exchange-App) |
+| **Periax** | Health Tech | [Behance →](https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App) |
+| **Retwix** | Social | [Behance →](https://www.behance.net/gallery/250803019/Fictional-World-Web-App) |
+
+All four projects were completed during the **HNG 2026 Internship** (Product Design Track).
 
 ---
 
@@ -36,18 +50,16 @@ No build tools required — open `index.html` directly in a browser.
 | File | Used In |
 |---|---|
 | `images/myimage.jpeg` | Hero portrait |
-| `images/saftyapp.png` | BeSafr project card |
-| `images/Edtech.png` | SkillEX project card |
-| `images/fintech.png` | Periax project card |
-| `images/social.png` | Retwix project card |
+| `images/saftyapp.png` | BeSafr — Safety App card |
+| `images/Edtech.png` | SkillEX — Ed-Tech card |
+| `images/fintech.png` | Periax — Health Tech / Clinical Trial WebApp card |
+| `images/social.png` | Retwix — Social Platform card |
 
 ---
 
-## Updating Your Links
+## Links
 
-All social, contact, and CV links are marked with clear `YOUR_*_HERE` placeholders. Do a **Find & Replace** in any text editor:
-
-| Link | Value |
+| Label | Value |
 |---|---|
 | Email | alikoronyx@gmail.com |
 | LinkedIn | https://www.linkedin.com/in/onyinyechi-alikor-334a831b5/ |
@@ -58,16 +70,22 @@ All social, contact, and CV links are marked with clear `YOUR_*_HERE` placeholde
 
 ## Features
 
-- **Dark / Light mode** toggle (preference saved in localStorage)
+- **Dark / Light mode** toggle — preference saved in `localStorage`
+- **Gradient mesh section backgrounds** — unique radial-gradient treatment per section, subtle in light mode
+- **OA monogram logo** in navbar with indigo badge
+- **Sun / pill / moon theme toggle** — knob slides with CSS transform
 - **Sticky navbar** with blur-on-scroll
-- **Scroll-triggered reveal animations** via IntersectionObserver
-- **Hero entrance animations** (staggered fade-up)
-- **Floating design element chips** in the hero
-- **Project card hover effects** — image zoom + overlay
-- **Gradient border glow** on project cards
+- **Scroll-triggered reveal animations** via `IntersectionObserver`
+- **Hero entrance animations** — staggered fade-up per word
+- **Floating design chips** in the hero with text labels
+- **Project cards** — click opens Behance case study (SkillEX, Periax, Retwix) or internal modal (BeSafr)
+- **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
+- **Glassmorphism** cards via `backdrop-filter: blur`
+- **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam, Notion, Miro
 - **Responsive** — mobile-first, tested down to 375 px
 - **Smooth scrolling** on all anchor links
-- **Accessible** — semantic HTML, aria-labels, alt text on all images
+- **Accessible** — semantic HTML, `aria-labels`, alt text on all images
+- **Dynamic copyright year** — always current via `new Date().getFullYear()`
 
 ---
 
@@ -104,9 +122,11 @@ Then visit `http://localhost:8080`.
 | Portrait | Replace `images/myimage.jpeg` |
 | Project images | Replace files in `images/` folder |
 | Accent color | Search `#6366f1` (indigo) and swap globally |
-| Case study links | Find `href="#"` on "View Study" buttons |
-| Copyright year | Footer, near bottom of `index.html` |
+| Case study Behance links | `onclick="window.open(...)"` on `.proj-card-ref` divs |
+| Section gradient colors | `#about`, `#projects`, `#process` etc. in `<style>` block |
+| Font | Replace `DM Sans` in Google Fonts link, Tailwind config, and `body` CSS |
+| Email subject line | `?subject=` param on `mailto:` in the Email contact card |
 
 ---
 
-© 2024 Onyinyechi Alikor. All rights reserved.
+© 2026 Onyinyechi Alikor. All rights reserved.
