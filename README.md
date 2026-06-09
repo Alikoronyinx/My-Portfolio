@@ -23,10 +23,9 @@ No build tools required — open `index.html` directly in a browser.
 
 1. **Hero** — Headline, subheadline, CTAs, portrait, floating design chips
 2. **About** — Personal bio, design philosophy, skills grid, tools
-3. **Projects** — BeSafr, SkillEX, Periax, Retwix — all HNG 2026 internship projects
+3. **Projects** — BeSafr, SkillEX, Periax, Retwix, PassForge — all HNG 2026 internship projects
 4. **Design Process** — 6-step visual flow (Discover → Test & Iterate)
-5. **Testimonials** — Mentor & collaborator quote cards
-6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements & certifications
+5. **Experience** — Timeline (HNG 2026, Design Practice) + achievements & certifications
 7. **Contact** — Email, LinkedIn, Behance, Resume download
 8. **Footer** — Branding + social links
 
@@ -40,8 +39,11 @@ No build tools required — open `index.html` directly in a browser.
 | **SkillEX** | Ed-Tech | [Behance →](https://www.behance.net/gallery/250802001/Skill-Exchange-App) |
 | **Periax** | Health Tech | [Behance →](https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App) |
 | **Retwix** | Social | [Behance →](https://www.behance.net/gallery/250803019/Fictional-World-Web-App) |
+| **PassForge** | Event Tech | [Live app →](https://passforge-olive.vercel.app/) |
 
-All four projects were completed during the **HNG 2026 Internship** (Product Design Track).
+All five projects were completed during the **HNG 2026 Internship** (Product Design Track).
+
+Grid layout: 2×2 + PassForge left-aligned in the last row at the same card width as the others.
 
 ---
 
@@ -54,6 +56,7 @@ All four projects were completed during the **HNG 2026 Internship** (Product Des
 | `images/Edtech.png` | SkillEX — Ed-Tech card |
 | `images/fintech.png` | Periax — Health Tech / Clinical Trial WebApp card |
 | `images/social.png` | Retwix — Social Platform card |
+| `images/passforge.png` | PassForge — Event Tech card |
 
 ---
 
@@ -78,7 +81,7 @@ All four projects were completed during the **HNG 2026 Internship** (Product Des
 - **Scroll-triggered reveal animations** via `IntersectionObserver`
 - **Hero entrance animations** — staggered fade-up per word
 - **Floating design chips** in the hero with text labels
-- **Project cards** — click opens Behance case study (SkillEX, Periax, Retwix) or internal modal (BeSafr)
+- **Project cards** — click opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
 - **Glassmorphism** cards via `backdrop-filter: blur`
 - **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam, Notion, Miro
