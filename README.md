@@ -38,7 +38,7 @@ No build tools required — open `index.html` directly in a browser.
 | **BeSafr** | Safety App | Internal modal |
 | **SkillEX** | Ed-Tech | [Behance →](https://www.behance.net/gallery/250802001/Skill-Exchange-App) |
 | **Periax** | Health Tech | [Behance →](https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App) |
-| **Retwix** | Social | [Behance →](https://www.behance.net/gallery/250803019/Fictional-World-Web-App) |
+| **Retwix** | Fictional World | [Behance →](https://www.behance.net/gallery/250803019/Fictional-World-Web-App) |
 | **PassForge** | Event Tech | [Live app →](https://passforge-olive.vercel.app/) |
 
 All five projects were completed during the **HNG 2026 Internship** (Product Design Track).
