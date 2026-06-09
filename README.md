@@ -84,7 +84,7 @@ Grid layout: 2×2 + PassForge left-aligned in the last row at the same card widt
 - **Project cards** — click opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
 - **Glassmorphism** cards via `backdrop-filter: blur`
-- **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam, Notion, Miro
+- **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam (whiteboard/amber), Maze (maze-path/coral), Notion, Miro
 - **Responsive** — mobile-first, tested down to 375 px
 - **Smooth scrolling** on all anchor links
 - **Accessible** — semantic HTML, `aria-labels`, alt text on all images
