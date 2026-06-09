@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onyinyechi Alikor — Product Designer</title>
+  <meta name="description" content="Product Designer creating user-centered digital experiences through research, strategy, and thoughtful design." />
+  <meta name="keywords" content="Product Designer, UX Designer, UI Designer, Figma, Portfolio" />
+  <meta property="og:title" content="Onyinyechi Alikor — Product Designer" />
+  <meta property="og:description" content="Designing intuitive digital experiences that solve real-world problems." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            accent: '#6366f1',
+            'accent-hover': '#4f46e5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ---- CSS Theme Variables ---- */
+    :root {
+      --bg:        #080808;
+      --bg2:       #0f0f0f;
+      --surface:   rgba(255,255,255,0.03);
+      --border:    rgba(255,255,255,0.08);
+      --text:      #f1f5f9;
+      --muted:     #94a3b8;
+      --subtle:    #475569;
+    }
+    [data-theme="light"] {
+      --bg:        #f8fafc;
+      --bg2:       #f1f5f9;
+      --surface:   rgba(255,255,255,0.8);
+      --border:    rgba(0,0,0,0.09);
+      --text:      #0f172a;
+      --muted:     #64748b;
+      --subtle:    #94a3b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    /* ---- Scrollbar ---- */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 4px; }
+
+    /* ---- Glass ---- */
+    .glass {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+    }
+
+    /* ---- Gradient text ---- */
+    .grad {
+      background: linear-gradient(135deg, #6366f1 0%, #a78bfa 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ---- Section divider ---- */
+    .s-div { height: 1px; background: linear-gradient(to right, transparent, rgba(99,102,241,.4), transparent); }
+
+    /* ---- Animations ---- */
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes spin { to{transform:rotate(360deg)} }
+
+    .float-a { animation: float 6s ease-in-out infinite; }
+    .float-b { animation: float 8s ease-in-out infinite 1.2s; }
+    .float-c { animation: float 7s ease-in-out infinite 2.4s; }
+
+    .hero-word { opacity: 0; animation: fadeUp .75s ease forwards; }
+    .d1{animation-delay:.1s} .d2{animation-delay:.25s} .d3{animation-delay:.4s} .d4{animation-delay:.6s} .d5{animation-delay:.8s}
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1x { transition-delay: .1s; }
+    .reveal.d2x { transition-delay: .2s; }
+    .reveal.d3x { transition-delay: .3s; }
+
+    /* ---- Nav blur ---- */
+    .nav-scroll {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(8,8,8,.7) !important;
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="light"] .nav-scroll { background: rgba(248,250,252,.85) !important; }
+
+    /* ---- Skill tag hover ---- */
+    .stag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all .25s;
+      cursor: default;
+    }
+    .stag:hover { border-color: #6366f1; color: #a78bfa; transform: translateY(-2px); background: rgba(99,102,241,.1); }
+
+    /* ---- Project card ---- */
+    .pcard { transition: border-color .35s, box-shadow .35s; }
+    .pcard:hover { border-color: rgba(99,102,241,.4) !important; box-shadow: 0 24px 64px rgba(99,102,241,.08); }
+    .pcard .pimg { transition: transform .5s ease; }
+    .pcard:hover .pimg { transform: scale(1.04); }
+    .pcard .pover { opacity: 0; transition: opacity .3s; }
+    .pcard:hover .pover { opacity: 1; }
+
+    /* ---- Process step ---- */
+    .pstep .icon-box { transition: transform .3s, background .3s, border-color .3s; }
+    .pstep:hover .icon-box { transform: scale(1.12); }
+
+    /* ---- Testimonial card ---- */
+    .tcard { transition: transform .3s, box-shadow .3s; }
+    .tcard:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(99,102,241,.12); }
+
+    /* ---- Btn ripple ---- */
+    .ripple { position: relative; overflow: hidden; }
+    .ripple::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0);
+      transition: background .3s;
+      pointer-events: none;
+    }
+    .ripple:hover::after { background: rgba(255,255,255,.06); }
+
+    /* ---- Timeline ---- */
+    .tline-dot { width: 12px; height: 12px; border-radius: 50%; background: #6366f1; position: absolute; left: -6px; top: 6px; }
+    .tline-item { padding-left: 24px; border-left: 1px solid var(--border); position: relative; padding-bottom: 32px; }
+    .tline-item:last-child { padding-bottom: 0; border-left-color: transparent; }
+
+    /* ---- Gradient border card ---- */
+    .gborder {
+      position: relative;
+      border-radius: 24px;
+      isolation: isolate;
+    }
+    .gborder::before {
+      content: '';
+      position: absolute; inset: -1px;
+      background: linear-gradient(135deg,#6366f1,#a78bfa,#38bdf8);
+      border-radius: 25px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity .35s;
+    }
+    .gborder:hover::before { opacity: .5; }
+
+    /* ---- Grid dot bg ---- */
+    .dotgrid {
+      background-image: radial-gradient(circle, rgba(99,102,241,.13) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    /* ---- Input focus ---- */
+    input:focus, textarea:focus { outline: none; border-color: rgba(99,102,241,.6) !important; }
+
+    /* ---- Mobile menu ---- */
+    #mobileMenu { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    #mobileMenu.open { max-height: 320px; }
+
+    /* ---- Counter chips ---- */
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+    }
+
+    /* ---- Scrolling badge strip ---- */
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-inner { display: flex; animation: marquee 20s linear infinite; width: max-content; }
+    .marquee-inner:hover { animation-play-state: paused; }
+
+    /* ---- Light-mode glass adjust ---- */
+    [data-theme="light"] .glass {
+      background: rgba(255,255,255,0.75);
+      border-color: rgba(0,0,0,0.09);
+    }
+    [data-theme="light"] .stag { color: #475569; }
+    [data-theme="light"] .stag:hover { color: #6366f1; }
+    [data-theme="light"] body { background-color: #f8fafc; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#hero" class="text-lg font-black tracking-tight select-none">
+      <span class="grad">OA.</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium" style="color:var(--muted)">
+      <a href="#about"      class="hover:text-indigo-400 transition-colors">About</a>
+      <a href="#projects"   class="hover:text-indigo-400 transition-colors">Work</a>
+      <a href="#process"    class="hover:text-indigo-400 transition-colors">Process</a>
+      <a href="#experience" class="hover:text-indigo-400 transition-colors">Experience</a>
+      <a href="#contact"    class="hover:text-indigo-400 transition-colors">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <!-- Theme toggle -->
+      <button id="themeBtn" aria-label="Toggle theme"
+        class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-indigo-500/40 transition-all">
+        <i data-lucide="sun"  class="w-4 h-4 hidden" id="iconSun"></i>
+        <i data-lucide="moon" class="w-4 h-4"        id="iconMoon"></i>
+      </button>
+
+      <!-- CTA -->
+      <a href="#contact"
+        class="hidden md:inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all ripple shadow-lg shadow-indigo-600/25">
+        Let's Talk <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      </a>
+
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden w-9 h-9 glass rounded-xl flex items-center justify-center">
+        <i data-lucide="menu" class="w-4 h-4" id="hamIcon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="glass border-t" style="border-color:var(--border)">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-4 text-sm font-medium" style="color:var(--muted)">
+      <a href="#about"      class="hover:text-indigo-400 transition-colors mobile-link">About</a>
+      <a href="#projects"   class="hover:text-indigo-400 transition-colors mobile-link">Work</a>
+      <a href="#process"    class="hover:text-indigo-400 transition-colors mobile-link">Process</a>
+      <a href="#experience" class="hover:text-indigo-400 transition-colors mobile-link">Experience</a>
+      <a href="#contact"    class="hover:text-indigo-400 transition-colors mobile-link">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+
+  <!-- Bg layers -->
+  <div class="absolute inset-0 dotgrid opacity-100 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/25 via-transparent to-purple-950/15 pointer-events-none"></div>
+
+  <!-- Orbs -->
+  <div class="absolute top-16 right-16 w-[480px] h-[480px] rounded-full bg-indigo-600/8 blur-3xl float-a pointer-events-none"></div>
+  <div class="absolute bottom-10 left-4  w-[320px] h-[320px] rounded-full bg-purple-600/8 blur-3xl float-b pointer-events-none"></div>
+  <div class="absolute top-1/2  left-1/3 w-[200px] h-[200px] rounded-full bg-sky-600/5   blur-2xl float-c pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-24 w-full">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left -->
+      <div class="space-y-8">
+
+        <!-- Status badge -->
+        <div class="hero-word d1 inline-flex items-center gap-2 px-3.5 py-1.5 glass rounded-full text-xs font-medium"
+             style="border-color:rgba(99,102,241,.35); color:#a5b4fc">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Open to opportunities
+        </div>
+
+        <!-- Headline -->
+        <div class="space-y-1">
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.04] tracking-tight">
+            <span class="hero-word d1 block" style="color:var(--text)">Designing</span>
+            <span class="hero-word d2 block grad">intuitive</span>
+            <span class="hero-word d3 block" style="color:var(--text)">digital</span>
+            <span class="hero-word d4 block" style="color:var(--text)">experiences.</span>
+          </h1>
+        </div>
+
+        <!-- Sub -->
+        <p class="hero-word d4 text-lg leading-relaxed max-w-lg" style="color:var(--muted)">
+          I'm <strong style="color:var(--text)">Onyinyechi Alikor</strong>, a Product Designer focused on
+          creating user-centered experiences through research, strategy, and thoughtful design.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-word d5 flex flex-wrap gap-4">
+          <a href="#projects"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all ripple shadow-lg shadow-indigo-600/20">
+            <i data-lucide="eye" class="w-4 h-4"></i>View My Work
+          </a>
+          <a href="#contact"
+            class="inline-flex items-center gap-2 px-6 py-3 glass hover:border-indigo-400/50 font-semibold rounded-xl transition-all"
+            style="color:var(--text)">
+            <i data-lucide="mail" class="w-4 h-4"></i>Contact Me
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-word d5 flex items-center gap-8 pt-2">
+          <div>
+            <div class="text-2xl font-black" style="color:var(--text)">4+</div>
+            <div class="text-xs" style="color:var(--subtle)">Projects Shipped</div>
+          </div>
+          <div class="w-px h-10" style="background:var(--border)"></div>
+          <div>
+            <div class="text-2xl font-black" style="color:var(--text)">HNG</div>
+            <div class="text-xs" style="color:var(--subtle)">Internship</div>
+          </div>
+          <div class="w-px h-10" style="background:var(--border)"></div>
+          <div>
+            <div class="text-2xl font-black" style="color:var(--text)">100%</div>
+            <div class="text-xs" style="color:var(--subtle)">User-Centered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Portrait card -->
+      <div class="relative flex items-center justify-center">
+        <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+
+          <!-- Main card -->
+          <div class="w-full h-full glass rounded-3xl flex items-center justify-center overflow-hidden"
+               style="border-color:rgba(99,102,241,.2); background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(167,139,250,.07))">
+            <div class="text-center px-8 space-y-3">
+              <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 mx-auto flex items-center justify-center text-white text-3xl font-black shadow-xl shadow-indigo-600/30">
+                OA
+              </div>
+              <p class="text-sm font-medium" style="color:var(--muted)">Onyinyechi Alikor</p>
+              <p class="text-xs" style="color:var(--subtle)">Replace with portrait →</p>
+            </div>
+          </div>
+
+          <!-- Floating chips -->
+          <div class="absolute -top-5 -right-5 float-a">
+            <div class="glass rounded-2xl p-3 shadow-xl" style="border-color:rgba(99,102,241,.3)">
+              <i data-lucide="figma" class="w-5 h-5 text-indigo-400"></i>
+            </div>
+          </div>
+
+          <div class="absolute -bottom-4 -left-8 float-b">
+            <div class="glass rounded-2xl px-4 py-3 shadow-xl flex items-center gap-2" style="border-color:rgba(99,102,241,.2)">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span class="text-xs font-medium" style="color:var(--muted)">UX Research</span>
+            </div>
+          </div>
+
+          <div class="absolute top-1/2 -right-12 float-c">
+            <div class="glass rounded-2xl p-3 shadow-xl" style="border-color:rgba(167,139,250,.2)">
+              <i data-lucide="layers" class="w-5 h-5 text-purple-400"></i>
+            </div>
+          </div>
+
+          <div class="absolute top-6 -left-12 float-a">
+            <div class="glass rounded-2xl px-3 py-2 shadow-xl flex items-center gap-1.5" style="border-color:rgba(250,204,21,.15)">
+              <i data-lucide="star" class="w-3 h-3 text-yellow-400"></i>
+              <span class="text-xs" style="color:var(--muted)">Product Design</span>
+            </div>
+          </div>
+
+          <!-- Ring glow -->
+          <div class="absolute inset-0 rounded-3xl scale-110 pointer-events-none"
+               style="border:2px solid rgba(99,102,241,.08); animation:float 6s ease-in-out infinite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style="color:var(--subtle)">
+    <span class="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+    <div class="w-px h-10 bg-gradient-to-b from-current to-transparent opacity-60"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" class="py-32">
+  <div class="s-div mb-20"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <!-- Header -->
+    <div class="reveal mb-16">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-400">About Me</span>
+        <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
+        Crafting experiences,<br/><span class="grad">one pixel at a time.</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16">
+
+      <!-- Bio -->
+      <div class="reveal space-y-6">
+        <p class="text-lg leading-relaxed" style="color:var(--muted)">
+          I'm a passionate Product Designer with a deep love for solving complex problems through
+          human-centered design. My journey began with a curiosity about
+          <em style="color:var(--text); font-style:normal; font-weight:600">why digital products fail users</em>
+          — and a determination to change that.
+        </p>
+        <p class="leading-relaxed" style="color:var(--muted)">
+          Through internships, design challenges, and real-world projects, I've built a methodology that
+          anchors every design decision in user research. I believe great design is invisible — it simply works.
+        </p>
+        <p class="leading-relaxed" style="color:var(--muted)">
+          My goal is to join a product-driven team where I can build products that
+          <em style="color:var(--text); font-style:normal; font-weight:600">positively impact millions</em>
+          while bridging the gap between business goals and user needs.
+        </p>
+
+        <!-- Philosophy -->
+        <div class="glass rounded-2xl p-6 mt-2" style="border-color:rgba(99,102,241,.2)">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-indigo-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i data-lucide="lightbulb" class="w-4 h-4 text-indigo-400"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-1.5" style="color:var(--text)">Design Philosophy</p>
+              <p class="text-sm leading-relaxed" style="color:var(--muted)">
+                "Design is not just what it looks like and feels like. Design is how it works.
+                Every decision should serve the user, not the designer's ego."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#"
+          class="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-semibold hover:border-indigo-400/50 transition-all"
+          style="color:var(--text)">
+          <i data-lucide="download" class="w-4 h-4"></i>Download Resume
+        </a>
+      </div>
+
+      <!-- Skills -->
+      <div class="reveal d1x space-y-10">
+        <div>
+          <p class="text-xs font-semibold tracking-[.15em] uppercase mb-5" style="color:var(--subtle)">Core Skills</p>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="stag text-sm px-4 py-2 rounded-xl">UX Research</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Wireframing</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">User Flows</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Prototyping</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Design Systems</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Usability Testing</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Interaction Design</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl flex items-center gap-1.5">
+              <i data-lucide="figma" class="w-3 h-3"></i>Figma
+            </span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">FigJam</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Information Architecture</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Design Thinking</span>
+            <span class="stag text-sm px-4 py-2 rounded-xl">Accessibility (WCAG)</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold tracking-[.15em] uppercase mb-5" style="color:var(--subtle)">Tools & Platforms</p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div class="glass rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-indigo-600/15 flex items-center justify-center">
+                <i data-lucide="figma" class="w-4 h-4 text-indigo-400"></i>
+              </div>
+              <span class="text-sm font-medium" style="color:var(--text)">Figma</span>
+            </div>
+            <div class="glass rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-purple-600/15 flex items-center justify-center">
+                <i data-lucide="layout" class="w-4 h-4 text-purple-400"></i>
+              </div>
+              <span class="text-sm font-medium" style="color:var(--text)">FigJam</span>
+            </div>
+            <div class="glass rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-sky-600/15 flex items-center justify-center">
+                <i data-lucide="users" class="w-4 h-4 text-sky-400"></i>
+              </div>
+              <span class="text-sm font-medium" style="color:var(--text)">Maze</span>
+            </div>
+            <div class="glass rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-orange-600/15 flex items-center justify-center">
+                <i data-lucide="bar-chart-2" class="w-4 h-4 text-orange-400"></i>
+              </div>
+              <span class="text-sm font-medium" style="color:var(--text)">Hotjar</span>
+            </div>
+            <div class="glass rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-green-600/15 flex items-center justify-center">
+                <i data-lucide="check-square" class="w-4 h-4 text-green-400"></i>
+              </div>
+              <span class="text-sm font-medium" style="color:var(--text)">Notion</span>
+            </div>
+            <div class="glass rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-rose-600/15 flex items-center justify-center">
+                <i data-lucide="git-branch" class="w-4 h-4 text-rose-400"></i>
+              </div>
+              <span class="text-sm font-medium" style="color:var(--text)">Miro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section id="projects" class="py-32">
+  <div class="s-div mb-20"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <!-- Header -->
+    <div class="reveal mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Selected Work</span>
+          <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
+          Projects that<br/><span class="grad">tell a story.</span>
+        </h2>
+      </div>
+      <p class="max-w-xs text-sm leading-relaxed" style="color:var(--muted)">Each project represents a unique design challenge solved through research, iteration, and user empathy.</p>
+    </div>
+
+    <!-- ── Project 1: BeSafr ── -->
+    <div class="reveal gborder glass pcard rounded-3xl overflow-hidden mb-8">
+      <div class="grid lg:grid-cols-2">
+
+        <!-- Image pane -->
+        <div class="relative h-64 lg:h-auto min-h-[280px] overflow-hidden"
+             style="background:linear-gradient(135deg,rgba(79,70,229,.25),rgba(124,58,237,.18))">
+          <div class="pimg absolute inset-0 flex items-center justify-center">
+            <div class="text-center p-8 space-y-3">
+              <div class="w-16 h-16 rounded-2xl bg-indigo-600/25 border border-indigo-500/30 flex items-center justify-center mx-auto shadow-lg shadow-indigo-600/20">
+                <i data-lucide="shield-check" class="w-8 h-8 text-indigo-400"></i>
+              </div>
+              <p class="text-sm" style="color:var(--subtle)">Project Mockup Placeholder</p>
+            </div>
+          </div>
+          <div class="pover absolute inset-0 flex items-center justify-center bg-indigo-600/10">
+            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
+          </div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-indigo-600/85 text-white text-xs font-semibold rounded-full">Safety App</span>
+        </div>
+
+        <!-- Content pane -->
+        <div class="p-8 lg:p-10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold" style="color:var(--subtle)">01</span>
+              <span class="text-xs font-semibold text-indigo-400">UX Case Study</span>
+            </div>
+            <h3 class="text-2xl font-black mb-3" style="color:var(--text)">BeSafr</h3>
+            <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">A personal safety app that helps users navigate unsafe environments with real-time crowd-sourced alerts, emergency contacts, and SOS features.</p>
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">PROBLEM</p>
+                <p class="text-xs leading-relaxed" style="color:var(--muted)">Users lack real-time safety info in unfamiliar areas</p>
+              </div>
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">SOLUTION</p>
+                <p class="text-xs leading-relaxed" style="color:var(--muted)">Safety map with crowd alerts, route opt & SOS</p>
+              </div>
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">ROLE</p>
+                <p class="text-xs" style="color:var(--muted)">Lead Product Designer</p>
+              </div>
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">DURATION</p>
+                <p class="text-xs" style="color:var(--muted)">6 weeks</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">User Research</span>
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Wireframing</span>
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Prototyping</span>
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Usability Testing</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6 pt-6" style="border-top:1px solid var(--border)">
+            <div>
+              <p class="text-xl font-black text-indigo-400">87%</p>
+              <p class="text-[10px]" style="color:var(--subtle)">User Satisfaction</p>
+            </div>
+            <div>
+              <p class="text-xl font-black text-indigo-400">3x</p>
+              <p class="text-[10px]" style="color:var(--subtle)">Faster Navigation</p>
+            </div>
+            <a href="#" class="ml-auto flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors group">
+              View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Project 2: SkillEX ── -->
+    <div class="reveal gborder glass pcard rounded-3xl overflow-hidden mb-8">
+      <div class="grid lg:grid-cols-2">
+
+        <!-- Content pane first on mobile, second on lg -->
+        <div class="p-8 lg:p-10 flex flex-col justify-between order-2 lg:order-1">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold" style="color:var(--subtle)">02</span>
+              <span class="text-xs font-semibold text-purple-400">HNG Internship</span>
+            </div>
+            <h3 class="text-2xl font-black mb-3" style="color:var(--text)">SkillEX</h3>
+            <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">A peer-to-peer skill exchange platform connecting learners with mentors. Designed during HNG Internship with a cross-functional team of 8 designers and developers.</p>
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">CHALLENGE</p>
+                <p class="text-xs leading-relaxed" style="color:var(--muted)">Making skill exchange accessible & trustworthy</p>
+              </div>
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">DESIGN SOLUTION</p>
+                <p class="text-xs leading-relaxed" style="color:var(--muted)">Profiles, ratings & guided onboarding flow</p>
+              </div>
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">ROLE</p>
+                <p class="text-xs" style="color:var(--muted)">UI/UX Designer · Team of 8</p>
+              </div>
+              <div class="glass rounded-xl p-3.5">
+                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">DURATION</p>
+                <p class="text-xs" style="color:var(--muted)">4-week sprint</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">User Interviews</span>
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Design System</span>
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">A/B Testing</span>
+              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Figma</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-6 pt-6" style="border-top:1px solid var(--border)">
+            <div>
+              <p class="text-xl font-black text-purple-400">92%</p>
+              <p class="text-[10px]" style="color:var(--subtle)">Task Completion</p>
+            </div>
+            <div>
+              <p class="text-xl font-black text-purple-400">40%</p>
+              <p class="text-[10px]" style="color:var(--subtle)">Drop-off Reduced</p>
+            </div>
+            <a href="#" class="ml-auto flex items-center gap-1.5 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors group">
+              View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Image pane -->
+        <div class="relative h-64 lg:h-auto min-h-[280px] overflow-hidden order-1 lg:order-2"
+             style="background:linear-gradient(135deg,rgba(126,34,206,.22),rgba(219,39,119,.12))">
+          <div class="pimg absolute inset-0 flex items-center justify-center">
+            <div class="text-center p-8 space-y-3">
+              <div class="w-16 h-16 rounded-2xl bg-purple-600/25 border border-purple-500/30 flex items-center justify-center mx-auto shadow-lg shadow-purple-600/20">
+                <i data-lucide="refresh-ccw" class="w-8 h-8 text-purple-400"></i>
+              </div>
+              <p class="text-sm" style="color:var(--subtle)">Project Mockup Placeholder</p>
+            </div>
+          </div>
+          <div class="pover absolute inset-0 flex items-center justify-center bg-purple-600/10">
+            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
+          </div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600/85 text-white text-xs font-semibold rounded-full">Ed-Tech</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Projects 3 & 4 ── -->
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Periax -->
+      <div class="reveal gborder glass pcard rounded-3xl overflow-hidden">
+        <div class="relative h-48 overflow-hidden"
+             style="background:linear-gradient(135deg,rgba(3,105,161,.25),rgba(6,182,212,.12))">
+          <div class="pimg absolute inset-0 flex items-center justify-center">
+            <div class="text-center p-6 space-y-2">
+              <div class="w-12 h-12 rounded-2xl bg-sky-600/25 border border-sky-500/30 flex items-center justify-center mx-auto">
+                <i data-lucide="trending-up" class="w-6 h-6 text-sky-400"></i>
+              </div>
+              <p class="text-xs" style="color:var(--subtle)">Mockup Placeholder</p>
+            </div>
+          </div>
+          <div class="pover absolute inset-0 flex items-center justify-center bg-sky-600/10">
+            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
+          </div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-sky-600/85 text-white text-xs font-semibold rounded-full">FinTech</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-bold" style="color:var(--subtle)">03</span>
+            <span class="text-xs font-semibold text-sky-400">UX Case Study</span>
+          </div>
+          <h3 class="text-xl font-black mb-2" style="color:var(--text)">Periax</h3>
+          <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">A fintech dashboard redesign making personal finance intuitive and stress-free for young professionals through clear data visualization.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Dashboard</span>
+            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Data Viz</span>
+            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Mobile</span>
+          </div>
+          <a href="#" class="flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-colors group">
+            View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Retwix -->
+      <div class="reveal d1x gborder glass pcard rounded-3xl overflow-hidden">
+        <div class="relative h-48 overflow-hidden"
+             style="background:linear-gradient(135deg,rgba(190,18,60,.2),rgba(251,113,133,.1))">
+          <div class="pimg absolute inset-0 flex items-center justify-center">
+            <div class="text-center p-6 space-y-2">
+              <div class="w-12 h-12 rounded-2xl bg-rose-600/25 border border-rose-500/30 flex items-center justify-center mx-auto">
+                <i data-lucide="share-2" class="w-6 h-6 text-rose-400"></i>
+              </div>
+              <p class="text-xs" style="color:var(--subtle)">Mockup Placeholder</p>
+            </div>
+          </div>
+          <div class="pover absolute inset-0 flex items-center justify-center bg-rose-600/10">
+            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
+          </div>
+          <span class="absolute top-4 left-4 px-3 py-1 bg-rose-600/85 text-white text-xs font-semibold rounded-full">Social</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs font-bold" style="color:var(--subtle)">04</span>
+            <span class="text-xs font-semibold text-rose-400">UX Case Study</span>
+          </div>
+          <h3 class="text-xl font-black mb-2" style="color:var(--text)">Retwix</h3>
+          <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">A social platform redesign reducing information overload and improving meaningful engagement through better content curation algorithms.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Social UX</span>
+            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Feeds</span>
+            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Engagement</span>
+          </div>
+          <a href="#" class="flex items-center gap-1.5 text-sm font-semibold text-rose-400 hover:text-rose-300 transition-colors group">
+            View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ DESIGN PROCESS ═══════════════ -->
+<section id="process" class="py-32 relative overflow-hidden">
+  <div class="s-div mb-20"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-indigo-950/8 via-transparent to-transparent pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+
+    <!-- Header -->
+    <div class="reveal mb-20 text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
+        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">How I Work</span>
+        <div class="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-indigo-500/50"></div>
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
+        My Design <span class="grad">Process</span>
+      </h2>
+      <p class="mt-4 text-sm max-w-md mx-auto" style="color:var(--muted)">
+        A structured, user-centered approach — from discovery to delivery.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative">
+      <!-- Connector line (desktop) -->
+      <div class="hidden lg:block absolute top-[52px] left-[calc(8.33%+32px)] right-[calc(8.33%+32px)] h-px"
+           style="background:linear-gradient(to right,#6366f1,#a78bfa,#6366f1); z-index:0; opacity:.35"></div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 relative z-10">
+
+        <!-- 1 Discover -->
+        <div class="reveal pstep flex flex-col items-center text-center group">
+          <div class="relative mb-5">
+            <div class="icon-box w-16 h-16 rounded-2xl bg-indigo-600/15 border border-indigo-500/30 flex items-center justify-center group-hover:bg-indigo-600/30 group-hover:border-indigo-400/60 transition-all">
+              <i data-lucide="search" class="w-6 h-6 text-indigo-400"></i>
+            </div>
+            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">1</span>
+          </div>
+          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Discover</h3>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Stakeholder interviews & market research to understand the problem space</p>
+        </div>
+
+        <!-- 2 Research -->
+        <div class="reveal d1x pstep flex flex-col items-center text-center group">
+          <div class="relative mb-5">
+            <div class="icon-box w-16 h-16 rounded-2xl bg-purple-600/15 border border-purple-500/30 flex items-center justify-center group-hover:bg-purple-600/30 group-hover:border-purple-400/60 transition-all">
+              <i data-lucide="users" class="w-6 h-6 text-purple-400"></i>
+            </div>
+            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] font-bold flex items-center justify-center">2</span>
+          </div>
+          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Research</h3>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Interviews, surveys, competitive analysis & persona creation</p>
+        </div>
+
+        <!-- 3 Define -->
+        <div class="reveal d2x pstep flex flex-col items-center text-center group">
+          <div class="relative mb-5">
+            <div class="icon-box w-16 h-16 rounded-2xl bg-sky-600/15 border border-sky-500/30 flex items-center justify-center group-hover:bg-sky-600/30 group-hover:border-sky-400/60 transition-all">
+              <i data-lucide="target" class="w-6 h-6 text-sky-400"></i>
+            </div>
+            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-sky-600 text-white text-[10px] font-bold flex items-center justify-center">3</span>
+          </div>
+          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Define</h3>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Synthesize insights into problem statements & success metrics</p>
+        </div>
+
+        <!-- 4 Ideate -->
+        <div class="reveal d3x pstep flex flex-col items-center text-center group">
+          <div class="relative mb-5">
+            <div class="icon-box w-16 h-16 rounded-2xl bg-amber-600/15 border border-amber-500/30 flex items-center justify-center group-hover:bg-amber-600/30 group-hover:border-amber-400/60 transition-all">
+              <i data-lucide="zap" class="w-6 h-6 text-amber-400"></i>
+            </div>
+            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-amber-600 text-white text-[10px] font-bold flex items-center justify-center">4</span>
+          </div>
+          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Ideate</h3>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Brainstorm solutions, sketches, user flows & IA</p>
+        </div>
+
+        <!-- 5 Design -->
+        <div class="reveal d1x pstep flex flex-col items-center text-center group" style="transition-delay:.35s">
+          <div class="relative mb-5">
+            <div class="icon-box w-16 h-16 rounded-2xl bg-emerald-600/15 border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-600/30 group-hover:border-emerald-400/60 transition-all">
+              <i data-lucide="pen-tool" class="w-6 h-6 text-emerald-400"></i>
+            </div>
+            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center">5</span>
+          </div>
+          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Design</h3>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Wireframes, high-fi mockups, prototypes & design systems</p>
+        </div>
+
+        <!-- 6 Test -->
+        <div class="reveal d2x pstep flex flex-col items-center text-center group" style="transition-delay:.45s">
+          <div class="relative mb-5">
+            <div class="icon-box w-16 h-16 rounded-2xl bg-rose-600/15 border border-rose-500/30 flex items-center justify-center group-hover:bg-rose-600/30 group-hover:border-rose-400/60 transition-all">
+              <i data-lucide="refresh-cw" class="w-6 h-6 text-rose-400"></i>
+            </div>
+            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-rose-600 text-white text-[10px] font-bold flex items-center justify-center">6</span>
+          </div>
+          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Test & Iterate</h3>
+          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Usability testing, feedback loops & accessibility checks</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section id="testimonials" class="py-32">
+  <div class="s-div mb-20"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="reveal mb-16 text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
+        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Testimonials</span>
+        <div class="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-indigo-500/50"></div>
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
+        What people <span class="grad">say.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="reveal tcard glass rounded-3xl p-8" style="border-color:var(--border)">
+        <div class="flex gap-0.5 mb-5">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">
+          "Onyinyechi brings a rare combination of empathy and analytical thinking to every design challenge. Her ability to translate user research into elegant interfaces is remarkable."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">TM</div>
+          <div>
+            <p class="text-sm font-semibold" style="color:var(--text)">Team Mentor</p>
+            <p class="text-xs" style="color:var(--subtle)">HNG Internship</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 (featured) -->
+      <div class="reveal d1x tcard glass rounded-3xl p-8" style="border-color:rgba(99,102,241,.3)">
+        <div class="flex gap-0.5 mb-5">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">
+          "Working with Onyinyechi on the SkillEX project was a pleasure. She consistently brought thoughtful design solutions and always kept the user's perspective front and center."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">CM</div>
+          <div>
+            <p class="text-sm font-semibold" style="color:var(--text)">Collaborator</p>
+            <p class="text-xs" style="color:var(--subtle)">SkillEX Project</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="reveal d2x tcard glass rounded-3xl p-8" style="border-color:var(--border)">
+        <div class="flex gap-0.5 mb-5">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">
+          "Onyinyechi's attention to accessibility and inclusive design sets her apart. She always considers edge cases and diverse user needs in her design decisions."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">IM</div>
+          <div>
+            <p class="text-sm font-semibold" style="color:var(--text)">Industry Mentor</p>
+            <p class="text-xs" style="color:var(--subtle)">Product Design</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ EXPERIENCE & ACHIEVEMENTS ═══════════════ -->
+<section id="experience" class="py-32">
+  <div class="s-div mb-20"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="reveal mb-16">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Experience</span>
+        <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
+        Building expertise,<br/><span class="grad">one challenge at a time.</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-14">
+
+      <!-- Timeline -->
+      <div class="reveal">
+        <p class="text-xs font-semibold tracking-[.15em] uppercase mb-8" style="color:var(--subtle)">Timeline</p>
+        <div>
+
+          <!-- HNG -->
+          <div class="tline-item">
+            <div class="tline-dot" style="background:#6366f1"></div>
+            <div class="glass rounded-2xl p-5 hover:border-indigo-500/30 transition-all cursor-default" style="border-color:var(--border)">
+              <div class="flex items-start justify-between gap-4 mb-1">
+                <h4 class="font-bold" style="color:var(--text)">HNG Internship</h4>
+                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2024</span>
+              </div>
+              <p class="text-xs font-semibold text-indigo-400 mb-2">Product Design Track</p>
+              <p class="text-sm leading-relaxed" style="color:var(--muted)">Intensive industry-standard design internship. Shipped 2 products with cross-functional teams under tight deadlines.</p>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">SkillEX</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Team Collaboration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Independent -->
+          <div class="tline-item">
+            <div class="tline-dot" style="background:#a855f7"></div>
+            <div class="glass rounded-2xl p-5 hover:border-purple-500/30 transition-all cursor-default" style="border-color:var(--border)">
+              <div class="flex items-start justify-between gap-4 mb-1">
+                <h4 class="font-bold" style="color:var(--text)">Independent Projects</h4>
+                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2023–2024</span>
+              </div>
+              <p class="text-xs font-semibold text-purple-400 mb-2">Freelance Designer</p>
+              <p class="text-sm leading-relaxed" style="color:var(--muted)">Designed and shipped BeSafr, Periax, and Retwix with documented case studies covering full design process.</p>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">BeSafr</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">Periax</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">Retwix</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="tline-item">
+            <div class="tline-dot" style="background:#0ea5e9"></div>
+            <div class="glass rounded-2xl p-5 hover:border-sky-500/30 transition-all cursor-default" style="border-color:var(--border)">
+              <div class="flex items-start justify-between gap-4 mb-1">
+                <h4 class="font-bold" style="color:var(--text)">Design Education</h4>
+                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2022–Present</span>
+              </div>
+              <p class="text-xs font-semibold text-sky-400 mb-2">Self-directed Learning</p>
+              <p class="text-sm leading-relaxed" style="color:var(--muted)">Continuous learning through courses, design challenges, and community. Building expertise in UX research & design systems.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="reveal d1x">
+        <p class="text-xs font-semibold tracking-[.15em] uppercase mb-8" style="color:var(--subtle)">Achievements & Certifications</p>
+        <div class="space-y-4">
+
+          <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-indigo-500/30 transition-all group cursor-default" style="border-color:var(--border)">
+            <div class="w-10 h-10 rounded-xl bg-indigo-600/15 border border-indigo-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-600/25 transition-colors">
+              <i data-lucide="award" class="w-5 h-5 text-indigo-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color:var(--text)">HNG Internship Graduate</p>
+              <p class="text-xs" style="color:var(--muted)">Completed Product Design track with shipped, real-world projects</p>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-purple-500/30 transition-all group cursor-default" style="border-color:var(--border)">
+            <div class="w-10 h-10 rounded-xl bg-purple-600/15 border border-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600/25 transition-colors">
+              <i data-lucide="book-open" class="w-5 h-5 text-purple-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color:var(--text)">UX Design Fundamentals</p>
+              <p class="text-xs" style="color:var(--muted)">Design thinking, research methods, and prototyping principles</p>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-sky-500/30 transition-all group cursor-default" style="border-color:var(--border)">
+            <div class="w-10 h-10 rounded-xl bg-sky-600/15 border border-sky-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-sky-600/25 transition-colors">
+              <i data-lucide="figma" class="w-5 h-5 text-sky-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color:var(--text)">Figma Advanced Proficiency</p>
+              <p class="text-xs" style="color:var(--muted)">Components, variables, auto layout, and interactive prototyping</p>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-emerald-500/30 transition-all group cursor-default" style="border-color:var(--border)">
+            <div class="w-10 h-10 rounded-xl bg-emerald-600/15 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600/25 transition-colors">
+              <i data-lucide="trophy" class="w-5 h-5 text-emerald-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color:var(--text)">Design Challenge Participant</p>
+              <p class="text-xs" style="color:var(--muted)">Multiple design sprints, hackathons, and community competitions</p>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-amber-500/30 transition-all group cursor-default" style="border-color:var(--border)">
+            <div class="w-10 h-10 rounded-xl bg-amber-600/15 border border-amber-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-600/25 transition-colors">
+              <i data-lucide="accessibility" class="w-5 h-5 text-amber-400"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm mb-1" style="color:var(--text)">Accessibility & Inclusive Design</p>
+              <p class="text-xs" style="color:var(--muted)">WCAG guidelines and inclusive design principles certification</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" class="py-32 relative overflow-hidden">
+  <div class="s-div mb-20"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+
+    <!-- Header -->
+    <div class="reveal text-center mb-16 max-w-3xl mx-auto">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
+        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Get in Touch</span>
+        <div class="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-indigo-500/50"></div>
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-5" style="color:var(--text)">
+        Let's create<br/><span class="grad">meaningful experiences</span><br/>together.
+      </h2>
+      <p class="text-lg" style="color:var(--muted)">Hiring, collaborating, or just want to talk design — I'd love to hear from you.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-12">
+
+      <!-- Form -->
+      <div class="reveal lg:col-span-3">
+        <form id="contactForm" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">First Name</label>
+              <input type="text" placeholder="John"
+                class="w-full px-4 py-3 glass rounded-xl text-sm transition-all"
+                style="background:var(--surface); border:1px solid var(--border); color:var(--text)" />
+            </div>
+            <div>
+              <label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Last Name</label>
+              <input type="text" placeholder="Doe"
+                class="w-full px-4 py-3 glass rounded-xl text-sm transition-all"
+                style="background:var(--surface); border:1px solid var(--border); color:var(--text)" />
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Email</label>
+            <input type="email" placeholder="john@company.com"
+              class="w-full px-4 py-3 glass rounded-xl text-sm transition-all"
+              style="background:var(--surface); border:1px solid var(--border); color:var(--text)" />
+          </div>
+          <div>
+            <label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Subject</label>
+            <input type="text" placeholder="Design collaboration / Job opportunity"
+              class="w-full px-4 py-3 glass rounded-xl text-sm transition-all"
+              style="background:var(--surface); border:1px solid var(--border); color:var(--text)" />
+          </div>
+          <div>
+            <label class="text-xs font-semibold mb-2 block" style="color:var(--muted)">Message</label>
+            <textarea rows="5" placeholder="Tell me about your project, role, or just say hi..."
+              class="w-full px-4 py-3 glass rounded-xl text-sm transition-all resize-none"
+              style="background:var(--surface); border:1px solid var(--border); color:var(--text)"></textarea>
+          </div>
+          <button type="submit" id="sendBtn"
+            class="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all ripple shadow-lg shadow-indigo-600/20">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div class="reveal d1x lg:col-span-2 space-y-6">
+        <div>
+          <p class="text-xs font-semibold tracking-[.15em] uppercase mb-5" style="color:var(--subtle)">Direct Contact</p>
+          <div class="space-y-3">
+
+            <a href="mailto:onyinyechi@email.com"
+              class="flex items-center gap-4 glass rounded-2xl p-4 hover:border-indigo-500/30 transition-all group"
+              style="border-color:var(--border)">
+              <div class="w-10 h-10 rounded-xl bg-indigo-600/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="mail" class="w-5 h-5 text-indigo-400"></i>
+              </div>
+              <div>
+                <p class="text-[10px] mb-0.5" style="color:var(--subtle)">Email</p>
+                <p class="text-sm font-medium group-hover:text-indigo-400 transition-colors" style="color:var(--text)">onyinyechi@email.com</p>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-4 glass rounded-2xl p-4 hover:border-blue-500/30 transition-all group"
+              style="border-color:var(--border)">
+              <div class="w-10 h-10 rounded-xl bg-blue-600/15 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="linkedin" class="w-5 h-5 text-blue-400"></i>
+              </div>
+              <div>
+                <p class="text-[10px] mb-0.5" style="color:var(--subtle)">LinkedIn</p>
+                <p class="text-sm font-medium group-hover:text-blue-400 transition-colors" style="color:var(--text)">Onyinyechi Alikor</p>
+              </div>
+            </a>
+
+            <a href="https://behance.net" target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-4 glass rounded-2xl p-4 hover:border-blue-400/30 transition-all group"
+              style="border-color:var(--border)">
+              <div class="w-10 h-10 rounded-xl bg-blue-800/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="layout-grid" class="w-5 h-5 text-blue-300"></i>
+              </div>
+              <div>
+                <p class="text-[10px] mb-0.5" style="color:var(--subtle)">Behance</p>
+                <p class="text-sm font-medium group-hover:text-blue-300 transition-colors" style="color:var(--text)">View Full Portfolio</p>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Resume card -->
+        <div class="glass rounded-2xl p-6" style="border-color:rgba(99,102,241,.25); background:rgba(99,102,241,.04)">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="file-text" class="w-5 h-5 text-indigo-400"></i>
+            <p class="font-semibold" style="color:var(--text)">Resume</p>
+          </div>
+          <p class="text-sm mb-4" style="color:var(--muted)">Download my full resume to see experience, education, and skills in detail.</p>
+          <a href="#"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all"
+            style="background:rgba(99,102,241,.15); border:1px solid rgba(99,102,241,.3); color:#a5b4fc">
+            <i data-lucide="download" class="w-4 h-4"></i>Download Resume (PDF)
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="py-12" style="border-top:1px solid var(--border)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+      <div class="text-center md:text-left">
+        <p class="text-lg font-black grad">Onyinyechi Alikor</p>
+        <p class="text-xs mt-0.5" style="color:var(--subtle)">Product Designer · UI/UX Specialist</p>
+      </div>
+
+      <!-- Nav links -->
+      <div class="flex items-center gap-6 text-xs font-medium" style="color:var(--subtle)">
+        <a href="#about"      class="hover:text-indigo-400 transition-colors">About</a>
+        <a href="#projects"   class="hover:text-indigo-400 transition-colors">Work</a>
+        <a href="#process"    class="hover:text-indigo-400 transition-colors">Process</a>
+        <a href="#contact"    class="hover:text-indigo-400 transition-colors">Contact</a>
+      </div>
+
+      <!-- Social icons -->
+      <div class="flex items-center gap-2.5">
+        <a href="mailto:alikoronyx@gmail.com"
+          class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-indigo-400/40 transition-all"
+          style="color:var(--subtle)">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+          class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-blue-400/40 transition-all"
+          style="color:var(--subtle)">
+          <i data-lucide="linkedin" class="w-4 h-4"></i>
+        </a>
+        <a href="https://behance.net" target="_blank" rel="noopener noreferrer"
+          class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-blue-300/40 transition-all"
+          style="color:var(--subtle)">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+        </a>
+        <a href="#"
+          class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-sky-400/40 transition-all"
+          style="color:var(--subtle)">
+          <i data-lucide="twitter" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="mt-8 pt-6 text-center text-xs" style="border-top:1px solid var(--border); color:var(--subtle)">
+      © 2024 Onyinyechi Alikor. All rights reserved. Designed with ♥ and a lot of coffee.
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // --- Init Lucide ---
+  lucide.createIcons();
+
+  // --- Theme Toggle ---
+  const html     = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const iconSun  = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    if (theme === 'light') {
+      iconSun.classList.add('hidden');
+      iconMoon.classList.remove('hidden');
+    } else {
+      iconMoon.classList.add('hidden');
+      iconSun.classList.remove('hidden');
+    }
+    localStorage.setItem('oa-theme', theme);
+    lucide.createIcons();
+  }
+
+  // Load saved theme
+  applyTheme(localStorage.getItem('oa-theme') || 'dark');
+
+  themeBtn.addEventListener('click', () => {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // --- Navbar scroll effect ---
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav-scroll', window.scrollY > 60);
+  }, { passive: true });
+
+  // --- Mobile menu ---
+  const hamburger   = document.getElementById('hamburger');
+  const mobileMenu  = document.getElementById('mobileMenu');
+  const hamIcon     = document.getElementById('hamIcon');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    hamIcon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+    lucide.createIcons();
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(l => {
+    l.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      hamIcon.setAttribute('data-lucide', 'menu');
+      lucide.createIcons();
+    });
+  });
+
+  // --- Scroll reveal ---
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // --- Smooth scroll for anchor links ---
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // --- Contact form ---
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('sendBtn');
+    btn.innerHTML = '<svg class="w-4 h-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="60" stroke-dashoffset="0" opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg> Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Message Sent!';
+      btn.style.background = '#059669';
+      btn.disabled = false;
+      this.reset();
+      setTimeout(() => {
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+        btn.style.background = '';
+      }, 4000);
+    }, 1600);
+  });
+</script>
+</body>
+</html>
