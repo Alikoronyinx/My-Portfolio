@@ -110,13 +110,6 @@
         radial-gradient(ellipse 36% 30% at 88% 4%, rgba(56,189,248,0.05) 0%, transparent 48%),
         var(--bg);
     }
-    /* Testimonials — soft aurora from top-center, warm violet lower-right */
-    #testimonials {
-      background:
-        radial-gradient(ellipse 78% 58% at 50% -8%, rgba(99,102,241,0.10) 0%, transparent 62%),
-        radial-gradient(ellipse 42% 38% at 96% 92%, rgba(167,139,250,0.07) 0%, transparent 50%),
-        var(--bg2);
-    }
     /* Experience — purple glow left-mid, faint indigo right */
     #experience {
       background:
@@ -333,12 +326,6 @@
         radial-gradient(ellipse 36% 30% at 88% 4%, rgba(56,189,248,0.03) 0%, transparent 48%),
         var(--bg);
     }
-    [data-theme="light"] #testimonials {
-      background:
-        radial-gradient(ellipse 78% 58% at 50% -8%, rgba(99,102,241,0.05) 0%, transparent 62%),
-        radial-gradient(ellipse 42% 38% at 96% 92%, rgba(167,139,250,0.03) 0%, transparent 50%),
-        var(--bg2);
-    }
     [data-theme="light"] #experience {
       background:
         radial-gradient(ellipse 48% 50% at -4% 52%, rgba(167,139,250,0.04) 0%, transparent 55%),
@@ -437,6 +424,18 @@
     .proj-desc-ref  { font-size:.875rem; color:var(--muted); line-height:1.65; margin-bottom:16px; }
     .proj-link-ref  { display:inline-flex; align-items:center; gap:6px; font-size:.875rem; font-weight:500; color:#6366f1; transition:gap .2s; cursor:pointer; background:none; border:none; padding:0; }
     .proj-link-ref:hover { gap:10px; }
+
+    /* PassForge — full-width horizontal featured card */
+    .proj-card-wide { grid-column: 1 / -1; }
+    .proj-wide-inner { display: flex; min-height: 260px; }
+    .proj-img-wide { flex: 0 0 42%; position: relative; overflow: hidden; }
+    .proj-img-wide img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .45s ease; }
+    .proj-card-wide:hover .proj-img-wide img { transform: scale(1.04); }
+    .proj-wide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    @media(max-width: 640px) {
+      .proj-wide-inner { flex-direction: column; }
+      .proj-img-wide { flex: none; min-height: 200px; aspect-ratio: 16/9; }
+    }
 
     /* ══ PROCESS GRID ══ */
     .process-grid-ref {
@@ -878,9 +877,9 @@
         <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
       </div>
       <h2 class="text-4xl lg:text-5xl font-black tracking-tight mb-4" style="color:var(--text)">
-        Projects that<br/><span class="grad">tell a story.</span>
+        Projects that <span class="grad">tell a story.</span>
       </h2>
-      <p class="max-w-sm text-sm leading-relaxed" style="color:var(--muted)">Each project represents a unique design challenge solved through research, iteration, and user empathy.</p>
+      <p class="text-sm leading-relaxed" style="color:var(--muted)">Real challenges, solved through research, iteration, and user empathy.</p>
     </div>
 
     <!-- 2×2 Grid -->
@@ -963,6 +962,29 @@
             View case study
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
+        </div>
+      </div>
+
+      <!-- PassForge (featured wide) -->
+      <div class="proj-card-ref proj-card-wide" onclick="window.open('https://passforge-olive.vercel.app/','_blank')" rel="noopener noreferrer">
+        <div class="proj-wide-inner">
+          <div class="proj-img-wide">
+            <div style="width:100%;height:100%;min-height:260px;background:linear-gradient(135deg,#f59e0b 0%,#ef4444 50%,#8b5cf6 100%);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:2.25rem;font-weight:900;color:rgba(255,255,255,0.92);letter-spacing:-0.03em;text-shadow:0 2px 16px rgba(0,0,0,.25)">PassForge</span>
+            </div>
+          </div>
+          <div class="proj-body-ref proj-wide-body">
+            <div class="proj-tags-ref">
+              <span class="proj-tag-ref" style="background:rgba(245,158,11,.12);color:#fbbf24;">Event Tech</span>
+              <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
+            </div>
+            <h3 class="proj-title-ref">PassForge</h3>
+            <p class="proj-desc-ref">A web app for creating and managing event tickets — designed to make event setup fast, simple, and accessible for any organiser.</p>
+            <button class="proj-link-ref">
+              View live app
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -1060,89 +1082,6 @@
 </section>
 
 
-<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
-<section id="testimonials" class="py-20">
-  <div class="s-div mb-12"></div>
-  <div class="max-w-7xl mx-auto px-5 sm:px-8">
-
-    <div class="reveal mb-10">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Testimonials</span>
-        <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
-      </div>
-      <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
-        What people <span class="grad">say.</span>
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <!-- Card 1 -->
-      <div class="reveal tcard glass rounded-3xl p-8" style="border-color:var(--border)">
-        <div class="flex gap-0.5 mb-5">
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-        </div>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">
-          "Onyinyechi brings a rare combination of empathy and analytical thinking to every design challenge. Her ability to translate user research into elegant interfaces is remarkable."
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">TM</div>
-          <div>
-            <p class="text-sm font-semibold" style="color:var(--text)">Team Mentor</p>
-            <p class="text-xs" style="color:var(--subtle)">HNG Internship</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 (featured) -->
-      <div class="reveal d1x tcard glass rounded-3xl p-8" style="border-color:rgba(99,102,241,.3)">
-        <div class="flex gap-0.5 mb-5">
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-        </div>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">
-          "Working with Onyinyechi on the SkillEX project was a pleasure. She consistently brought thoughtful design solutions and always kept the user's perspective front and center."
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">CM</div>
-          <div>
-            <p class="text-sm font-semibold" style="color:var(--text)">Collaborator</p>
-            <p class="text-xs" style="color:var(--subtle)">SkillEX Project</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="reveal d2x tcard glass rounded-3xl p-8" style="border-color:var(--border)">
-        <div class="flex gap-0.5 mb-5">
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400" style="fill:#facc15"></i>
-        </div>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">
-          "Onyinyechi's attention to accessibility and inclusive design sets her apart. She always considers edge cases and diverse user needs in her design decisions."
-        </p>
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">IM</div>
-          <div>
-            <p class="text-sm font-semibold" style="color:var(--text)">Industry Mentor</p>
-            <p class="text-xs" style="color:var(--subtle)">Product Design</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 <!-- ═══════════════ EXPERIENCE & ACHIEVEMENTS ═══════════════ -->
