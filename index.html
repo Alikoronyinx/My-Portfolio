@@ -412,24 +412,15 @@
     .proj-card-ref:hover { transform:translateY(-6px); box-shadow:0 24px 64px rgba(99,102,241,.12); border-color:#6366f1; }
     [data-theme="light"] .proj-card-ref { background:#fff; }
     [data-theme="light"] .proj-card-ref:hover { box-shadow:0 24px 64px rgba(99,102,241,.08); }
-    .proj-img-ref { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; }
+    .proj-img-ref { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; cursor:default; }
     .proj-img-ref img { width:100%; height:100%; object-fit:cover; object-position:top; display:block;
       transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .proj-card-ref:hover .proj-img-ref img { transform: scale(1.12); }
     .proj-overlay { position:absolute; inset:0;
       background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,.18) 60%, rgba(0,0,0,.62) 100%);
-      opacity:0; transition: opacity .4s ease; }
+      opacity:0; transition: opacity .4s ease; pointer-events:none; }
     .proj-card-ref:hover .proj-overlay { opacity:1; }
-    /* View label slides up on hover */
-    .proj-img-ref::after {
-      content: 'View \2192';
-      position: absolute; bottom: 18px; left: 22px; z-index: 2;
-      color: #fff; font-size: .8rem; font-weight: 600;
-      letter-spacing: .1em; text-transform: uppercase;
-      opacity: 0; transform: translateY(8px);
-      transition: opacity .35s ease, transform .35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .proj-card-ref:hover .proj-img-ref::after { opacity: 1; transform: translateY(0); }
+    .proj-body-ref { cursor:pointer; }
     .proj-body-ref { padding:24px; }
     .proj-tags-ref { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
     .proj-tag-ref { padding:3px 10px; border-radius:6px; font-size:.6875rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
@@ -900,12 +891,12 @@
     <div class="reveal proj-grid">
 
       <!-- BeSafr -->
-      <div class="proj-card-ref" onclick="openModal('besafr')">
+      <div class="proj-card-ref">
         <div class="proj-img-ref">
           <img src="images/saftyapp.png" alt="BeSafr Safety App" />
           <div class="proj-overlay"></div>
         </div>
-        <div class="proj-body-ref">
+        <div class="proj-body-ref" onclick="openModal('besafr')">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(99,102,241,.12);color:#818cf8;">Safety App</span>
             <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
@@ -920,12 +911,12 @@
       </div>
 
       <!-- SkillEX -->
-      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250802001/Skill-Exchange-App','_blank')"  rel="noopener noreferrer">
+      <div class="proj-card-ref">
         <div class="proj-img-ref">
           <img src="images/Edtech.png" alt="SkillEX EdTech Platform" />
           <div class="proj-overlay"></div>
         </div>
-        <div class="proj-body-ref">
+        <div class="proj-body-ref" onclick="window.open('https://www.behance.net/gallery/250802001/Skill-Exchange-App','_blank')" rel="noopener noreferrer">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(168,85,247,.12);color:#c084fc;">Ed-Tech</span>
             <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
@@ -940,12 +931,12 @@
       </div>
 
       <!-- Periax -->
-      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App','_blank')" rel="noopener noreferrer">
+      <div class="proj-card-ref">
         <div class="proj-img-ref">
           <img src="images/fintech.png" alt="Periax Clinical Trial WebApp" />
           <div class="proj-overlay"></div>
         </div>
-        <div class="proj-body-ref">
+        <div class="proj-body-ref" onclick="window.open('https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App','_blank')" rel="noopener noreferrer">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(16,185,129,.12);color:#34d399;">Health Tech</span>
             <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
@@ -960,12 +951,12 @@
       </div>
 
       <!-- Retwix -->
-      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250803019/Fictional-World-Web-App','_blank')" rel="noopener noreferrer">
+      <div class="proj-card-ref">
         <div class="proj-img-ref">
           <img src="images/social.png" alt="Retwix Social Platform" />
           <div class="proj-overlay"></div>
         </div>
-        <div class="proj-body-ref">
+        <div class="proj-body-ref" onclick="window.open('https://www.behance.net/gallery/250803019/Fictional-World-Web-App','_blank')" rel="noopener noreferrer">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(244,63,94,.12);color:#fb7185;">Social</span>
             <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
@@ -980,12 +971,12 @@
       </div>
 
       <!-- PassForge (full-width featured) -->
-      <div class="proj-card-ref proj-card-wide" onclick="window.open('https://passforge-olive.vercel.app/','_blank')" rel="noopener noreferrer">
+      <div class="proj-card-ref proj-card-wide">
         <div class="proj-img-ref">
           <img src="images/passforge.png" alt="PassForge Event Ticketing App" />
           <div class="proj-overlay"></div>
         </div>
-        <div class="proj-body-ref">
+        <div class="proj-body-ref" onclick="window.open('https://passforge-olive.vercel.app/','_blank')" rel="noopener noreferrer">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(245,158,11,.12);color:#fbbf24;">Event Tech</span>
             <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
