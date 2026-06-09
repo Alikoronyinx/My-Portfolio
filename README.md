@@ -25,9 +25,9 @@ No build tools required — open `index.html` directly in a browser.
 2. **About** — Personal bio, design philosophy, skills grid, tools
 3. **Projects** — BeSafr, SkillEX, Periax, Retwix, PassForge — all HNG 2026 internship projects
 4. **Design Process** — 6-step visual flow (Discover → Test & Iterate)
-5. **Experience** — Timeline (HNG 2026, Design Practice) + achievements & certifications
-7. **Contact** — Email, LinkedIn, Behance, Resume download
-8. **Footer** — Branding + social links
+5. **Experience** — Timeline (HNG 2026, Design Practice) + achievements & certifications incl. PassForge live app
+6. **Contact** — Email, LinkedIn, Behance, Resume download
+7. **Footer** — Branding + social links
 
 ---
 
