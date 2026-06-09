@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -21,7 +21,7 @@
       darkMode: ['selector', '[data-theme="dark"]'],
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          fontFamily: { sans: ['DM Sans', 'sans-serif'] },
           colors: {
             accent: '#6366f1',
             'accent-hover': '#4f46e5',
@@ -58,7 +58,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
       transition: background-color 0.4s, color 0.4s;
     }
@@ -87,8 +87,51 @@
     /* ---- Section divider (kept for light-mode only now) ---- */
     .s-div { display: none; }
 
-    /* ---- Section background alternation ---- */
-    #projects, #testimonials, #contact { background: var(--bg2); }
+    /* ---- Section gradient-mesh backgrounds ---- */
+
+    /* About — indigo bloom from top-right, lavender whisper bottom-left */
+    #about {
+      background:
+        radial-gradient(ellipse 55% 65% at 108% 20%, rgba(99,102,241,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 42% at -8% 85%, rgba(167,139,250,0.06) 0%, transparent 50%),
+        var(--bg);
+    }
+    /* Projects — indigo flood from lower-left, lavender accent upper-right */
+    #projects {
+      background:
+        radial-gradient(ellipse 52% 58% at -6% 72%, rgba(99,102,241,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 48% 42% at 105% 12%, rgba(167,139,250,0.08) 0%, transparent 50%),
+        var(--bg2);
+    }
+    /* Process — center-bottom radial bloom, sky-blue accent top-right */
+    #process {
+      background:
+        radial-gradient(ellipse 72% 52% at 50% 115%, rgba(99,102,241,0.11) 0%, transparent 58%),
+        radial-gradient(ellipse 36% 30% at 88% 4%, rgba(56,189,248,0.05) 0%, transparent 48%),
+        var(--bg);
+    }
+    /* Testimonials — soft aurora from top-center, warm violet lower-right */
+    #testimonials {
+      background:
+        radial-gradient(ellipse 78% 58% at 50% -8%, rgba(99,102,241,0.10) 0%, transparent 62%),
+        radial-gradient(ellipse 42% 38% at 96% 92%, rgba(167,139,250,0.07) 0%, transparent 50%),
+        var(--bg2);
+    }
+    /* Experience — purple glow left-mid, faint indigo right */
+    #experience {
+      background:
+        radial-gradient(ellipse 48% 50% at -4% 52%, rgba(167,139,250,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 42% 36% at 102% 24%, rgba(99,102,241,0.06) 0%, transparent 50%),
+        var(--bg);
+    }
+    /* Contact — tri-aurora showstopper: indigo up from bottom, violet top-left, cyan top-right */
+    #contact {
+      background:
+        radial-gradient(ellipse 82% 72% at 50% 118%, rgba(99,102,241,0.16) 0%, transparent 62%),
+        radial-gradient(ellipse 48% 48% at 6% 4%, rgba(167,139,250,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse 46% 42% at 94% 6%, rgba(56,189,248,0.08) 0%, transparent 52%),
+        var(--bg2);
+    }
 
     /* ---- Hero CTA buttons ---- */
     .btn-p {
@@ -271,10 +314,44 @@
     [data-theme="light"] .process-grid-ref { border-color: rgba(15,23,42,0.07); }
     [data-theme="light"] .process-step-ref { border-color: rgba(15,23,42,0.07); }
 
-    /* Alternate sections in light mode: stronger contrast */
-    [data-theme="light"] #projects,
-    [data-theme="light"] #testimonials,
-    [data-theme="light"] #contact { background: #ffffff; }
+    /* Light mode: same gradient mesh at lower opacity, clean white/gray base */
+    [data-theme="light"] #about {
+      background:
+        radial-gradient(ellipse 55% 65% at 108% 20%, rgba(99,102,241,0.04) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 42% at -8% 85%, rgba(167,139,250,0.03) 0%, transparent 50%),
+        var(--bg);
+    }
+    [data-theme="light"] #projects {
+      background:
+        radial-gradient(ellipse 52% 58% at -6% 72%, rgba(99,102,241,0.05) 0%, transparent 55%),
+        radial-gradient(ellipse 48% 42% at 105% 12%, rgba(167,139,250,0.04) 0%, transparent 50%),
+        var(--bg2);
+    }
+    [data-theme="light"] #process {
+      background:
+        radial-gradient(ellipse 72% 52% at 50% 115%, rgba(99,102,241,0.05) 0%, transparent 58%),
+        radial-gradient(ellipse 36% 30% at 88% 4%, rgba(56,189,248,0.03) 0%, transparent 48%),
+        var(--bg);
+    }
+    [data-theme="light"] #testimonials {
+      background:
+        radial-gradient(ellipse 78% 58% at 50% -8%, rgba(99,102,241,0.05) 0%, transparent 62%),
+        radial-gradient(ellipse 42% 38% at 96% 92%, rgba(167,139,250,0.03) 0%, transparent 50%),
+        var(--bg2);
+    }
+    [data-theme="light"] #experience {
+      background:
+        radial-gradient(ellipse 48% 50% at -4% 52%, rgba(167,139,250,0.04) 0%, transparent 55%),
+        radial-gradient(ellipse 42% 36% at 102% 24%, rgba(99,102,241,0.03) 0%, transparent 50%),
+        var(--bg);
+    }
+    [data-theme="light"] #contact {
+      background:
+        radial-gradient(ellipse 82% 72% at 50% 118%, rgba(99,102,241,0.07) 0%, transparent 62%),
+        radial-gradient(ellipse 48% 48% at 6% 4%, rgba(167,139,250,0.05) 0%, transparent 55%),
+        radial-gradient(ellipse 46% 42% at 94% 6%, rgba(56,189,248,0.04) 0%, transparent 52%),
+        var(--bg2);
+    }
 
     /* ── Contact cards in light mode ── */
     [data-theme="light"] #contact .glass {
@@ -313,7 +390,7 @@
     .logo-badge svg { position:relative; z-index:1; }
     .logo-wordmark { display:flex; flex-direction:column; line-height:1; gap:1px; }
     .logo-first { font-size:.875rem; font-weight:600; color:var(--text); letter-spacing:-.01em; }
-    .logo-last  { font-family:'Inter',sans-serif; font-style:normal; font-size:.8125rem; font-weight:500; color:#6366f1; letter-spacing:.01em; }
+    .logo-last  { font-family:'DM Sans',sans-serif; font-style:normal; font-size:.8125rem; font-weight:500; color:#6366f1; letter-spacing:.01em; }
 
     /* ══ THEME PILL TOGGLE ══ */
     .theme-wrap { display:flex; align-items:center; gap:7px; }
@@ -665,19 +742,19 @@
       <!-- Bio -->
       <div class="reveal space-y-6">
         <p class="text-lg leading-relaxed" style="color:var(--muted)">
-          I'm a passionate Product Designer with a deep love for solving complex problems through
-          human-centered design. My journey began with a curiosity about
-          <em style="color:var(--text); font-style:normal; font-weight:600">why digital products fail users</em>
-          — and a determination to change that.
+          I'm a Product Designer who enjoys solving real problems through
+          <em style="color:var(--text); font-style:normal; font-weight:600">simple, human-centered design.</em>
         </p>
         <p class="leading-relaxed" style="color:var(--muted)">
-          Through internships, design challenges, and real-world projects, I've built a methodology that
-          anchors every design decision in user research. I believe great design is invisible — it simply works.
+          I got into design because I kept noticing how many digital products frustrate users —
+          and I wanted to understand
+          <em style="color:var(--text); font-style:normal; font-weight:600">why,</em>
+          and how to fix it.
         </p>
         <p class="leading-relaxed" style="color:var(--muted)">
-          My goal is to join a product-driven team where I can build products that
-          <em style="color:var(--text); font-style:normal; font-weight:600">positively impact millions</em>
-          while bridging the gap between business goals and user needs.
+          Through internships, design challenges, and real projects, I've learned to always start with users.
+          I rely on research and feedback to guide my decisions —
+          <em style="color:var(--text); font-style:normal; font-weight:600">not guesswork.</em>
         </p>
 
         <!-- Philosophy -->
@@ -689,12 +766,17 @@
             <div>
               <p class="text-sm font-semibold mb-1.5" style="color:var(--text)">Design Philosophy</p>
               <p class="text-sm leading-relaxed" style="color:var(--muted)">
-                "Design is not just what it looks like and feels like. Design is how it works.
-                Every decision should serve the user, not the designer's ego."
+                "Good design is the kind you don't have to think about — it just works naturally."
               </p>
             </div>
           </div>
         </div>
+
+        <p class="leading-relaxed" style="color:var(--muted)">
+          I'm looking to join a product team where I can build useful products that
+          <em style="color:var(--text); font-style:normal; font-weight:600">improve people's lives</em>
+          while also helping the business grow.
+        </p>
 
         <a href="https://drive.google.com/file/d/1xRXorz7tOf1yr-cbv_f9tqcDHaSBpfkU/view?usp=sharing" target="_blank" rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-xl text-sm font-semibold hover:border-indigo-400/50 transition-all"
@@ -790,17 +872,15 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
     <!-- Header -->
-    <div class="reveal mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Selected Work</span>
-          <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
-        </div>
-        <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
-          Projects that<br/><span class="grad">tell a story.</span>
-        </h2>
+    <div class="reveal mb-10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Selected Work</span>
+        <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
       </div>
-      <p class="max-w-xs text-sm leading-relaxed" style="color:var(--muted)">Each project represents a unique design challenge solved through research, iteration, and user empathy.</p>
+      <h2 class="text-4xl lg:text-5xl font-black tracking-tight mb-4" style="color:var(--text)">
+        Projects that<br/><span class="grad">tell a story.</span>
+      </h2>
+      <p class="max-w-sm text-sm leading-relaxed" style="color:var(--muted)">Each project represents a unique design challenge solved through research, iteration, and user empathy.</p>
     </div>
 
     <!-- 2×2 Grid -->
@@ -815,7 +895,7 @@
         <div class="proj-body-ref">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(99,102,241,.12);color:#818cf8;">Safety App</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">UX Case Study</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
           </div>
           <h3 class="proj-title-ref">BeSafr</h3>
           <p class="proj-desc-ref">A personal safety app with real-time crowd-sourced alerts, emergency contacts, and SOS features.</p>
@@ -827,7 +907,7 @@
       </div>
 
       <!-- SkillEX -->
-      <div class="proj-card-ref" onclick="openModal('skillex')">
+      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250802001/Skill-Exchange-App','_blank')"  rel="noopener noreferrer">
         <div class="proj-img-ref">
           <img src="images/Edtech.png" alt="SkillEX EdTech Platform" />
           <div class="proj-overlay"></div>
@@ -835,7 +915,7 @@
         <div class="proj-body-ref">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(168,85,247,.12);color:#c084fc;">Ed-Tech</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG Internship</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
           </div>
           <h3 class="proj-title-ref">SkillEX</h3>
           <p class="proj-desc-ref">A peer-to-peer skill exchange platform connecting learners with mentors — built with a team of 8.</p>
@@ -847,18 +927,18 @@
       </div>
 
       <!-- Periax -->
-      <div class="proj-card-ref" onclick="openModal('periax')">
+      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App','_blank')" rel="noopener noreferrer">
         <div class="proj-img-ref">
-          <img src="images/fintech.png" alt="Periax FinTech Dashboard" />
+          <img src="images/fintech.png" alt="Periax Clinical Trial WebApp" />
           <div class="proj-overlay"></div>
         </div>
         <div class="proj-body-ref">
           <div class="proj-tags-ref">
-            <span class="proj-tag-ref" style="background:rgba(14,165,233,.12);color:#38bdf8;">FinTech</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">UX Case Study</span>
+            <span class="proj-tag-ref" style="background:rgba(16,185,129,.12);color:#34d399;">Health Tech</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
           </div>
           <h3 class="proj-title-ref">Periax</h3>
-          <p class="proj-desc-ref">A fintech dashboard redesign making personal finance intuitive for young professionals.</p>
+          <p class="proj-desc-ref">A clinical trial management web app designed to reduce administrative burden and improve workflow clarity for healthcare teams.</p>
           <button class="proj-link-ref">
             View case study
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -867,7 +947,7 @@
       </div>
 
       <!-- Retwix -->
-      <div class="proj-card-ref" onclick="openModal('retwix')">
+      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250803019/Fictional-World-Web-App','_blank')" rel="noopener noreferrer">
         <div class="proj-img-ref">
           <img src="images/social.png" alt="Retwix Social Platform" />
           <div class="proj-overlay"></div>
@@ -875,7 +955,7 @@
         <div class="proj-body-ref">
           <div class="proj-tags-ref">
             <span class="proj-tag-ref" style="background:rgba(244,63,94,.12);color:#fb7185;">Social</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">UX Case Study</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
           </div>
           <h3 class="proj-title-ref">Retwix</h3>
           <p class="proj-desc-ref">A social platform redesign reducing information overload and improving meaningful engagement.</p>
@@ -899,16 +979,15 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
 
     <!-- Header -->
-    <div class="reveal mb-10 text-center">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
+    <div class="reveal mb-10">
+      <div class="flex items-center gap-3 mb-4">
         <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">How I Work</span>
-        <div class="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-indigo-500/50"></div>
+        <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
       </div>
       <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
         My Design <span class="grad">Process</span>
       </h2>
-      <p class="mt-4 text-sm max-w-md mx-auto" style="color:var(--muted)">
+      <p class="mt-4 text-sm max-w-md" style="color:var(--muted)">
         A structured, user-centered approach — from discovery to delivery.
       </p>
     </div>
@@ -986,11 +1065,10 @@
   <div class="s-div mb-12"></div>
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
-    <div class="reveal mb-10 text-center">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <div class="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
+    <div class="reveal mb-10">
+      <div class="flex items-center gap-3 mb-4">
         <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Testimonials</span>
-        <div class="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-indigo-500/50"></div>
+        <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
       </div>
       <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
         What people <span class="grad">say.</span>
@@ -1095,45 +1173,33 @@
             <div class="glass rounded-2xl p-5 hover:border-indigo-500/30 transition-all cursor-default" style="border-color:var(--border)">
               <div class="flex items-start justify-between gap-4 mb-1">
                 <h4 class="font-bold" style="color:var(--text)">HNG Internship</h4>
-                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2024</span>
+                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2026</span>
               </div>
               <p class="text-xs font-semibold text-indigo-400 mb-2">Product Design Track</p>
-              <p class="text-sm leading-relaxed" style="color:var(--muted)">Intensive industry-standard design internship. Shipped 2 products with cross-functional teams under tight deadlines.</p>
+              <p class="text-sm leading-relaxed" style="color:var(--muted)">Intensive industry-standard design internship. Shipped 4 products with cross-functional teams under tight deadlines.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">BeSafr</span>
                 <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">SkillEX</span>
-                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Team Collaboration</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Periax</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Retwix</span>
               </div>
             </div>
           </div>
 
-          <!-- Independent -->
+          <!-- Practice -->
           <div class="tline-item">
             <div class="tline-dot" style="background:#a855f7"></div>
             <div class="glass rounded-2xl p-5 hover:border-purple-500/30 transition-all cursor-default" style="border-color:var(--border)">
               <div class="flex items-start justify-between gap-4 mb-1">
-                <h4 class="font-bold" style="color:var(--text)">Independent Projects</h4>
-                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2023–2024</span>
+                <h4 class="font-bold" style="color:var(--text)">Design Practice</h4>
+                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2024–2025</span>
               </div>
-              <p class="text-xs font-semibold text-purple-400 mb-2">Freelance Designer</p>
-              <p class="text-sm leading-relaxed" style="color:var(--muted)">Designed and shipped BeSafr, Periax, and Retwix with documented case studies covering full design process.</p>
+              <p class="text-xs font-semibold text-purple-400 mb-2">Self-directed Learning</p>
+              <p class="text-sm leading-relaxed" style="color:var(--muted)">Built foundational design skills through UI challenges, design sprints, community critiques, and personal concept explorations.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">BeSafr</span>
-                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">Periax</span>
-                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">Retwix</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">UI Challenges</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-purple-300" style="background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.2)">Design Sprints</span>
               </div>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div class="tline-item">
-            <div class="tline-dot" style="background:#0ea5e9"></div>
-            <div class="glass rounded-2xl p-5 hover:border-sky-500/30 transition-all cursor-default" style="border-color:var(--border)">
-              <div class="flex items-start justify-between gap-4 mb-1">
-                <h4 class="font-bold" style="color:var(--text)">Design Education</h4>
-                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2022–Present</span>
-              </div>
-              <p class="text-xs font-semibold text-sky-400 mb-2">Self-directed Learning</p>
-              <p class="text-sm leading-relaxed" style="color:var(--muted)">Continuous learning through courses, design challenges, and community. Building expertise in UX research & design systems.</p>
             </div>
           </div>
 
@@ -1220,10 +1286,10 @@
         <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Get in Touch</span>
         <div class="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-indigo-500/50"></div>
       </div>
-      <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-5" style="color:var(--text)">
+      <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-5" style="color:var(--text)">
         Let's create<br/><span class="grad">meaningful experiences</span><br/>together.
       </h2>
-      <p class="text-lg" style="color:var(--muted)">Hiring, collaborating, or just want to talk design — I'd love to hear from you.</p>
+      <p class="text-lg" style="color:var(--muted)">Open to internship roles, full-time opportunities, and freelance collaborations. I'd love to hear from you.</p>
     </div>
 
     <!-- Contact cards — full width, no form -->
@@ -1339,7 +1405,7 @@
     </div>
 
     <div class="mt-8 pt-6 text-center text-xs" style="border-top:1px solid var(--border); color:var(--subtle)">
-      © <span id="copy-year"></span> Onyinyechi Alikor. All rights reserved. Designed with <span style="color:#ef4444;">♥</span> and a lot of coffee.
+      © <span id="copy-year">2026</span> Onyinyechi Alikor. All rights reserved. Designed with <span style="color:#ef4444;">♥</span> and a lot of coffee.
     </div>
   </div>
 </footer>
@@ -1426,7 +1492,7 @@
     besafr: {
       title: 'BeSafr',
       img: 'images/saftyapp.png',
-      tags: [{ label: 'Safety App', color: 'rgba(99,102,241,.15)', text: '#818cf8' }, { label: 'Mobile UX', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      tags: [{ label: 'Safety App', color: 'rgba(99,102,241,.15)', text: '#818cf8' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
       overview: 'BeSafr is a personal safety app that empowers users to navigate unfamiliar or potentially unsafe environments with confidence. Leveraging real-time crowd-sourced alerts, smart route optimisation, and an always-accessible SOS feature, it keeps users and their loved ones informed and protected.',
       role: 'Lead Product Designer — end-to-end design from discovery research through final hi-fi prototype.',
       duration: '6 weeks',
@@ -1440,8 +1506,8 @@
     skillex: {
       title: 'SkillEX',
       img: 'images/Edtech.png',
-      tags: [{ label: 'Ed-Tech', color: 'rgba(168,85,247,.15)', text: '#c084fc' }, { label: 'HNG Internship', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
-      overview: 'SkillEX is a peer-to-peer skill exchange platform that connects people who want to learn with those who can teach — no money required, just skill swaps. Built during the HNG Internship programme with a cross-functional team of 8 designers and engineers over a 4-week sprint.',
+      tags: [{ label: 'Ed-Tech', color: 'rgba(168,85,247,.15)', text: '#c084fc' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      overview: 'SkillEX is a peer-to-peer skill exchange platform that connects people who want to learn with those who can teach — no money required, just skill swaps. Built during the HNG 2026 Internship with a cross-functional team of 8 designers and engineers over a 4-week sprint.',
       role: 'UI/UX Designer — led the onboarding flow and matching interface design within a team of 8.',
       duration: '4-week sprint',
       process: ['Discover', 'Research', 'Define', 'Ideate', 'Design', 'Test'],
@@ -1454,21 +1520,21 @@
     periax: {
       title: 'Periax',
       img: 'images/fintech.png',
-      tags: [{ label: 'FinTech', color: 'rgba(14,165,233,.15)', text: '#38bdf8' }, { label: 'Dashboard', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
-      overview: 'Periax is a personal finance dashboard redesign aimed at making financial data accessible, actionable, and stress-free for young professionals. The project focused on reducing cognitive load through progressive disclosure and clear data visualisation.',
-      role: 'Product Designer — full redesign of dashboard information architecture and visual system.',
+      tags: [{ label: 'Health Tech', color: 'rgba(16,185,129,.15)', text: '#34d399' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      overview: 'Periax is a clinical trial management web application designed to streamline complex trial workflows for healthcare teams. The project focused on reducing administrative burden, improving data traceability, and creating an intuitive experience for clinical coordinators managing multi-site trials.',
+      role: 'Product Designer — end-to-end design of the trial dashboard, data entry flows, and reporting interface.',
       duration: '5 weeks',
       process: ['Discover', 'Research', 'Define', 'Ideate', 'Design', 'Test'],
       activeStep: 4,
-      challenge: 'Existing dashboards overwhelmed users with dense data tables and unclear affordances, causing decision paralysis and low feature engagement among the 22–35 age demographic.',
-      solution: 'A card-based dashboard with progressive data disclosure, spend-category visualisations, and a "Financial Health Score" widget that gives users an instant snapshot of their position.',
-      outcomes: ['68% increase in daily active usage vs old interface', 'Average session depth improved from 2.1 to 4.7 screens', 'Net Promoter Score improved by 22 points post-redesign', 'Reduced support tickets related to navigation by 35%'],
-      metrics: [{ val: '68%', lbl: 'More Usage' }, { val: '+22', lbl: 'NPS Points' }, { val: '35%', lbl: 'Fewer Tickets' }],
+      challenge: 'Clinical coordinators were spending excessive time on manual data reconciliation across disconnected tools, leading to errors, delayed reporting, and burnout in high-stakes trial environments.',
+      solution: 'A unified trial dashboard with role-based views, inline data validation, automated status tracking per trial phase, and a consolidated reporting panel that surfaces critical milestones at a glance.',
+      outcomes: ['68% reduction in time spent on manual data entry tasks', 'Average task completion time improved from 8.4 min to 3.1 min', 'Error rate in trial data entry dropped by 54% in usability testing', 'Coordinators reported significantly lower cognitive load in post-test surveys'],
+      metrics: [{ val: '68%', lbl: 'Less Manual Work' }, { val: '54%', lbl: 'Fewer Errors' }, { val: '3.1m', lbl: 'Task Time' }],
     },
     retwix: {
       title: 'Retwix',
       img: 'images/social.png',
-      tags: [{ label: 'Social', color: 'rgba(244,63,94,.15)', text: '#fb7185' }, { label: 'Content UX', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      tags: [{ label: 'Social', color: 'rgba(244,63,94,.15)', text: '#fb7185' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
       overview: 'Retwix is a social platform redesign that tackles information overload head-on. By replacing the algorithmic fire-hose feed with an interest-graph model and surfacing "meaningful interactions" over vanity metrics, the redesign aims to restore the sense of genuine community.',
       role: 'Lead UX Designer — responsible for feed architecture, interaction patterns and engagement model.',
       duration: '4 weeks',
