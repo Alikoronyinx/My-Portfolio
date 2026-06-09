@@ -81,8 +81,9 @@ Grid layout: 2×2 + PassForge left-aligned in the last row at the same card widt
 - **Scroll-triggered reveal animations** via `IntersectionObserver`
 - **Hero entrance animations** — staggered fade-up per word
 - **Floating design chips** in the hero with text labels
-- **Project cards** — click opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
+- **Project cards** — clicking the card body (tags, title, description, button) opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr); images are intentionally non-clickable
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
+- **Project card image hover zoom** — `scale(1.12)` with `cubic-bezier` ease-out (.6s) + deep gradient overlay fade; purely decorative (image not clickable)
 - **Glassmorphism** cards via `backdrop-filter: blur`
 - **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam (whiteboard/amber), Maze (maze-path/coral), Notion, Miro
 - **Responsive** — mobile-first, tested down to 375 px
