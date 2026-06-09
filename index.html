@@ -425,10 +425,9 @@
     .proj-link-ref  { display:inline-flex; align-items:center; gap:6px; font-size:.875rem; font-weight:500; color:#6366f1; transition:gap .2s; cursor:pointer; background:none; border:none; padding:0; }
     .proj-link-ref:hover { gap:10px; }
 
-    /* PassForge — full-width featured card with panoramic image */
-    .proj-card-wide { grid-column: 1 / -1; }
-    .proj-card-wide .proj-img-ref { aspect-ratio: 21/9; }
-    @media(max-width: 640px) { .proj-card-wide .proj-img-ref { aspect-ratio: 16/9; } }
+    /* PassForge — same-width as peers, centred as the 5th card */
+    .proj-card-wide { grid-column: 1 / -1; width: calc(50% - 12px); justify-self: center; }
+    @media(max-width: 640px) { .proj-card-wide { width: 100%; } }
 
     /* ══ PROCESS GRID ══ */
     .process-grid-ref {
