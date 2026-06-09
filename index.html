@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -43,13 +43,13 @@
       --subtle:    #475569;
     }
     [data-theme="light"] {
-      --bg:        #f8fafc;
-      --bg2:       #f1f5f9;
-      --surface:   rgba(255,255,255,0.8);
-      --border:    rgba(0,0,0,0.09);
-      --text:      #0f172a;
-      --muted:     #64748b;
-      --subtle:    #94a3b8;
+      --bg:      #eef1f6;
+      --bg2:     #ffffff;
+      --surface: rgba(255,255,255,1);
+      --border:  rgba(15,23,42,0.07);
+      --text:    #0f172a;
+      --muted:   #4b5768;
+      --subtle:  #8a97a8;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -84,8 +84,29 @@
       background-clip: text;
     }
 
-    /* ---- Section divider ---- */
-    .s-div { height: 1px; background: linear-gradient(to right, transparent, rgba(99,102,241,.4), transparent); }
+    /* ---- Section divider (kept for light-mode only now) ---- */
+    .s-div { display: none; }
+
+    /* ---- Section background alternation ---- */
+    #projects, #testimonials, #contact { background: var(--bg2); }
+
+    /* ---- Hero CTA buttons ---- */
+    .btn-p {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; background: #6366f1; color: #fff;
+      border-radius: 10px; font-size: .9375rem; font-weight: 500;
+      text-decoration: none; border: 1px solid transparent;
+      transition: all .22s ease; white-space: nowrap;
+    }
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(99,102,241,.38); background: #4f46e5; }
+    .btn-s {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; background: transparent; color: var(--text);
+      border: 1px solid var(--border); border-radius: 10px;
+      font-size: .9375rem; font-weight: 500; text-decoration: none;
+      transition: all .22s ease; white-space: nowrap;
+    }
+    .btn-s:hover { border-color: var(--muted); background: var(--surface); transform: translateY(-2px); }
 
     /* ---- Animations ---- */
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
@@ -203,14 +224,221 @@
     .marquee-inner { display: flex; animation: marquee 20s linear infinite; width: max-content; }
     .marquee-inner:hover { animation-play-state: paused; }
 
-    /* ---- Light-mode glass adjust ---- */
+    /* ══════════ LIGHT MODE OVERRIDES ══════════ */
+    [data-theme="light"] body { background-color: #eef1f6; }
+
+    /* Glass cards → solid white with shadow */
     [data-theme="light"] .glass {
-      background: rgba(255,255,255,0.75);
-      border-color: rgba(0,0,0,0.09);
+      background: rgba(255,255,255,0.98);
+      border-color: rgba(15,23,42,0.07);
+      box-shadow: 0 1px 4px rgba(15,23,42,0.06), 0 0 0 1px rgba(15,23,42,0.04);
     }
-    [data-theme="light"] .stag { color: #475569; }
+
+    /* Nav scroll */
+    [data-theme="light"] .nav-scroll { background: rgba(255,255,255,0.96) !important; border-color:rgba(15,23,42,0.08) !important; }
+
+    /* Skills tags */
+    [data-theme="light"] .stag { color: #374151; background: rgba(255,255,255,0.95); border-color: rgba(15,23,42,0.09); }
     [data-theme="light"] .stag:hover { color: #6366f1; }
-    [data-theme="light"] body { background-color: #f8fafc; }
+
+    /* Hero dark-gradient overlay → hidden in light */
+    [data-theme="light"] .hero-dark-grad { display: none; }
+
+    /* Dot grid lighter in light mode */
+    [data-theme="light"] .dotgrid {
+      background-image: radial-gradient(circle, rgba(99,102,241,0.07) 1px, transparent 1px);
+    }
+
+    /* Orb glow: more visible in light */
+    [data-theme="light"] .hero-orb { opacity: 0.5; }
+
+    /* Project + process cards */
+    [data-theme="light"] .proj-card-ref {
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(15,23,42,0.06);
+    }
+    [data-theme="light"] .process-step-ref { background: #ffffff; }
+    [data-theme="light"] .process-step-ref:hover { background: rgba(99,102,241,0.05); }
+
+    /* Modal */
+    [data-theme="light"] .modal-box { background: #ffffff; box-shadow: 0 24px 80px rgba(15,23,42,0.18); }
+    [data-theme="light"] .modal-bg  { background: rgba(15,23,42,0.55); }
+
+    /* Testimonial cards + experience */
+    [data-theme="light"] .tcard { background: #ffffff; }
+
+    /* Process grid border */
+    [data-theme="light"] .process-grid-ref { border-color: rgba(15,23,42,0.07); }
+    [data-theme="light"] .process-step-ref { border-color: rgba(15,23,42,0.07); }
+
+    /* Alternate sections in light mode: stronger contrast */
+    [data-theme="light"] #projects,
+    [data-theme="light"] #testimonials,
+    [data-theme="light"] #contact { background: #ffffff; }
+
+    /* ── Contact cards in light mode ── */
+    [data-theme="light"] #contact .glass {
+      background: #ffffff;
+      border-color: rgba(15,23,42,0.08);
+      box-shadow: 0 2px 10px rgba(15,23,42,0.07);
+    }
+    [data-theme="light"] #contact .glass:hover {
+      box-shadow: 0 4px 20px rgba(99,102,241,0.12);
+    }
+    /* Behance icon + LinkedIn: keep readable on white cards */
+    [data-theme="light"] .behance-icon { color: #2563eb; }
+    [data-theme="light"] #contact .glass .w-11 { background: rgba(99,102,241,0.1) !important; }
+    [data-theme="light"] #contact [href*="linkedin"] .w-11 { background: rgba(37,99,235,0.1) !important; }
+    [data-theme="light"] #contact [href*="behance"] .w-11 { background: rgba(37,99,235,0.1) !important; }
+    [data-theme="light"] #contact [href*="mailto"] .w-11 { background: rgba(99,102,241,0.1) !important; }
+    /* Resume CTA card in light mode */
+    [data-theme="light"] .resume-cta-card {
+      background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%) !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 18px rgba(99,102,241,0.3) !important;
+    }
+
+    /* ══ LOGO ══ */
+    .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
+    .logo-badge {
+      width:34px; height:34px; border-radius:9px; background:#6366f1;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; position:relative; overflow:hidden;
+      box-shadow:0 2px 10px rgba(99,102,241,.4);
+    }
+    .logo-badge::before {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.2) 0%,transparent 60%);
+    }
+    .logo-badge svg { position:relative; z-index:1; }
+    .logo-wordmark { display:flex; flex-direction:column; line-height:1; gap:1px; }
+    .logo-first { font-size:.875rem; font-weight:600; color:var(--text); letter-spacing:-.01em; }
+    .logo-last  { font-family:'Inter',sans-serif; font-style:normal; font-size:.8125rem; font-weight:500; color:#6366f1; letter-spacing:.01em; }
+
+    /* ══ THEME PILL TOGGLE ══ */
+    .theme-wrap { display:flex; align-items:center; gap:7px; }
+    .t-icon { width:15px; height:15px; flex-shrink:0; transition:color .35s, opacity .35s; }
+    /* dark mode: sun dim, moon bright + knob RIGHT (aligned with moon) */
+    .t-sun  { color:var(--muted); opacity:.4; }
+    .t-moon { color:#818cf8; opacity:1; }
+    /* light mode: sun bright, moon dim + knob LEFT (aligned with sun) */
+    [data-theme="light"] .t-sun  { color:#F59E0B; opacity:1; }
+    [data-theme="light"] .t-moon { color:var(--muted); opacity:.4; }
+    .theme-pill {
+      width:42px; height:24px; border-radius:12px;
+      background:var(--surface); border:1px solid var(--border);
+      cursor:pointer; position:relative; transition:background .3s; flex-shrink:0;
+    }
+    .theme-pill::after {
+      content:''; position:absolute; width:16px; height:16px; border-radius:50%;
+      background:#6366f1; top:3px; left:3px;
+      transform:translateX(18px); /* dark default: knob on right near moon */
+      transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+    }
+    [data-theme="light"] .theme-pill::after { transform:translateX(0); }
+
+    /* ══ PROJECT CARD GRID ══ */
+    .proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+    @media(max-width:640px){ .proj-grid { grid-template-columns:1fr; } }
+    .proj-card-ref {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:20px; overflow:hidden; cursor:pointer;
+      transition:all .3s cubic-bezier(.16,1,.3,1);
+    }
+    .proj-card-ref:hover { transform:translateY(-6px); box-shadow:0 24px 64px rgba(99,102,241,.12); border-color:#6366f1; }
+    [data-theme="light"] .proj-card-ref { background:#fff; }
+    [data-theme="light"] .proj-card-ref:hover { box-shadow:0 24px 64px rgba(99,102,241,.08); }
+    .proj-img-ref { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; }
+    .proj-img-ref img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .45s ease; }
+    .proj-card-ref:hover .proj-img-ref img { transform:scale(1.04); }
+    .proj-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.32) 100%); opacity:0; transition:opacity .3s; }
+    .proj-card-ref:hover .proj-overlay { opacity:1; }
+    .proj-body-ref { padding:24px; }
+    .proj-tags-ref { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+    .proj-tag-ref { padding:3px 10px; border-radius:6px; font-size:.6875rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+    .proj-title-ref { font-size:1.25rem; font-weight:700; letter-spacing:-.025em; color:var(--text); margin-bottom:8px; }
+    .proj-desc-ref  { font-size:.875rem; color:var(--muted); line-height:1.65; margin-bottom:16px; }
+    .proj-link-ref  { display:inline-flex; align-items:center; gap:6px; font-size:.875rem; font-weight:500; color:#6366f1; transition:gap .2s; cursor:pointer; background:none; border:none; padding:0; }
+    .proj-link-ref:hover { gap:10px; }
+
+    /* ══ PROCESS GRID ══ */
+    .process-grid-ref {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+      border:1px solid var(--border); border-radius:20px; overflow:hidden;
+    }
+    @media(max-width:720px){ .process-grid-ref { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:440px){ .process-grid-ref { grid-template-columns:1fr; } }
+    .process-step-ref {
+      padding:32px 28px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+      background:var(--surface); transition:background .3s; position:relative; overflow:hidden;
+    }
+    [data-theme="light"] .process-step-ref { background:rgba(255,255,255,.85); }
+    .process-step-ref:hover { background:rgba(99,102,241,.07); }
+    .process-step-ref:nth-child(3n) { border-right:none; }
+    @media(max-width:720px){
+      .process-step-ref:nth-child(3n) { border-right:1px solid var(--border); }
+      .process-step-ref:nth-child(2n) { border-right:none; }
+    }
+    .step-num {
+      font-family:'Instrument Serif',Georgia,serif; font-style:italic;
+      font-size:3rem; line-height:1; margin-bottom:12px;
+      color:rgba(255,255,255,.06); transition:color .3s;
+    }
+    [data-theme="light"] .step-num { color:rgba(0,0,0,.07); }
+    .process-step-ref:hover .step-num { color:rgba(99,102,241,.25); }
+    .step-icon {
+      width:44px; height:44px; border-radius:12px;
+      background:rgba(99,102,241,.12); display:flex; align-items:center;
+      justify-content:center; color:#6366f1; margin-bottom:14px; transition:all .3s;
+    }
+    .process-step-ref:hover .step-icon { background:#6366f1; color:#fff; }
+    .step-title { font-size:1rem; font-weight:600; color:var(--text); margin-bottom:6px; }
+    .step-desc  { font-size:.8125rem; color:var(--muted); line-height:1.6; }
+
+    /* ══ MODAL ══ */
+    .modal-bg {
+      position:fixed; inset:0; background:rgba(0,0,0,.75);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      z-index:200; display:flex; align-items:center; justify-content:center;
+      padding:24px; opacity:0; pointer-events:none; transition:opacity .3s;
+    }
+    .modal-bg.open { opacity:1; pointer-events:all; }
+    .modal-box {
+      background:var(--bg2); border:1px solid var(--border);
+      border-radius:24px; max-width:740px; width:100%;
+      max-height:88vh; overflow-y:auto; padding:48px;
+      transform:scale(.94) translateY(12px);
+      transition:transform .35s cubic-bezier(.16,1,.3,1); position:relative;
+    }
+    [data-theme="light"] .modal-box { background:#fff; }
+    @media(max-width:640px){ .modal-box { padding:28px 20px; } }
+    .modal-bg.open .modal-box { transform:none; }
+    .modal-close {
+      position:absolute; top:18px; right:18px; width:34px; height:34px; border-radius:50%;
+      background:var(--surface); border:1px solid var(--border);
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      color:var(--muted); font-size:1rem; line-height:1; transition:all .2s;
+    }
+    .modal-close:hover { background:rgba(99,102,241,.1); color:var(--text); }
+    .modal-img-ref { width:100%; aspect-ratio:16/8; border-radius:16px; overflow:hidden; margin-bottom:32px; }
+    .modal-img-ref img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+    .modal-title-ref { font-size:1.75rem; font-weight:700; letter-spacing:-.03em; color:var(--text); margin-bottom:8px; }
+    .modal-overview-ref { font-size:.9375rem; color:var(--muted); line-height:1.7; margin-bottom:28px; }
+    .modal-section-ref { margin-bottom:28px; }
+    .modal-section-ref h4 { font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#6366f1; margin-bottom:10px; }
+    .modal-section-ref p, .modal-section-ref li { font-size:.9375rem; color:var(--muted); line-height:1.7; }
+    .modal-section-ref ul { padding-left:20px; }
+    .modal-section-ref li { margin-bottom:6px; }
+    .modal-tag-ref { margin-bottom:12px; }
+    .pt-wrap { display:flex; gap:0; flex-wrap:wrap; margin-bottom:8px; }
+    .pt-step { flex:1; min-width:80px; text-align:center; padding:10px 8px; background:var(--surface); font-size:.75rem; font-weight:500; color:var(--muted); border-right:1px solid var(--border); transition:all .2s; }
+    .pt-step:first-child { border-radius:8px 0 0 8px; }
+    .pt-step:last-child  { border-right:none; border-radius:0 8px 8px 0; }
+    .pt-step.active { background:rgba(99,102,241,.15); color:#6366f1; font-weight:600; }
+    .metric-row { display:flex; gap:24px; flex-wrap:wrap; }
+    .metric { text-align:center; }
+    .metric-val { font-size:1.75rem; font-weight:700; letter-spacing:-.03em; color:#6366f1; }
+    .metric-lbl { font-size:.75rem; color:var(--muted); }
   </style>
 </head>
 <body>
@@ -220,8 +448,19 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
 
     <!-- Logo -->
-    <a href="#hero" class="text-lg font-black tracking-tight select-none">
-      <span class="grad">OA.</span>
+    <a href="#hero" class="nav-logo">
+      <div class="logo-badge">
+        <!-- OA monogram: O = circle, A = peak with crossbar -->
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="10" r="5.5" stroke="white" stroke-width="1.4" fill="none"/>
+          <path d="M9 2 L13.5 13 M9 2 L4.5 13" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 10 H12" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-wordmark">
+        <span class="logo-first">Onyinyechi</span>
+        <span class="logo-last">Alikor</span>
+      </div>
     </a>
 
     <!-- Desktop links -->
@@ -235,16 +474,27 @@
 
     <div class="flex items-center gap-3">
       <!-- Theme toggle -->
-      <button id="themeBtn" aria-label="Toggle theme"
-        class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-indigo-500/40 transition-all">
-        <i data-lucide="sun"  class="w-4 h-4 hidden" id="iconSun"></i>
-        <i data-lucide="moon" class="w-4 h-4"        id="iconMoon"></i>
-      </button>
+      <div class="theme-wrap" id="themeBtn" role="button" aria-label="Toggle theme" style="cursor:pointer">
+        <!-- Sun -->
+        <svg class="t-icon t-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Pill -->
+        <div class="theme-pill"></div>
+        <!-- Moon -->
+        <svg class="t-icon t-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </div>
 
       <!-- CTA -->
       <a href="#contact"
-        class="hidden md:inline-flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all ripple shadow-lg shadow-indigo-600/25">
-        Let's Talk <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        class="hidden md:inline-flex btn-p"
+        style="padding:9px 18px; font-size:.875rem; border-radius:9px;">
+        Let's Talk
       </a>
 
       <!-- Hamburger -->
@@ -272,12 +522,12 @@
 
   <!-- Bg layers -->
   <div class="absolute inset-0 dotgrid opacity-100 pointer-events-none"></div>
-  <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/25 via-transparent to-purple-950/15 pointer-events-none"></div>
+  <div class="hero-dark-grad absolute inset-0 bg-gradient-to-br from-indigo-950/25 via-transparent to-purple-950/15 pointer-events-none"></div>
 
   <!-- Orbs -->
-  <div class="absolute top-16 right-16 w-[480px] h-[480px] rounded-full bg-indigo-600/8 blur-3xl float-a pointer-events-none"></div>
-  <div class="absolute bottom-10 left-4  w-[320px] h-[320px] rounded-full bg-purple-600/8 blur-3xl float-b pointer-events-none"></div>
-  <div class="absolute top-1/2  left-1/3 w-[200px] h-[200px] rounded-full bg-sky-600/5   blur-2xl float-c pointer-events-none"></div>
+  <div class="hero-orb absolute top-16 right-16 w-[480px] h-[480px] rounded-full bg-indigo-600/8 blur-3xl float-a pointer-events-none"></div>
+  <div class="hero-orb absolute bottom-10 left-4  w-[320px] h-[320px] rounded-full bg-purple-600/8 blur-3xl float-b pointer-events-none"></div>
+  <div class="hero-orb absolute top-1/2  left-1/3 w-[200px] h-[200px] rounded-full bg-sky-600/5   blur-2xl float-c pointer-events-none"></div>
 
   <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-24 w-full">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -294,7 +544,7 @@
 
         <!-- Headline -->
         <div class="space-y-1">
-          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.04] tracking-tight">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.06] tracking-tight">
             <span class="hero-word d1 block" style="color:var(--text)">Designing</span>
             <span class="hero-word d2 block grad">intuitive</span>
             <span class="hero-word d3 block" style="color:var(--text)">digital</span>
@@ -309,15 +559,13 @@
         </p>
 
         <!-- CTAs -->
-        <div class="hero-word d5 flex flex-wrap gap-4">
-          <a href="#projects"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition-all ripple shadow-lg shadow-indigo-600/20">
-            <i data-lucide="eye" class="w-4 h-4"></i>View My Work
+        <div class="hero-word d5 flex flex-wrap gap-3">
+          <a href="#projects" class="btn-p">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            View My Work
           </a>
-          <a href="#contact"
-            class="inline-flex items-center gap-2 px-6 py-3 glass hover:border-indigo-400/50 font-semibold rounded-xl transition-all"
-            style="color:var(--text)">
-            <i data-lucide="mail" class="w-4 h-4"></i>Contact Me
+          <a href="#contact" class="btn-s">
+            Contact Me
           </a>
         </div>
 
@@ -342,19 +590,20 @@
 
       <!-- Right: Portrait card -->
       <div class="relative flex items-center justify-center">
-        <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+        <div class="relative" style="width:min(380px,88vw); aspect-ratio:4/5;">
 
           <!-- Main card -->
           <div class="w-full h-full glass rounded-3xl overflow-hidden"
                style="border-color:rgba(99,102,241,.2)">
             <img src="images/myimage.jpeg" alt="Onyinyechi Alikor — Product Designer"
-              class="w-full h-full object-cover object-center" />
+              class="w-full h-full object-cover" style="object-position:top center;" />
           </div>
 
           <!-- Floating chips -->
           <div class="absolute -top-5 -right-5 float-a">
-            <div class="glass rounded-2xl p-3 shadow-xl" style="border-color:rgba(99,102,241,.3)">
-              <i data-lucide="figma" class="w-5 h-5 text-indigo-400"></i>
+            <div class="glass rounded-2xl px-3 py-2 shadow-xl flex items-center gap-2" style="border-color:rgba(99,102,241,.3)">
+              <span class="w-2 h-2 rounded-full bg-indigo-400 flex-shrink-0"></span>
+              <span class="text-xs font-medium" style="color:var(--muted)">User Research</span>
             </div>
           </div>
 
@@ -366,8 +615,9 @@
           </div>
 
           <div class="absolute top-1/2 -right-12 float-c">
-            <div class="glass rounded-2xl p-3 shadow-xl" style="border-color:rgba(167,139,250,.2)">
-              <i data-lucide="layers" class="w-5 h-5 text-purple-400"></i>
+            <div class="glass rounded-2xl px-3 py-2 shadow-xl flex items-center gap-2" style="border-color:rgba(167,139,250,.2)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400 flex-shrink-0"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <span class="text-xs font-medium" style="color:var(--muted)">UI Design</span>
             </div>
           </div>
 
@@ -395,12 +645,12 @@
 
 
 <!-- ═══════════════ ABOUT ═══════════════ -->
-<section id="about" class="py-32">
-  <div class="s-div mb-20"></div>
+<section id="about" class="py-20">
+  <div class="s-div mb-12"></div>
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
     <!-- Header -->
-    <div class="reveal mb-16">
+    <div class="reveal mb-10">
       <div class="flex items-center gap-3 mb-4">
         <span class="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-400">About Me</span>
         <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
@@ -466,7 +716,7 @@
             <span class="stag text-sm px-4 py-2 rounded-xl">Usability Testing</span>
             <span class="stag text-sm px-4 py-2 rounded-xl">Interaction Design</span>
             <span class="stag text-sm px-4 py-2 rounded-xl flex items-center gap-1.5">
-              <i data-lucide="figma" class="w-3 h-3"></i>Figma
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zm7-3.5h3.5a3.5 3.5 0 110 7H12V2zm-7 10a3.5 3.5 0 013.5-3.5H12v7H8.5A3.5 3.5 0 015 12zm7 3.5v3.5a3.5 3.5 0 107 0v-3.5h-7zm3.5-7a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/></svg>Figma
             </span>
             <span class="stag text-sm px-4 py-2 rounded-xl">FigJam</span>
             <span class="stag text-sm px-4 py-2 rounded-xl">Information Architecture</span>
@@ -478,39 +728,50 @@
         <div>
           <p class="text-xs font-semibold tracking-[.15em] uppercase mb-5" style="color:var(--subtle)">Tools & Platforms</p>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <!-- Figma -->
             <div class="glass rounded-xl p-4 flex items-center gap-3">
               <div class="w-8 h-8 rounded-lg bg-indigo-600/15 flex items-center justify-center">
-                <i data-lucide="figma" class="w-4 h-4 text-indigo-400"></i>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-indigo-400">
+                  <path d="M5 5.5A3.5 3.5 0 018.5 2H12v7H8.5A3.5 3.5 0 015 5.5zm7-3.5h3.5a3.5 3.5 0 110 7H12V2zm-7 10a3.5 3.5 0 013.5-3.5H12v7H8.5A3.5 3.5 0 015 12zm7 3.5v3.5a3.5 3.5 0 107 0v-3.5h-7zm3.5-7a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
+                </svg>
               </div>
               <span class="text-sm font-medium" style="color:var(--text)">Figma</span>
             </div>
+            <!-- FigJam -->
             <div class="glass rounded-xl p-4 flex items-center gap-3">
               <div class="w-8 h-8 rounded-lg bg-purple-600/15 flex items-center justify-center">
-                <i data-lucide="layout" class="w-4 h-4 text-purple-400"></i>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400">
+                  <rect x="3" y="3" width="18" height="13" rx="2"/>
+                  <path d="M8 21h8M12 17v4"/>
+                  <path d="M7.5 8.5l2 2 4-4"/>
+                </svg>
               </div>
               <span class="text-sm font-medium" style="color:var(--text)">FigJam</span>
             </div>
+            <!-- Maze -->
             <div class="glass rounded-xl p-4 flex items-center gap-3">
               <div class="w-8 h-8 rounded-lg bg-sky-600/15 flex items-center justify-center">
-                <i data-lucide="users" class="w-4 h-4 text-sky-400"></i>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400">
+                  <path d="M3 3h7v4H3zM14 3h7v7h-4M17 10v4M3 10h4v4H3zM10 14h4v7h-4zM17 17h4"/>
+                </svg>
               </div>
               <span class="text-sm font-medium" style="color:var(--text)">Maze</span>
             </div>
-            <div class="glass rounded-xl p-4 flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-orange-600/15 flex items-center justify-center">
-                <i data-lucide="bar-chart-2" class="w-4 h-4 text-orange-400"></i>
-              </div>
-              <span class="text-sm font-medium" style="color:var(--text)">Hotjar</span>
-            </div>
+            <!-- Notion -->
             <div class="glass rounded-xl p-4 flex items-center gap-3">
               <div class="w-8 h-8 rounded-lg bg-green-600/15 flex items-center justify-center">
-                <i data-lucide="check-square" class="w-4 h-4 text-green-400"></i>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-green-400">
+                  <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466l1.823 1.447zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952l1.308.28s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933l3.222-.187z"/>
+                </svg>
               </div>
               <span class="text-sm font-medium" style="color:var(--text)">Notion</span>
             </div>
+            <!-- Miro -->
             <div class="glass rounded-xl p-4 flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-rose-600/15 flex items-center justify-center">
-                <i data-lucide="git-branch" class="w-4 h-4 text-rose-400"></i>
+              <div class="w-8 h-8 rounded-lg bg-yellow-600/15 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-yellow-400">
+                  <path d="M17.392 3H14l5 7-5 7h3.392l5-7-5-7zM12 3H8.608l5 7-5 7H12l5-7-5-7zm-5.392 0H3l5 7-5 7h3.608l5-7-5-7z"/>
+                </svg>
               </div>
               <span class="text-sm font-medium" style="color:var(--text)">Miro</span>
             </div>
@@ -524,12 +785,12 @@
 
 
 <!-- ═══════════════ PROJECTS ═══════════════ -->
-<section id="projects" class="py-32">
-  <div class="s-div mb-20"></div>
+<section id="projects" class="py-20">
+  <div class="s-div mb-12"></div>
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
     <!-- Header -->
-    <div class="reveal mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+    <div class="reveal mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
       <div>
         <div class="flex items-center gap-3 mb-4">
           <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Selected Work</span>
@@ -542,226 +803,103 @@
       <p class="max-w-xs text-sm leading-relaxed" style="color:var(--muted)">Each project represents a unique design challenge solved through research, iteration, and user empathy.</p>
     </div>
 
-    <!-- ── Project 1: BeSafr ── -->
-    <div class="reveal gborder glass pcard rounded-3xl overflow-hidden mb-8">
-      <div class="grid lg:grid-cols-2">
+    <!-- 2×2 Grid -->
+    <div class="reveal proj-grid">
 
-        <!-- Image pane -->
-        <div class="relative h-64 lg:h-auto min-h-[280px] overflow-hidden"
-             style="background:linear-gradient(135deg,rgba(79,70,229,.25),rgba(124,58,237,.18))">
-          <div class="pimg absolute inset-0">
-            <img src="images/saftyapp.png" alt="BeSafr — Safety App Design"
-              class="w-full h-full object-cover object-top" />
-          </div>
-          <div class="pover absolute inset-0 flex items-center justify-center bg-indigo-900/60 backdrop-blur-sm">
-            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
-          </div>
-          <span class="absolute top-4 left-4 px-3 py-1 bg-indigo-600/85 text-white text-xs font-semibold rounded-full">Safety App</span>
+      <!-- BeSafr -->
+      <div class="proj-card-ref" onclick="openModal('besafr')">
+        <div class="proj-img-ref">
+          <img src="images/saftyapp.png" alt="BeSafr Safety App" />
+          <div class="proj-overlay"></div>
         </div>
-
-        <!-- Content pane -->
-        <div class="p-8 lg:p-10 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xs font-bold" style="color:var(--subtle)">01</span>
-              <span class="text-xs font-semibold text-indigo-400">UX Case Study</span>
-            </div>
-            <h3 class="text-2xl font-black mb-3" style="color:var(--text)">BeSafr</h3>
-            <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">A personal safety app that helps users navigate unsafe environments with real-time crowd-sourced alerts, emergency contacts, and SOS features.</p>
-
-            <div class="grid grid-cols-2 gap-3 mb-6">
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">PROBLEM</p>
-                <p class="text-xs leading-relaxed" style="color:var(--muted)">Users lack real-time safety info in unfamiliar areas</p>
-              </div>
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">SOLUTION</p>
-                <p class="text-xs leading-relaxed" style="color:var(--muted)">Safety map with crowd alerts, route opt & SOS</p>
-              </div>
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">ROLE</p>
-                <p class="text-xs" style="color:var(--muted)">Lead Product Designer</p>
-              </div>
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">DURATION</p>
-                <p class="text-xs" style="color:var(--muted)">6 weeks</p>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">User Research</span>
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Wireframing</span>
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Prototyping</span>
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Usability Testing</span>
-            </div>
+        <div class="proj-body-ref">
+          <div class="proj-tags-ref">
+            <span class="proj-tag-ref" style="background:rgba(99,102,241,.12);color:#818cf8;">Safety App</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">UX Case Study</span>
           </div>
-
-          <div class="flex items-center gap-6 pt-6" style="border-top:1px solid var(--border)">
-            <div>
-              <p class="text-xl font-black text-indigo-400">87%</p>
-              <p class="text-[10px]" style="color:var(--subtle)">User Satisfaction</p>
-            </div>
-            <div>
-              <p class="text-xl font-black text-indigo-400">3x</p>
-              <p class="text-[10px]" style="color:var(--subtle)">Faster Navigation</p>
-            </div>
-            <a href="#" class="ml-auto flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors group">
-              View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
+          <h3 class="proj-title-ref">BeSafr</h3>
+          <p class="proj-desc-ref">A personal safety app with real-time crowd-sourced alerts, emergency contacts, and SOS features.</p>
+          <button class="proj-link-ref">
+            View case study
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
         </div>
       </div>
-    </div>
 
-    <!-- ── Project 2: SkillEX ── -->
-    <div class="reveal gborder glass pcard rounded-3xl overflow-hidden mb-8">
-      <div class="grid lg:grid-cols-2">
-
-        <!-- Content pane first on mobile, second on lg -->
-        <div class="p-8 lg:p-10 flex flex-col justify-between order-2 lg:order-1">
-          <div>
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xs font-bold" style="color:var(--subtle)">02</span>
-              <span class="text-xs font-semibold text-purple-400">HNG Internship</span>
-            </div>
-            <h3 class="text-2xl font-black mb-3" style="color:var(--text)">SkillEX</h3>
-            <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">A peer-to-peer skill exchange platform connecting learners with mentors. Designed during HNG Internship with a cross-functional team of 8 designers and developers.</p>
-
-            <div class="grid grid-cols-2 gap-3 mb-6">
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">CHALLENGE</p>
-                <p class="text-xs leading-relaxed" style="color:var(--muted)">Making skill exchange accessible & trustworthy</p>
-              </div>
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">DESIGN SOLUTION</p>
-                <p class="text-xs leading-relaxed" style="color:var(--muted)">Profiles, ratings & guided onboarding flow</p>
-              </div>
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">ROLE</p>
-                <p class="text-xs" style="color:var(--muted)">UI/UX Designer · Team of 8</p>
-              </div>
-              <div class="glass rounded-xl p-3.5">
-                <p class="text-[10px] font-semibold mb-1" style="color:var(--subtle)">DURATION</p>
-                <p class="text-xs" style="color:var(--muted)">4-week sprint</p>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 mb-6">
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">User Interviews</span>
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Design System</span>
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">A/B Testing</span>
-              <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Figma</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-6 pt-6" style="border-top:1px solid var(--border)">
-            <div>
-              <p class="text-xl font-black text-purple-400">92%</p>
-              <p class="text-[10px]" style="color:var(--subtle)">Task Completion</p>
-            </div>
-            <div>
-              <p class="text-xl font-black text-purple-400">40%</p>
-              <p class="text-[10px]" style="color:var(--subtle)">Drop-off Reduced</p>
-            </div>
-            <a href="#" class="ml-auto flex items-center gap-1.5 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors group">
-              View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
+      <!-- SkillEX -->
+      <div class="proj-card-ref" onclick="openModal('skillex')">
+        <div class="proj-img-ref">
+          <img src="images/Edtech.png" alt="SkillEX EdTech Platform" />
+          <div class="proj-overlay"></div>
         </div>
-
-        <!-- Image pane -->
-        <div class="relative h-64 lg:h-auto min-h-[280px] overflow-hidden order-1 lg:order-2"
-             style="background:linear-gradient(135deg,rgba(126,34,206,.22),rgba(219,39,119,.12))">
-          <div class="pimg absolute inset-0">
-            <img src="images/Edtech.png" alt="SkillEX — EdTech Platform Design"
-              class="w-full h-full object-cover object-top" />
+        <div class="proj-body-ref">
+          <div class="proj-tags-ref">
+            <span class="proj-tag-ref" style="background:rgba(168,85,247,.12);color:#c084fc;">Ed-Tech</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG Internship</span>
           </div>
-          <div class="pover absolute inset-0 flex items-center justify-center bg-purple-900/60 backdrop-blur-sm">
-            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
-          </div>
-          <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600/85 text-white text-xs font-semibold rounded-full">Ed-Tech</span>
+          <h3 class="proj-title-ref">SkillEX</h3>
+          <p class="proj-desc-ref">A peer-to-peer skill exchange platform connecting learners with mentors — built with a team of 8.</p>
+          <button class="proj-link-ref">
+            View case study
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
         </div>
       </div>
-    </div>
-
-    <!-- ── Projects 3 & 4 ── -->
-    <div class="grid md:grid-cols-2 gap-8">
 
       <!-- Periax -->
-      <div class="reveal gborder glass pcard rounded-3xl overflow-hidden">
-        <div class="relative h-48 overflow-hidden"
-             style="background:linear-gradient(135deg,rgba(3,105,161,.25),rgba(6,182,212,.12))">
-          <div class="pimg absolute inset-0">
-            <img src="images/fintech.png" alt="Periax — FinTech Dashboard Design"
-              class="w-full h-full object-cover object-top" />
-          </div>
-          <div class="pover absolute inset-0 flex items-center justify-center bg-sky-900/60 backdrop-blur-sm">
-            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
-          </div>
-          <span class="absolute top-4 left-4 px-3 py-1 bg-sky-600/85 text-white text-xs font-semibold rounded-full">FinTech</span>
+      <div class="proj-card-ref" onclick="openModal('periax')">
+        <div class="proj-img-ref">
+          <img src="images/fintech.png" alt="Periax FinTech Dashboard" />
+          <div class="proj-overlay"></div>
         </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-bold" style="color:var(--subtle)">03</span>
-            <span class="text-xs font-semibold text-sky-400">UX Case Study</span>
+        <div class="proj-body-ref">
+          <div class="proj-tags-ref">
+            <span class="proj-tag-ref" style="background:rgba(14,165,233,.12);color:#38bdf8;">FinTech</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">UX Case Study</span>
           </div>
-          <h3 class="text-xl font-black mb-2" style="color:var(--text)">Periax</h3>
-          <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">A fintech dashboard redesign making personal finance intuitive and stress-free for young professionals through clear data visualization.</p>
-          <div class="flex flex-wrap gap-1.5 mb-4">
-            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Dashboard</span>
-            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Data Viz</span>
-            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Mobile</span>
-          </div>
-          <a href="#" class="flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-colors group">
-            View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-          </a>
+          <h3 class="proj-title-ref">Periax</h3>
+          <p class="proj-desc-ref">A fintech dashboard redesign making personal finance intuitive for young professionals.</p>
+          <button class="proj-link-ref">
+            View case study
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
         </div>
       </div>
 
       <!-- Retwix -->
-      <div class="reveal d1x gborder glass pcard rounded-3xl overflow-hidden">
-        <div class="relative h-48 overflow-hidden"
-             style="background:linear-gradient(135deg,rgba(190,18,60,.2),rgba(251,113,133,.1))">
-          <div class="pimg absolute inset-0">
-            <img src="images/social.png" alt="Retwix — Social Platform Design"
-              class="w-full h-full object-cover object-top" />
-          </div>
-          <div class="pover absolute inset-0 flex items-center justify-center bg-rose-900/60 backdrop-blur-sm">
-            <span class="glass px-4 py-2 rounded-full text-sm font-medium" style="color:var(--text)">View Case Study</span>
-          </div>
-          <span class="absolute top-4 left-4 px-3 py-1 bg-rose-600/85 text-white text-xs font-semibold rounded-full">Social</span>
+      <div class="proj-card-ref" onclick="openModal('retwix')">
+        <div class="proj-img-ref">
+          <img src="images/social.png" alt="Retwix Social Platform" />
+          <div class="proj-overlay"></div>
         </div>
-        <div class="p-6">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-bold" style="color:var(--subtle)">04</span>
-            <span class="text-xs font-semibold text-rose-400">UX Case Study</span>
+        <div class="proj-body-ref">
+          <div class="proj-tags-ref">
+            <span class="proj-tag-ref" style="background:rgba(244,63,94,.12);color:#fb7185;">Social</span>
+            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">UX Case Study</span>
           </div>
-          <h3 class="text-xl font-black mb-2" style="color:var(--text)">Retwix</h3>
-          <p class="text-sm leading-relaxed mb-4" style="color:var(--muted)">A social platform redesign reducing information overload and improving meaningful engagement through better content curation algorithms.</p>
-          <div class="flex flex-wrap gap-1.5 mb-4">
-            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Social UX</span>
-            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Feeds</span>
-            <span class="px-2.5 py-1 text-xs rounded-full" style="background:var(--surface); border:1px solid var(--border); color:var(--muted)">Engagement</span>
-          </div>
-          <a href="#" class="flex items-center gap-1.5 text-sm font-semibold text-rose-400 hover:text-rose-300 transition-colors group">
-            View Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-          </a>
+          <h3 class="proj-title-ref">Retwix</h3>
+          <p class="proj-desc-ref">A social platform redesign reducing information overload and improving meaningful engagement.</p>
+          <button class="proj-link-ref">
+            View case study
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
         </div>
       </div>
 
-    </div>
+    </div><!-- /proj-grid END -->
   </div>
 </section>
 
 
 <!-- ═══════════════ DESIGN PROCESS ═══════════════ -->
-<section id="process" class="py-32 relative overflow-hidden">
-  <div class="s-div mb-20"></div>
+<section id="process" class="py-20 relative overflow-hidden">
+  <div class="s-div mb-12"></div>
   <div class="absolute inset-0 bg-gradient-to-b from-indigo-950/8 via-transparent to-transparent pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
 
     <!-- Header -->
-    <div class="reveal mb-20 text-center">
+    <div class="reveal mb-10 text-center">
       <div class="flex items-center justify-center gap-3 mb-4">
         <div class="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
         <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">How I Work</span>
@@ -775,98 +913,80 @@
       </p>
     </div>
 
-    <!-- Steps -->
-    <div class="relative">
-      <!-- Connector line (desktop) -->
-      <div class="hidden lg:block absolute top-[52px] left-[calc(8.33%+32px)] right-[calc(8.33%+32px)] h-px"
-           style="background:linear-gradient(to right,#6366f1,#a78bfa,#6366f1); z-index:0; opacity:.35"></div>
+    <!-- 3×2 Grid -->
+    <div class="reveal process-grid-ref">
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 relative z-10">
-
-        <!-- 1 Discover -->
-        <div class="reveal pstep flex flex-col items-center text-center group">
-          <div class="relative mb-5">
-            <div class="icon-box w-16 h-16 rounded-2xl bg-indigo-600/15 border border-indigo-500/30 flex items-center justify-center group-hover:bg-indigo-600/30 group-hover:border-indigo-400/60 transition-all">
-              <i data-lucide="search" class="w-6 h-6 text-indigo-400"></i>
-            </div>
-            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">1</span>
-          </div>
-          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Discover</h3>
-          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Stakeholder interviews & market research to understand the problem space</p>
+      <!-- 1 Discover -->
+      <div class="process-step-ref">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-
-        <!-- 2 Research -->
-        <div class="reveal d1x pstep flex flex-col items-center text-center group">
-          <div class="relative mb-5">
-            <div class="icon-box w-16 h-16 rounded-2xl bg-purple-600/15 border border-purple-500/30 flex items-center justify-center group-hover:bg-purple-600/30 group-hover:border-purple-400/60 transition-all">
-              <i data-lucide="users" class="w-6 h-6 text-purple-400"></i>
-            </div>
-            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] font-bold flex items-center justify-center">2</span>
-          </div>
-          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Research</h3>
-          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Interviews, surveys, competitive analysis & persona creation</p>
-        </div>
-
-        <!-- 3 Define -->
-        <div class="reveal d2x pstep flex flex-col items-center text-center group">
-          <div class="relative mb-5">
-            <div class="icon-box w-16 h-16 rounded-2xl bg-sky-600/15 border border-sky-500/30 flex items-center justify-center group-hover:bg-sky-600/30 group-hover:border-sky-400/60 transition-all">
-              <i data-lucide="target" class="w-6 h-6 text-sky-400"></i>
-            </div>
-            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-sky-600 text-white text-[10px] font-bold flex items-center justify-center">3</span>
-          </div>
-          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Define</h3>
-          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Synthesize insights into problem statements & success metrics</p>
-        </div>
-
-        <!-- 4 Ideate -->
-        <div class="reveal d3x pstep flex flex-col items-center text-center group">
-          <div class="relative mb-5">
-            <div class="icon-box w-16 h-16 rounded-2xl bg-amber-600/15 border border-amber-500/30 flex items-center justify-center group-hover:bg-amber-600/30 group-hover:border-amber-400/60 transition-all">
-              <i data-lucide="zap" class="w-6 h-6 text-amber-400"></i>
-            </div>
-            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-amber-600 text-white text-[10px] font-bold flex items-center justify-center">4</span>
-          </div>
-          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Ideate</h3>
-          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Brainstorm solutions, sketches, user flows & IA</p>
-        </div>
-
-        <!-- 5 Design -->
-        <div class="reveal d1x pstep flex flex-col items-center text-center group" style="transition-delay:.35s">
-          <div class="relative mb-5">
-            <div class="icon-box w-16 h-16 rounded-2xl bg-emerald-600/15 border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-600/30 group-hover:border-emerald-400/60 transition-all">
-              <i data-lucide="pen-tool" class="w-6 h-6 text-emerald-400"></i>
-            </div>
-            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center">5</span>
-          </div>
-          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Design</h3>
-          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Wireframes, high-fi mockups, prototypes & design systems</p>
-        </div>
-
-        <!-- 6 Test -->
-        <div class="reveal d2x pstep flex flex-col items-center text-center group" style="transition-delay:.45s">
-          <div class="relative mb-5">
-            <div class="icon-box w-16 h-16 rounded-2xl bg-rose-600/15 border border-rose-500/30 flex items-center justify-center group-hover:bg-rose-600/30 group-hover:border-rose-400/60 transition-all">
-              <i data-lucide="refresh-cw" class="w-6 h-6 text-rose-400"></i>
-            </div>
-            <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-rose-600 text-white text-[10px] font-bold flex items-center justify-center">6</span>
-          </div>
-          <h3 class="text-sm font-bold mb-2" style="color:var(--text)">Test & Iterate</h3>
-          <p class="text-xs leading-relaxed" style="color:var(--subtle)">Usability testing, feedback loops & accessibility checks</p>
-        </div>
-
+        <h3 class="step-title">Discover</h3>
+        <p class="step-desc">Stakeholder interviews & market research to understand the full problem space.</p>
       </div>
-    </div>
+
+      <!-- 2 Research -->
+      <div class="process-step-ref">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="step-title">Research</h3>
+        <p class="step-desc">Interviews, surveys, competitive analysis & persona creation with real users.</p>
+      </div>
+
+      <!-- 3 Define -->
+      <div class="process-step-ref">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 class="step-title">Define</h3>
+        <p class="step-desc">Synthesize insights into clear problem statements, HMWs & success metrics.</p>
+      </div>
+
+      <!-- 4 Ideate -->
+      <div class="process-step-ref">
+        <div class="step-num">04</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="step-title">Ideate</h3>
+        <p class="step-desc">Brainstorm solutions, rough sketches, user flows & information architecture.</p>
+      </div>
+
+      <!-- 5 Design -->
+      <div class="process-step-ref">
+        <div class="step-num">05</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
+        <h3 class="step-title">Design</h3>
+        <p class="step-desc">Wireframes, high-fidelity mockups, interactive prototypes & design systems.</p>
+      </div>
+
+      <!-- 6 Test & Iterate -->
+      <div class="process-step-ref" style="border-bottom:none;">
+        <div class="step-num">06</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3 class="step-title">Test & Iterate</h3>
+        <p class="step-desc">Usability testing, feedback loops, accessibility audits & continuous refinement.</p>
+      </div>
+
+    </div><!-- /process-grid-ref -->
   </div>
 </section>
 
 
 <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
-<section id="testimonials" class="py-32">
-  <div class="s-div mb-20"></div>
+<section id="testimonials" class="py-20">
+  <div class="s-div mb-12"></div>
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
-    <div class="reveal mb-16 text-center">
+    <div class="reveal mb-10 text-center">
       <div class="flex items-center justify-center gap-3 mb-4">
         <div class="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-indigo-500/50"></div>
         <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Testimonials</span>
@@ -948,11 +1068,11 @@
 
 
 <!-- ═══════════════ EXPERIENCE & ACHIEVEMENTS ═══════════════ -->
-<section id="experience" class="py-32">
-  <div class="s-div mb-20"></div>
+<section id="experience" class="py-20">
+  <div class="s-div mb-12"></div>
   <div class="max-w-7xl mx-auto px-5 sm:px-8">
 
-    <div class="reveal mb-16">
+    <div class="reveal mb-10">
       <div class="flex items-center gap-3 mb-4">
         <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Experience</span>
         <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
@@ -1047,7 +1167,10 @@
 
           <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-sky-500/30 transition-all group cursor-default" style="border-color:var(--border)">
             <div class="w-10 h-10 rounded-xl bg-sky-600/15 border border-sky-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-sky-600/25 transition-colors">
-              <i data-lucide="figma" class="w-5 h-5 text-sky-400"></i>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="text-sky-400">
+                <path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <rect x="6" y="6" width="8" height="8" rx="2" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="1.4"/>
+              </svg>
             </div>
             <div>
               <p class="font-semibold text-sm mb-1" style="color:var(--text)">Figma Advanced Proficiency</p>
@@ -1084,8 +1207,8 @@
 
 
 <!-- ═══════════════ CONTACT ═══════════════ -->
-<section id="contact" class="py-32 relative overflow-hidden">
-  <div class="s-div mb-20"></div>
+<section id="contact" class="py-20 relative overflow-hidden">
+  <div class="s-div mb-12"></div>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-600/5 rounded-full blur-3xl pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
@@ -1124,7 +1247,9 @@
         class="flex items-center gap-4 glass rounded-2xl p-5 hover:border-blue-500/40 transition-all group"
         style="border-color:var(--border)">
         <div class="w-11 h-11 rounded-xl bg-blue-600/15 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/25 transition-colors">
-          <i data-lucide="linkedin" class="w-5 h-5 text-blue-400"></i>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-blue-400">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
         </div>
         <div>
           <p class="text-[10px] font-semibold mb-0.5" style="color:var(--subtle)">LINKEDIN</p>
@@ -1137,7 +1262,9 @@
         class="flex items-center gap-4 glass rounded-2xl p-5 hover:border-blue-400/40 transition-all group"
         style="border-color:var(--border)">
         <div class="w-11 h-11 rounded-xl bg-blue-800/20 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-800/30 transition-colors">
-          <i data-lucide="layout-grid" class="w-5 h-5 text-blue-300"></i>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-blue-300 behance-icon">
+            <path d="M7.803 5.731c.589 0 1.119.051 1.605.155.483.103.895.273 1.243.508.343.235.611.547.804.939.187.387.28.855.28 1.39 0 .598-.135 1.096-.406 1.489-.269.394-.668.722-1.191.985.719.207 1.253.566 1.603 1.081.347.513.521 1.137.521 1.869 0 .584-.111 1.094-.336 1.531a3.051 3.051 0 01-.935 1.095 4.27 4.27 0 01-1.375.642c-.513.138-1.048.209-1.606.209H2V5.731h5.803zm-.351 4.972c.48 0 .878-.114 1.192-.347.312-.231.467-.604.467-1.105 0-.27-.046-.493-.141-.672a1.12 1.12 0 00-.383-.435 1.673 1.673 0 00-.56-.236 2.885 2.885 0 00-.672-.075H4.421v2.87h3.031zm.164 5.239c.248 0 .486-.025.712-.072a1.75 1.75 0 00.603-.237 1.201 1.201 0 00.424-.45c.107-.191.161-.441.161-.742 0-.591-.169-1.01-.507-1.259-.338-.249-.783-.373-1.334-.373H4.421v3.133h3.195zM15.661 16.45c.348.337.854.506 1.518.506.473 0 .882-.119 1.225-.355.342-.237.551-.487.629-.753h2.182c-.348 1.024-.881 1.754-1.597 2.19-.716.438-1.585.657-2.607.657-.707 0-1.343-.112-1.907-.338a4.099 4.099 0 01-1.463-.963 4.281 4.281 0 01-.939-1.486 5.347 5.347 0 01-.329-1.904c0-.679.112-1.311.336-1.899a4.38 4.38 0 01.955-1.501 4.28 4.28 0 011.474-.987c.571-.235 1.198-.352 1.876-.352.771 0 1.455.149 2.046.443a4.05 4.05 0 011.467 1.192c.391.5.669 1.073.835 1.719.164.646.215 1.323.148 2.027h-6.517c.02.754.247 1.306.595 1.644zm2.637-4.498a1.87 1.87 0 00-1.437-.524c-.41 0-.751.068-1.021.205a2.04 2.04 0 00-.671.524 2.01 2.01 0 00-.36.702 3.17 3.17 0 00-.123.748h4.142c-.094-.717-.323-1.265-.53-1.655zm-3.442-4.632h4.642v1.147h-4.642V7.32z"/>
+          </svg>
         </div>
         <div>
           <p class="text-[10px] font-semibold mb-0.5" style="color:var(--subtle)">BEHANCE</p>
@@ -1147,14 +1274,14 @@
 
       <!-- Resume -->
       <a href="https://drive.google.com/file/d/1xRXorz7tOf1yr-cbv_f9tqcDHaSBpfkU/view?usp=sharing" target="_blank" rel="noopener noreferrer"
-        class="flex items-center gap-4 rounded-2xl p-5 hover:opacity-90 transition-all group"
-        style="background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(167,139,250,.12)); border:1px solid rgba(99,102,241,.3)">
-        <div class="w-11 h-11 rounded-xl bg-indigo-600/25 flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-600/35 transition-colors">
-          <i data-lucide="file-text" class="w-5 h-5 text-indigo-300"></i>
+        class="resume-cta-card flex items-center gap-4 rounded-2xl p-5 hover:opacity-90 transition-all group"
+        style="background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(167,139,250,.14)); border:1px solid rgba(99,102,241,.35)">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors" style="background:rgba(255,255,255,.15)">
+          <i data-lucide="file-text" class="w-5 h-5" style="color:rgba(255,255,255,.9)"></i>
         </div>
         <div>
-          <p class="text-[10px] font-semibold mb-0.5" style="color:rgba(165,180,252,.7)">RESUME</p>
-          <p class="text-sm font-medium text-indigo-200 group-hover:text-white transition-colors">Download CV (PDF)</p>
+          <p class="text-[10px] font-semibold mb-0.5" style="color:rgba(255,255,255,.65)">RESUME</p>
+          <p class="text-sm font-semibold transition-colors" style="color:#ffffff">Download CV (PDF)</p>
         </div>
       </a>
 
@@ -1191,12 +1318,16 @@
         <a href="https://www.linkedin.com/in/onyinyechi-alikor-334a831b5/" target="_blank" rel="noopener noreferrer"
           class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-blue-400/40 transition-all"
           style="color:var(--subtle)">
-          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
         </a>
         <a href="https://www.behance.net/onyinyechialikor" target="_blank" rel="noopener noreferrer"
           class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-blue-300/40 transition-all"
           style="color:var(--subtle)">
-          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.803 5.731c.589 0 1.119.051 1.605.155.483.103.895.273 1.243.508.343.235.611.547.804.939.187.387.28.855.28 1.39 0 .598-.135 1.096-.406 1.489-.269.394-.668.722-1.191.985.719.207 1.253.566 1.603 1.081.347.513.521 1.137.521 1.869 0 .584-.111 1.094-.336 1.531a3.051 3.051 0 01-.935 1.095 4.27 4.27 0 01-1.375.642c-.513.138-1.048.209-1.606.209H2V5.731h5.803zm-.351 4.972c.48 0 .878-.114 1.192-.347.312-.231.467-.604.467-1.105 0-.27-.046-.493-.141-.672a1.12 1.12 0 00-.383-.435 1.673 1.673 0 00-.56-.236 2.885 2.885 0 00-.672-.075H4.421v2.87h3.031zm.164 5.239c.248 0 .486-.025.712-.072a1.75 1.75 0 00.603-.237 1.201 1.201 0 00.424-.45c.107-.191.161-.441.161-.742 0-.591-.169-1.01-.507-1.259-.338-.249-.783-.373-1.334-.373H4.421v3.133h3.195zM15.661 16.45c.348.337.854.506 1.518.506.473 0 .882-.119 1.225-.355.342-.237.551-.487.629-.753h2.182c-.348 1.024-.881 1.754-1.597 2.19-.716.438-1.585.657-2.607.657-.707 0-1.343-.112-1.907-.338a4.099 4.099 0 01-1.463-.963 4.281 4.281 0 01-.939-1.486 5.347 5.347 0 01-.329-1.904c0-.679.112-1.311.336-1.899a4.38 4.38 0 01.955-1.501 4.28 4.28 0 011.474-.987c.571-.235 1.198-.352 1.876-.352.771 0 1.455.149 2.046.443a4.05 4.05 0 011.467 1.192c.391.5.669 1.073.835 1.719.164.646.215 1.323.148 2.027h-6.517c.02.754.247 1.306.595 1.644zm2.637-4.498a1.87 1.87 0 00-1.437-.524c-.41 0-.751.068-1.021.205a2.04 2.04 0 00-.671.524 2.01 2.01 0 00-.36.702 3.17 3.17 0 00-.123.748h4.142c-.094-.717-.323-1.265-.53-1.655zm-3.442-4.632h4.642v1.147h-4.642V7.32z"/>
+          </svg>
         </a>
         <a href="https://drive.google.com/file/d/1xRXorz7tOf1yr-cbv_f9tqcDHaSBpfkU/view?usp=sharing" target="_blank" rel="noopener noreferrer"
           class="w-9 h-9 glass rounded-xl flex items-center justify-center hover:border-sky-400/40 transition-all"
@@ -1208,10 +1339,19 @@
     </div>
 
     <div class="mt-8 pt-6 text-center text-xs" style="border-top:1px solid var(--border); color:var(--subtle)">
-      © 2024 Onyinyechi Alikor. All rights reserved. Designed with ♥ and a lot of coffee.
+      © <span id="copy-year"></span> Onyinyechi Alikor. All rights reserved. Designed with <span style="color:#ef4444;">♥</span> and a lot of coffee.
     </div>
   </div>
 </footer>
+
+
+<!-- ═══════════════ MODAL ═══════════════ -->
+<div class="modal-bg" id="modalBg" onclick="handleModalBgClick(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
 
 <!-- ═══════════════ SCRIPTS ═══════════════ -->
@@ -1219,23 +1359,13 @@
   // --- Init Lucide ---
   lucide.createIcons();
 
-  // --- Theme Toggle ---
+  // --- Theme Toggle (pill) ---
   const html     = document.documentElement;
   const themeBtn = document.getElementById('themeBtn');
-  const iconSun  = document.getElementById('iconSun');
-  const iconMoon = document.getElementById('iconMoon');
 
   function applyTheme(theme) {
     html.setAttribute('data-theme', theme);
-    if (theme === 'light') {
-      iconSun.classList.add('hidden');
-      iconMoon.classList.remove('hidden');
-    } else {
-      iconMoon.classList.add('hidden');
-      iconSun.classList.remove('hidden');
-    }
     localStorage.setItem('oa-theme', theme);
-    lucide.createIcons();
   }
 
   // Load saved theme
@@ -1280,6 +1410,9 @@
 
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
+  // --- Dynamic copyright year ---
+  document.getElementById('copy-year').textContent = new Date().getFullYear();
+
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -1287,6 +1420,131 @@
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+
+  // ══ PROJECT DATA & MODAL ══
+  const projects = {
+    besafr: {
+      title: 'BeSafr',
+      img: 'images/saftyapp.png',
+      tags: [{ label: 'Safety App', color: 'rgba(99,102,241,.15)', text: '#818cf8' }, { label: 'Mobile UX', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      overview: 'BeSafr is a personal safety app that empowers users to navigate unfamiliar or potentially unsafe environments with confidence. Leveraging real-time crowd-sourced alerts, smart route optimisation, and an always-accessible SOS feature, it keeps users and their loved ones informed and protected.',
+      role: 'Lead Product Designer — end-to-end design from discovery research through final hi-fi prototype.',
+      duration: '6 weeks',
+      process: ['Discover', 'Research', 'Define', 'Ideate', 'Design', 'Test'],
+      activeStep: 5,
+      challenge: 'Users travelling in unfamiliar areas have no reliable, real-time way to assess safety risks, reach emergency contacts quickly, or share their location without leaving the app.',
+      solution: 'A location-aware safety map aggregating crowd alerts, an SOS button with automatic contact notification, and a "safe route" feature comparing real-time incident data.',
+      outcomes: ['87% user satisfaction score in usability testing', '3× faster time to access emergency contact vs baseline', 'Zero critical navigation errors in moderated testing sessions', 'Feature adopted by 92% of test participants as primary safety tool'],
+      metrics: [{ val: '87%', lbl: 'Satisfaction' }, { val: '3×', lbl: 'Faster SOS' }, { val: '0', lbl: 'Crit. Errors' }],
+    },
+    skillex: {
+      title: 'SkillEX',
+      img: 'images/Edtech.png',
+      tags: [{ label: 'Ed-Tech', color: 'rgba(168,85,247,.15)', text: '#c084fc' }, { label: 'HNG Internship', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      overview: 'SkillEX is a peer-to-peer skill exchange platform that connects people who want to learn with those who can teach — no money required, just skill swaps. Built during the HNG Internship programme with a cross-functional team of 8 designers and engineers over a 4-week sprint.',
+      role: 'UI/UX Designer — led the onboarding flow and matching interface design within a team of 8.',
+      duration: '4-week sprint',
+      process: ['Discover', 'Research', 'Define', 'Ideate', 'Design', 'Test'],
+      activeStep: 4,
+      challenge: 'Making informal skill exchange feel trustworthy and navigable for first-time users while accommodating a wide range of skill categories and user skill levels.',
+      solution: 'Guided onboarding with skill tagging, a transparent profile & rating system, and a curated "Your Matches" feed that surfaces the most relevant exchanges immediately.',
+      outcomes: ['92% task completion rate on core user flows', '40% reduction in drop-off during onboarding vs initial prototype', 'Design system delivered with 60+ reusable components', 'Shipped to developers within sprint deadline'],
+      metrics: [{ val: '92%', lbl: 'Task Completion' }, { val: '40%', lbl: 'Less Drop-off' }, { val: '60+', lbl: 'Components' }],
+    },
+    periax: {
+      title: 'Periax',
+      img: 'images/fintech.png',
+      tags: [{ label: 'FinTech', color: 'rgba(14,165,233,.15)', text: '#38bdf8' }, { label: 'Dashboard', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      overview: 'Periax is a personal finance dashboard redesign aimed at making financial data accessible, actionable, and stress-free for young professionals. The project focused on reducing cognitive load through progressive disclosure and clear data visualisation.',
+      role: 'Product Designer — full redesign of dashboard information architecture and visual system.',
+      duration: '5 weeks',
+      process: ['Discover', 'Research', 'Define', 'Ideate', 'Design', 'Test'],
+      activeStep: 4,
+      challenge: 'Existing dashboards overwhelmed users with dense data tables and unclear affordances, causing decision paralysis and low feature engagement among the 22–35 age demographic.',
+      solution: 'A card-based dashboard with progressive data disclosure, spend-category visualisations, and a "Financial Health Score" widget that gives users an instant snapshot of their position.',
+      outcomes: ['68% increase in daily active usage vs old interface', 'Average session depth improved from 2.1 to 4.7 screens', 'Net Promoter Score improved by 22 points post-redesign', 'Reduced support tickets related to navigation by 35%'],
+      metrics: [{ val: '68%', lbl: 'More Usage' }, { val: '+22', lbl: 'NPS Points' }, { val: '35%', lbl: 'Fewer Tickets' }],
+    },
+    retwix: {
+      title: 'Retwix',
+      img: 'images/social.png',
+      tags: [{ label: 'Social', color: 'rgba(244,63,94,.15)', text: '#fb7185' }, { label: 'Content UX', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      overview: 'Retwix is a social platform redesign that tackles information overload head-on. By replacing the algorithmic fire-hose feed with an interest-graph model and surfacing "meaningful interactions" over vanity metrics, the redesign aims to restore the sense of genuine community.',
+      role: 'Lead UX Designer — responsible for feed architecture, interaction patterns and engagement model.',
+      duration: '4 weeks',
+      process: ['Discover', 'Research', 'Define', 'Ideate', 'Design', 'Test'],
+      activeStep: 4,
+      challenge: 'Heavy scroll behaviour, notification fatigue, and low-quality engagement were eroding user trust. Users reported feeling drained after sessions rather than connected.',
+      solution: 'Interest-graph feed with a "depth-over-breadth" sorting model, read-receipt controls, a "Meaningful Reactions" system replacing simple likes, and a weekly digest that surfaces quality content.',
+      outcomes: ['Average session time reduced by 18% while satisfaction increased by 31%', '"Meaningful interaction" rate up 64% over control group', 'Notification opt-out rate dropped from 47% to 12%', 'Users reported higher satisfaction and lower anxiety in post-test surveys'],
+      metrics: [{ val: '+31%', lbl: 'Satisfaction' }, { val: '+64%', lbl: 'Engagement' }, { val: '−35%', lbl: 'Opt-outs' }],
+    },
+  };
+
+  function openModal(key) {
+    const p = projects[key];
+    if (!p) return;
+    const tagsHTML = p.tags.map(t =>
+      `<span class="proj-tag-ref" style="background:${t.color};color:${t.text};">${t.label}</span>`
+    ).join('');
+    const ptSteps = p.process.map((s, i) =>
+      `<div class="pt-step${i === p.activeStep ? ' active' : ''}">${s}</div>`
+    ).join('');
+    const metrics = p.metrics.map(m =>
+      `<div class="metric"><div class="metric-val">${m.val}</div><div class="metric-lbl">${m.lbl}</div></div>`
+    ).join('');
+    const outcomes = p.outcomes.map(o => `<li>${o}</li>`).join('');
+
+    document.getElementById('modalContent').innerHTML = `
+      <div class="modal-img-ref"><img src="${p.img}" alt="${p.title}" /></div>
+      <div class="proj-tags-ref modal-tag-ref">${tagsHTML}</div>
+      <h2 class="modal-title-ref">${p.title}</h2>
+      <p class="modal-overview-ref">${p.overview}</p>
+
+      <div class="modal-section-ref">
+        <h4>Design Process</h4>
+        <div class="pt-wrap">${ptSteps}</div>
+      </div>
+
+      <div class="modal-section-ref">
+        <h4>The Challenge</h4>
+        <p>${p.challenge}</p>
+      </div>
+
+      <div class="modal-section-ref">
+        <h4>The Solution</h4>
+        <p>${p.solution}</p>
+      </div>
+
+      <div class="modal-section-ref">
+        <h4>Outcomes</h4>
+        <ul>${outcomes}</ul>
+      </div>
+
+      <div class="modal-section-ref">
+        <h4>Key Metrics</h4>
+        <div class="metric-row">${metrics}</div>
+      </div>
+
+      <div style="margin-top:8px;font-size:.8125rem;color:var(--muted)">
+        <strong style="color:var(--text)">Role:</strong> ${p.role} &nbsp;·&nbsp;
+        <strong style="color:var(--text)">Duration:</strong> ${p.duration}
+      </div>
+    `;
+    document.getElementById('modalBg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalBg').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleModalBgClick(e) {
+    if (e.target === document.getElementById('modalBg')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 </script>
 </body>
