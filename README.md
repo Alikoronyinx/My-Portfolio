@@ -21,7 +21,7 @@ No build tools required — open `index.html` directly in a browser.
 
 ## Sections
 
-1. **Hero** — Headline, subheadline, CTAs, portrait (no scroll hint)
+1. **Hero** — Centered bold layout: role descriptor tagline, large two-line headline ("Designing Thoughtful / Digital Experiences."), one-line sub intro, availability badge, CTAs, and stats row
 2. **Image Marquee** — Infinite auto-scrolling strip of all 5 project images
 3. **About** — Personal bio, design philosophy, skills grid, tools
 4. **Projects** — BeSafr, SkillEX, Periax, Retwix, PassForge — all HNG 2026 internship projects
@@ -52,7 +52,7 @@ Grid layout: 2×2 + PassForge left-aligned in the last row at the same card widt
 
 | File | Used In |
 |---|---|
-| `images/myimage.jpeg` | Hero portrait |
+| `images/myimage.jpeg` | About Me portrait |
 | `images/saftyapp.png` | BeSafr — Safety App card |
 | `images/Edtech.png` | SkillEX — Ed-Tech card |
 | `images/fintech.png` | Periax — Health Tech / Clinical Trial WebApp card |
@@ -82,7 +82,8 @@ Grid layout: 2×2 + PassForge left-aligned in the last row at the same card widt
 - **Sun / pill / moon theme toggle** — knob slides with CSS transform
 - **Sticky navbar** with blur-on-scroll
 - **Scroll-triggered reveal animations** via `IntersectionObserver`
-- **Hero entrance animations** — staggered fade-up per word
+- **Centered hero layout** — all content center-aligned; role descriptor tagline, large bold headline with gradient accent, concise sub intro, availability badge, and CTA buttons
+- **Hero entrance animations** — staggered fade-up across 6 delay classes (d1–d6)
 - **Project cards** — entire card (image + body) is clickable; opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
 - **Project card image hover zoom** — `scale(1.12)` with `cubic-bezier` ease-out (.6s) + deep gradient overlay fade
