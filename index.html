@@ -387,6 +387,8 @@
       overflow: hidden;
       flex-shrink: 0;
       border: 1px solid var(--border);
+      position: relative;
+      cursor: pointer;
     }
     [data-theme="light"] .img-strip-card { border-color: rgba(15,23,42,0.07); box-shadow: 0 2px 12px rgba(15,23,42,0.06); }
     .img-strip-card img {
@@ -395,6 +397,34 @@
       object-fit: cover;
       object-position: top;
       display: block;
+      transition: transform .55s cubic-bezier(.16,1,.3,1);
+    }
+    .img-strip-card:hover img { transform: scale(1.07); }
+
+    /* Pause strip on card hover */
+    .img-strip-track:hover { animation-play-state: paused; }
+
+    /* Hover label */
+    .img-strip-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px 16px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.4) 60%, transparent 100%);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .3s ease, transform .3s ease;
+      pointer-events: none;
+    }
+    .img-strip-card:hover .img-strip-label { opacity: 1; transform: translateY(0); }
+    .img-strip-label-cat {
+      display: block;
+      font-size: .5625rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,.55); margin-bottom: 4px;
+    }
+    .img-strip-label-name {
+      display: block;
+      font-size: 1rem; font-weight: 800;
+      color: #fff; letter-spacing: -.025em;
     }
 
     /* ══ LOGO ══ */
@@ -496,35 +526,35 @@
     }
     .pb-item:nth-child(1) .pb-name { font-size: 2rem; }
 
-    /* Hover reveal overlay */
+    /* Hover reveal overlay — dark gradient (matches carousel style) */
     .pb-hover {
       position: absolute; inset: 0; padding: 28px;
-      background: linear-gradient(148deg, rgba(79,70,229,.93) 0%, rgba(15,10,60,.98) 100%);
+      background: linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.72) 50%, rgba(0,0,0,.08) 100%);
       display: flex; flex-direction: column; justify-content: flex-end;
-      opacity: 0; transform: translateY(12px);
-      transition: opacity .38s ease, transform .38s cubic-bezier(.16,1,.3,1);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .35s ease, transform .35s cubic-bezier(.16,1,.3,1);
     }
     .pb-item:hover .pb-hover { opacity: 1; transform: translateY(0); }
 
-    .pb-hover .pb-cat { color: rgba(255,255,255,.62); margin-bottom: 8px; }
+    .pb-hover .pb-cat { color: rgba(255,255,255,.58); margin-bottom: 7px; }
     .pb-title-lg {
-      font-size: 1.75rem; font-weight: 900; color: #fff;
-      letter-spacing: -.04em; margin-bottom: 10px; line-height: 1.1;
+      font-size: 1.75rem; font-weight: 800; color: #fff;
+      letter-spacing: -.035em; margin-bottom: 10px; line-height: 1.1;
     }
-    .pb-item:nth-child(1) .pb-title-lg { font-size: 2.5rem; margin-bottom: 14px; }
+    .pb-item:nth-child(1) .pb-title-lg { font-size: 2.25rem; margin-bottom: 12px; }
     .pb-desc {
-      font-size: .875rem; color: rgba(255,255,255,.72);
-      line-height: 1.65; margin-bottom: 22px;
+      font-size: .875rem; color: rgba(255,255,255,.68);
+      line-height: 1.65; margin-bottom: 20px;
     }
     .pb-cta {
       display: inline-flex; align-items: center; gap: 7px;
       font-size: .8125rem; font-weight: 600; color: #fff;
-      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
       padding: 9px 20px; border-radius: 9px; backdrop-filter: blur(8px);
       width: fit-content; cursor: pointer;
       transition: background .2s ease, gap .2s ease;
     }
-    .pb-cta:hover { background: rgba(255,255,255,.26); gap: 11px; }
+    .pb-cta:hover { background: rgba(255,255,255,.22); gap: 11px; }
 
     /* Tag pills — kept for modal */
     .proj-tags-ref { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
@@ -771,17 +801,47 @@
 <div class="img-strip-wrap">
   <div class="img-strip-track">
     <!-- Set 1 -->
-    <div class="img-strip-card"><img src="images/saftyapp.png"  alt="BeSafr Safety App" /></div>
-    <div class="img-strip-card"><img src="images/Edtech.png"    alt="SkillEX Ed-Tech" /></div>
-    <div class="img-strip-card"><img src="images/fintech.png"   alt="Periax Health Tech" /></div>
-    <div class="img-strip-card"><img src="images/social.png"    alt="Retwix Fictional World" /></div>
-    <div class="img-strip-card"><img src="images/passforge.png" alt="PassForge Event Tech" /></div>
+    <div class="img-strip-card">
+      <img src="images/saftyapp.png" alt="BeSafr Safety App" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Safety App</span><span class="img-strip-label-name">BeSafr</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/Edtech.png" alt="SkillEX Ed-Tech" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Ed-Tech</span><span class="img-strip-label-name">SkillEX</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/fintech.png" alt="Periax Health Tech" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Health Tech</span><span class="img-strip-label-name">Periax</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/social.png" alt="Retwix Fictional World" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Fictional World</span><span class="img-strip-label-name">Retwix</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/passforge.png" alt="PassForge Event Tech" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Event Tech</span><span class="img-strip-label-name">PassForge</span></div>
+    </div>
     <!-- Set 2 — duplicate for seamless loop -->
-    <div class="img-strip-card"><img src="images/saftyapp.png"  alt="BeSafr Safety App" /></div>
-    <div class="img-strip-card"><img src="images/Edtech.png"    alt="SkillEX Ed-Tech" /></div>
-    <div class="img-strip-card"><img src="images/fintech.png"   alt="Periax Health Tech" /></div>
-    <div class="img-strip-card"><img src="images/social.png"    alt="Retwix Fictional World" /></div>
-    <div class="img-strip-card"><img src="images/passforge.png" alt="PassForge Event Tech" /></div>
+    <div class="img-strip-card">
+      <img src="images/saftyapp.png" alt="BeSafr Safety App" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Safety App</span><span class="img-strip-label-name">BeSafr</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/Edtech.png" alt="SkillEX Ed-Tech" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Ed-Tech</span><span class="img-strip-label-name">SkillEX</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/fintech.png" alt="Periax Health Tech" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Health Tech</span><span class="img-strip-label-name">Periax</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/social.png" alt="Retwix Fictional World" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Fictional World</span><span class="img-strip-label-name">Retwix</span></div>
+    </div>
+    <div class="img-strip-card">
+      <img src="images/passforge.png" alt="PassForge Event Tech" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Event Tech</span><span class="img-strip-label-name">PassForge</span></div>
+    </div>
   </div>
 </div>
 </div>
