@@ -76,7 +76,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 
 - **Dark / Light mode** toggle — preference saved in `localStorage`
 - **Clean & minimal aesthetic** — neutral outline-pill tags, soft card hover (−3 px), reduced section gradient mesh opacity, generous section spacing (`py-28`)
-- **Infinite scroll image marquee** — auto-scrolling strip of all 5 project screenshots after the hero; contained within page margins with rounded corners; continuous (no pause on hover)
+- **Infinite scroll image marquee** — auto-scrolling strip of all 5 project screenshots after the hero; contained within page margins with rounded corners; pauses on card hover, resumes on leave; hover reveals project category + name label with dark gradient; subtle image zoom (1.07) on hover
 - **Gradient mesh section backgrounds** — very subtle radial-gradient per section (3–7% opacity dark, 3–5% light)
 - **OA monogram logo** in navbar with indigo badge
 - **Sun / pill / moon theme toggle** — knob slides with CSS transform
@@ -85,7 +85,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 - **Centered hero layout** — all content center-aligned; role descriptor tagline, large bold headline with gradient accent, concise sub intro, availability badge, and CTA buttons
 - **Hero entrance animations** — staggered fade-up across 6 delay classes (d1–d6)
 - **Bento project grid** — editorial 12-col grid with mixed card sizes; full-image cards with ghost project numbers (01–05) faintly visible top-right
-- **Project card hover reveal** — indigo-to-dark overlay slides up on hover exposing description + frosted-glass CTA; image scales to 1.07 beneath the overlay
+- **Project card hover reveal** — dark gradient from bottom fades in on hover (consistent with carousel style) exposing category, title, description + frosted-glass CTA button; image scales to 1.07 beneath the overlay
 - **Project cards clickable** — opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
 - **Glassmorphism** cards via `backdrop-filter: blur`
