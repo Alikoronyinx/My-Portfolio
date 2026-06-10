@@ -21,13 +21,14 @@ No build tools required — open `index.html` directly in a browser.
 
 ## Sections
 
-1. **Hero** — Headline, subheadline, CTAs, portrait, floating design chips
-2. **About** — Personal bio, design philosophy, skills grid, tools
-3. **Projects** — BeSafr, SkillEX, Periax, Retwix, PassForge — all HNG 2026 internship projects
-4. **Design Process** — 6-step visual flow (Discover → Test & Iterate)
-5. **Experience** — Timeline (HNG 2026, Design Practice) + achievements & certifications incl. PassForge live app
-6. **Contact** — Email, LinkedIn, Behance, Resume download
-7. **Footer** — Branding + social links
+1. **Hero** — Headline, subheadline, CTAs, portrait
+2. **Image Marquee** — Infinite auto-scrolling strip of all 5 project images
+3. **About** — Personal bio, design philosophy, skills grid, tools
+4. **Projects** — BeSafr, SkillEX, Periax, Retwix, PassForge — all HNG 2026 internship projects
+5. **Design Process** — 4-step 2×2 grid: Discover, Design, Refine, Deliver ("How I Think Through Design")
+6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements incl. PassForge live app
+7. **Contact** — Email, LinkedIn, Behance, Resume download
+8. **Footer** — Branding + social links
 
 ---
 
@@ -74,17 +75,19 @@ Grid layout: 2×2 + PassForge left-aligned in the last row at the same card widt
 ## Features
 
 - **Dark / Light mode** toggle — preference saved in `localStorage`
-- **Gradient mesh section backgrounds** — unique radial-gradient treatment per section, subtle in light mode
+- **Clean & minimal aesthetic** — neutral outline-pill tags, soft card hover (−3 px), reduced section gradient mesh opacity, generous section spacing (`py-28`)
+- **Infinite scroll image marquee** — auto-scrolling strip of all 5 project screenshots after the hero; contained within page margins with rounded corners; continuous (no pause on hover)
+- **Gradient mesh section backgrounds** — very subtle radial-gradient per section (3–7% opacity dark, 3–5% light)
 - **OA monogram logo** in navbar with indigo badge
 - **Sun / pill / moon theme toggle** — knob slides with CSS transform
 - **Sticky navbar** with blur-on-scroll
 - **Scroll-triggered reveal animations** via `IntersectionObserver`
 - **Hero entrance animations** — staggered fade-up per word
-- **Floating design chips** in the hero with text labels
 - **Project cards** — entire card (image + body) is clickable; opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
-- **Project card image hover zoom** — `scale(1.12)` with `cubic-bezier` ease-out (.6s) + deep gradient overlay fade; purely decorative (image not clickable)
+- **Project card image hover zoom** — `scale(1.12)` with `cubic-bezier` ease-out (.6s) + deep gradient overlay fade
 - **Glassmorphism** cards via `backdrop-filter: blur`
+- **Contact cards** — no drop shadow in dark or light mode
 - **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam (whiteboard/amber), Maze (maze-path/coral), Notion, Miro
 - **Responsive** — mobile-first, tested down to 375 px
 - **Smooth scrolling** on all anchor links
