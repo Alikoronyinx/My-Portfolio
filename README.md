@@ -24,7 +24,7 @@ No build tools required — open `index.html` directly in a browser.
 1. **Hero** — Centered bold layout: role descriptor tagline, large two-line headline ("Designing Thoughtful / Digital Experiences."), one-line sub intro, availability badge, CTAs, and stats row
 2. **Image Marquee** — Infinite auto-scrolling strip of all 5 project images
 3. **About** — Personal bio, design philosophy, skills grid, tools
-4. **Projects** — BeSafr, SkillEX, Periax, Retwix, PassForge — all HNG 2026 internship projects
+4. **Projects** — Bento grid layout: BeSafr (large hero card), SkillEX + Periax (stacked right), Retwix + PassForge (bottom row) — all HNG 2026 internship projects
 5. **Design Process** — 4-step 2×2 grid: Discover, Design, Refine, Deliver ("How I Think Through Design")
 6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements incl. PassForge live app; proper 3-level heading hierarchy (h2 → h3 → h4)
 7. **Contact** — Email, LinkedIn, Behance, Resume download
@@ -44,7 +44,7 @@ No build tools required — open `index.html` directly in a browser.
 
 All five projects were completed during the **HNG 2026 Internship** (Product Design Track).
 
-Grid layout: 2×2 + PassForge left-aligned in the last row at the same card width as the others.
+Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (hero card), SkillEX + Periax stack on the right, Retwix + PassForge fill the bottom row. Responsive: 6-col at tablet, single column on mobile.
 
 ---
 
@@ -84,9 +84,10 @@ Grid layout: 2×2 + PassForge left-aligned in the last row at the same card widt
 - **Scroll-triggered reveal animations** via `IntersectionObserver`
 - **Centered hero layout** — all content center-aligned; role descriptor tagline, large bold headline with gradient accent, concise sub intro, availability badge, and CTA buttons
 - **Hero entrance animations** — staggered fade-up across 6 delay classes (d1–d6)
-- **Project cards** — entire card (image + body) is clickable; opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
+- **Bento project grid** — editorial 12-col grid with mixed card sizes; full-image cards with ghost project numbers (01–05) faintly visible top-right
+- **Project card hover reveal** — indigo-to-dark overlay slides up on hover exposing description + frosted-glass CTA; image scales to 1.07 beneath the overlay
+- **Project cards clickable** — opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
-- **Project card image hover zoom** — `scale(1.12)` with `cubic-bezier` ease-out (.6s) + deep gradient overlay fade
 - **Glassmorphism** cards via `backdrop-filter: blur`
 - **Contact cards** — no drop shadow in dark or light mode
 - **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam (whiteboard/amber), Maze (maze-path/coral), Notion, Miro
