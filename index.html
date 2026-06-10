@@ -289,7 +289,7 @@
     [data-theme="light"] .hero-orb { opacity: 0.5; }
 
     /* Project + process cards */
-    [data-theme="light"] .proj-card-ref {
+    [data-theme="light"] .pb-item {
       background: #ffffff;
       box-shadow: 0 2px 12px rgba(15,23,42,0.06);
     }
@@ -437,35 +437,113 @@
     [data-theme="light"] .theme-pill::after { transform:translateX(0); }
 
     /* ══ PROJECT CARD GRID ══ */
-    .proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
-    @media(max-width:640px){ .proj-grid { grid-template-columns:1fr; } }
-    .proj-card-ref {
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:20px; overflow:hidden; cursor:pointer;
-      transition:all .3s cubic-bezier(.16,1,.3,1);
+    /* ── PROJECT BENTO GRID ── */
+    .proj-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 300px 300px 280px;
+      gap: 16px;
     }
-    .proj-card-ref:hover { transform:translateY(-3px); box-shadow:0 16px 48px rgba(99,102,241,.10); border-color:rgba(99,102,241,.35); }
-    [data-theme="light"] .proj-card-ref { background:#fff; }
-    [data-theme="light"] .proj-card-ref:hover { box-shadow:0 24px 64px rgba(99,102,241,.08); }
-    .proj-img-ref { width:100%; aspect-ratio:16/9; position:relative; overflow:hidden; }
-    .proj-img-ref img { width:100%; height:100%; object-fit:cover; object-position:top; display:block;
-      transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .proj-card-ref:hover .proj-img-ref img { transform: scale(1.12); }
-    .proj-overlay { position:absolute; inset:0;
-      background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,.18) 60%, rgba(0,0,0,.62) 100%);
-      opacity:0; transition: opacity .4s ease; pointer-events:none; }
-    .proj-card-ref:hover .proj-overlay { opacity:1; }
-    .proj-body-ref { padding:24px; }
+    .pb-item:nth-child(1) { grid-column: 1 / 8; grid-row: 1 / 3; }
+    .pb-item:nth-child(2) { grid-column: 8 / 13; grid-row: 1 / 2; }
+    .pb-item:nth-child(3) { grid-column: 8 / 13; grid-row: 2 / 3; }
+    .pb-item:nth-child(4) { grid-column: 1 / 5; grid-row: 3 / 4; }
+    .pb-item:nth-child(5) { grid-column: 5 / 13; grid-row: 3 / 4; }
+
+    .pb-item {
+      position: relative; border-radius: 20px; overflow: hidden;
+      cursor: pointer; background: var(--surface);
+      border: 1px solid var(--border);
+      transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, border-color .3s;
+    }
+    .pb-item:hover { transform: translateY(-4px); box-shadow: 0 28px 64px rgba(0,0,0,.35); border-color: rgba(99,102,241,.45); }
+    [data-theme="light"] .pb-item:hover { box-shadow: 0 24px 56px rgba(99,102,241,.14); }
+
+    .pb-item img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      display: block; transition: transform .85s cubic-bezier(.16,1,.3,1);
+    }
+    .pb-item:hover img { transform: scale(1.07); }
+
+    /* Ghost number top-right */
+    .pb-num {
+      position: absolute; top: 18px; right: 22px;
+      font-size: 3.5rem; font-weight: 900; line-height: 1;
+      letter-spacing: -.06em; pointer-events: none;
+      color: rgba(255,255,255,.1);
+      transition: color .35s ease;
+    }
+    .pb-item:nth-child(1) .pb-num { font-size: 6rem; top: 24px; right: 28px; }
+    .pb-item:hover .pb-num { color: rgba(255,255,255,.22); }
+
+    /* Base footer — always visible */
+    .pb-base {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 72px 24px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.5) 55%, transparent 100%);
+      transition: opacity .32s ease, transform .32s ease;
+    }
+    .pb-item:hover .pb-base { opacity: 0; transform: translateY(8px); }
+
+    .pb-cat {
+      display: block; font-size: .625rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,.58); margin-bottom: 5px;
+    }
+    .pb-name {
+      font-size: 1.25rem; font-weight: 800; color: #fff;
+      letter-spacing: -.03em; margin: 0; line-height: 1.15;
+    }
+    .pb-item:nth-child(1) .pb-name { font-size: 2rem; }
+
+    /* Hover reveal overlay */
+    .pb-hover {
+      position: absolute; inset: 0; padding: 28px;
+      background: linear-gradient(148deg, rgba(79,70,229,.93) 0%, rgba(15,10,60,.98) 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .38s ease, transform .38s cubic-bezier(.16,1,.3,1);
+    }
+    .pb-item:hover .pb-hover { opacity: 1; transform: translateY(0); }
+
+    .pb-hover .pb-cat { color: rgba(255,255,255,.62); margin-bottom: 8px; }
+    .pb-title-lg {
+      font-size: 1.75rem; font-weight: 900; color: #fff;
+      letter-spacing: -.04em; margin-bottom: 10px; line-height: 1.1;
+    }
+    .pb-item:nth-child(1) .pb-title-lg { font-size: 2.5rem; margin-bottom: 14px; }
+    .pb-desc {
+      font-size: .875rem; color: rgba(255,255,255,.72);
+      line-height: 1.65; margin-bottom: 22px;
+    }
+    .pb-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: .8125rem; font-weight: 600; color: #fff;
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
+      padding: 9px 20px; border-radius: 9px; backdrop-filter: blur(8px);
+      width: fit-content; cursor: pointer;
+      transition: background .2s ease, gap .2s ease;
+    }
+    .pb-cta:hover { background: rgba(255,255,255,.26); gap: 11px; }
+
+    /* Tag pills — kept for modal */
     .proj-tags-ref { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
     .proj-tag-ref { padding:3px 10px; border-radius:6px; font-size:.6875rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
-    .proj-title-ref { font-size:1.25rem; font-weight:700; letter-spacing:-.025em; color:var(--text); margin-bottom:8px; }
-    .proj-desc-ref  { font-size:.875rem; color:var(--muted); line-height:1.65; margin-bottom:16px; }
-    .proj-link-ref  { display:inline-flex; align-items:center; gap:6px; font-size:.875rem; font-weight:500; color:#6366f1; transition:gap .2s; cursor:pointer; background:none; border:none; padding:0; }
-    .proj-link-ref:hover { gap:10px; }
 
-    /* PassForge — same-width as peers, centred as the 5th card */
-    .proj-card-wide { grid-column: 1 / -1; width: calc(50% - 12px); justify-self: start; }
-    @media(max-width: 640px) { .proj-card-wide { width: 100%; } }
+    /* Responsive — tablet */
+    @media(max-width: 900px) {
+      .proj-bento { grid-template-columns: repeat(6,1fr); grid-template-rows: 260px 260px 240px; }
+      .pb-item:nth-child(1) { grid-column: 1 / 7; grid-row: 1 / 2; }
+      .pb-item:nth-child(2) { grid-column: 1 / 4; grid-row: 2 / 3; }
+      .pb-item:nth-child(3) { grid-column: 4 / 7; grid-row: 2 / 3; }
+      .pb-item:nth-child(4) { grid-column: 1 / 4; grid-row: 3 / 4; }
+      .pb-item:nth-child(5) { grid-column: 4 / 7; grid-row: 3 / 4; }
+    }
+    /* Responsive — mobile */
+    @media(max-width: 540px) {
+      .proj-bento { grid-template-columns: 1fr; grid-template-rows: none; gap: 12px; }
+      .pb-item { min-height: 260px; grid-column: auto !important; grid-row: auto !important; }
+    }
 
     /* ══ PROCESS GRID ══ */
     .process-grid-ref {
@@ -896,110 +974,90 @@
       <p class="text-sm leading-relaxed" style="color:var(--muted)">Real challenges, solved through research, iteration, and user empathy.</p>
     </div>
 
-    <!-- 2×2 Grid -->
-    <div class="reveal proj-grid">
+    <!-- Bento Grid -->
+    <div class="reveal proj-bento">
 
-      <!-- BeSafr -->
-      <div class="proj-card-ref" onclick="openModal('besafr')">
-        <div class="proj-img-ref">
-          <img src="images/saftyapp.png" alt="BeSafr Safety App" />
-          <div class="proj-overlay"></div>
+      <!-- 01 BeSafr — large left card -->
+      <div class="pb-item" onclick="openModal('besafr')">
+        <img src="images/saftyapp.png" alt="BeSafr Safety App" />
+        <div class="pb-num">01</div>
+        <div class="pb-base">
+          <span class="pb-cat">Safety App</span>
+          <h3 class="pb-name">BeSafr</h3>
         </div>
-        <div class="proj-body-ref">
-          <div class="proj-tags-ref">
-            <span class="proj-tag-ref" style="background:transparent;color:var(--muted);border:1px solid var(--border);">Safety App</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
-          </div>
-          <h3 class="proj-title-ref">BeSafr</h3>
-          <p class="proj-desc-ref">A personal safety app with real-time crowd-sourced alerts, emergency contacts, and SOS features.</p>
-          <button class="proj-link-ref">
-            View case study
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
+        <div class="pb-hover">
+          <span class="pb-cat">Safety App · HNG 2026</span>
+          <h3 class="pb-title-lg">BeSafr</h3>
+          <p class="pb-desc">A personal safety app with real-time crowd-sourced alerts, emergency contacts, and SOS features — designed to keep users safe at all times.</p>
+          <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
 
-      <!-- SkillEX -->
-      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250802001/Skill-Exchange-App','_blank')" rel="noopener noreferrer">
-        <div class="proj-img-ref">
-          <img src="images/Edtech.png" alt="SkillEX EdTech Platform" />
-          <div class="proj-overlay"></div>
+      <!-- 02 SkillEX — top right -->
+      <div class="pb-item" onclick="window.open('https://www.behance.net/gallery/250802001/Skill-Exchange-App','_blank')" rel="noopener noreferrer">
+        <img src="images/Edtech.png" alt="SkillEX EdTech Platform" />
+        <div class="pb-num">02</div>
+        <div class="pb-base">
+          <span class="pb-cat">Ed-Tech</span>
+          <h3 class="pb-name">SkillEX</h3>
         </div>
-        <div class="proj-body-ref">
-          <div class="proj-tags-ref">
-            <span class="proj-tag-ref" style="background:transparent;color:var(--muted);border:1px solid var(--border);">Ed-Tech</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
-          </div>
-          <h3 class="proj-title-ref">SkillEX</h3>
-          <p class="proj-desc-ref">A peer-to-peer skill exchange platform connecting learners with mentors.</p>
-          <button class="proj-link-ref">
-            View case study
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
+        <div class="pb-hover">
+          <span class="pb-cat">Ed-Tech · HNG 2026</span>
+          <h3 class="pb-title-lg">SkillEX</h3>
+          <p class="pb-desc">A peer-to-peer skill exchange platform connecting learners with mentors across disciplines.</p>
+          <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
 
-      <!-- Periax -->
-      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App','_blank')" rel="noopener noreferrer">
-        <div class="proj-img-ref">
-          <img src="images/fintech.png" alt="Periax Clinical Trial WebApp" />
-          <div class="proj-overlay"></div>
+      <!-- 03 Periax — bottom right -->
+      <div class="pb-item" onclick="window.open('https://www.behance.net/gallery/250802767/Clinical-Trial-Web-App','_blank')" rel="noopener noreferrer">
+        <img src="images/fintech.png" alt="Periax Clinical Trial WebApp" />
+        <div class="pb-num">03</div>
+        <div class="pb-base">
+          <span class="pb-cat">Health Tech</span>
+          <h3 class="pb-name">Periax</h3>
         </div>
-        <div class="proj-body-ref">
-          <div class="proj-tags-ref">
-            <span class="proj-tag-ref" style="background:transparent;color:var(--muted);border:1px solid var(--border);">Health Tech</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
-          </div>
-          <h3 class="proj-title-ref">Periax</h3>
-          <p class="proj-desc-ref">A clinical trial management web app designed to reduce administrative burden and improve workflow clarity for healthcare teams.</p>
-          <button class="proj-link-ref">
-            View case study
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
+        <div class="pb-hover">
+          <span class="pb-cat">Health Tech · HNG 2026</span>
+          <h3 class="pb-title-lg">Periax</h3>
+          <p class="pb-desc">A clinical trial management web app that reduces admin burden and improves workflow clarity for healthcare teams.</p>
+          <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
 
-      <!-- Retwix -->
-      <div class="proj-card-ref" onclick="window.open('https://www.behance.net/gallery/250803019/Fictional-World-Web-App','_blank')" rel="noopener noreferrer">
-        <div class="proj-img-ref">
-          <img src="images/social.png" alt="Retwix Social Platform" />
-          <div class="proj-overlay"></div>
+      <!-- 04 Retwix — bottom left -->
+      <div class="pb-item" onclick="window.open('https://www.behance.net/gallery/250803019/Fictional-World-Web-App','_blank')" rel="noopener noreferrer">
+        <img src="images/social.png" alt="Retwix Fictional World" />
+        <div class="pb-num">04</div>
+        <div class="pb-base">
+          <span class="pb-cat">Fictional World</span>
+          <h3 class="pb-name">Retwix</h3>
         </div>
-        <div class="proj-body-ref">
-          <div class="proj-tags-ref">
-            <span class="proj-tag-ref" style="background:transparent;color:var(--muted);border:1px solid var(--border);">Fictional World</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
-          </div>
-          <h3 class="proj-title-ref">Retwix</h3>
-          <p class="proj-desc-ref">A webapp for creators, writers and storytellers to build and organize fictional worlds in one place.</p>
-          <button class="proj-link-ref">
-            View case study
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
+        <div class="pb-hover">
+          <span class="pb-cat">Fictional World · HNG 2026</span>
+          <h3 class="pb-title-lg">Retwix</h3>
+          <p class="pb-desc">A webapp for creators, writers and storytellers to build and organize fictional worlds in one place.</p>
+          <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
 
-      <!-- PassForge (full-width featured) -->
-      <div class="proj-card-ref proj-card-wide" onclick="window.open('https://passforge-olive.vercel.app/','_blank')" rel="noopener noreferrer">
-        <div class="proj-img-ref">
-          <img src="images/passforge.png" alt="PassForge Event Ticketing App" />
-          <div class="proj-overlay"></div>
+      <!-- 05 PassForge — bottom wide -->
+      <div class="pb-item" onclick="window.open('https://passforge-olive.vercel.app/','_blank')" rel="noopener noreferrer">
+        <img src="images/passforge.png" alt="PassForge Event Ticketing" />
+        <div class="pb-num">05</div>
+        <div class="pb-base">
+          <span class="pb-cat">Event Tech</span>
+          <h3 class="pb-name">PassForge</h3>
         </div>
-        <div class="proj-body-ref">
-          <div class="proj-tags-ref">
-            <span class="proj-tag-ref" style="background:transparent;color:var(--muted);border:1px solid var(--border);">Event Tech</span>
-            <span class="proj-tag-ref" style="background:rgba(255,255,255,.06);color:var(--muted);">HNG 2026</span>
-          </div>
-          <h3 class="proj-title-ref">PassForge</h3>
-          <p class="proj-desc-ref">A web app for creating and managing event tickets — designed to make event setup fast, simple, and accessible for any organiser.</p>
-          <button class="proj-link-ref">
-            View live app
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
+        <div class="pb-hover">
+          <span class="pb-cat">Event Tech · HNG 2026</span>
+          <h3 class="pb-title-lg">PassForge</h3>
+          <p class="pb-desc">A web app for creating and managing event tickets — designed to make event setup fast, simple, and accessible for any organiser.</p>
+          <span class="pb-cta">View live app <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
 
-    </div><!-- /proj-grid END -->
+    </div><!-- /proj-bento END -->
   </div>
 </section>
 
