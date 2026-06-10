@@ -469,22 +469,18 @@
 
     /* ══ PROCESS GRID ══ */
     .process-grid-ref {
-      display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+      display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
       border:1px solid var(--border); border-radius:20px; overflow:hidden;
     }
-    @media(max-width:720px){ .process-grid-ref { grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:440px){ .process-grid-ref { grid-template-columns:1fr; } }
+    @media(max-width:480px){ .process-grid-ref { grid-template-columns:1fr; } }
     .process-step-ref {
-      padding:32px 28px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
+      padding:36px 32px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
       background:var(--surface); transition:background .3s; position:relative; overflow:hidden;
     }
     [data-theme="light"] .process-step-ref { background:rgba(255,255,255,.85); }
     .process-step-ref:hover { background:rgba(99,102,241,.07); }
-    .process-step-ref:nth-child(3n) { border-right:none; }
-    @media(max-width:720px){
-      .process-step-ref:nth-child(3n) { border-right:1px solid var(--border); }
-      .process-step-ref:nth-child(2n) { border-right:none; }
-    }
+    .process-step-ref:nth-child(2n)      { border-right:none; }
+    .process-step-ref:nth-last-child(-n+2) { border-bottom:none; }
     .step-num {
       font-family:'Instrument Serif',Georgia,serif; font-style:italic;
       font-size:3rem; line-height:1; margin-bottom:12px;
@@ -1031,18 +1027,15 @@
     <!-- Header -->
     <div class="reveal mb-10">
       <div class="flex items-center gap-3 mb-4">
-        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">How I Work</span>
+        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Design Process</span>
         <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
       </div>
       <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
-        My Design <span class="grad">Process</span>
+        How I Think Through <span class="grad">Design</span>
       </h2>
-      <p class="mt-4 text-sm max-w-md" style="color:var(--muted)">
-        A structured, user-centered approach — from discovery to delivery.
-      </p>
     </div>
 
-    <!-- 3×2 Grid -->
+    <!-- 2×2 Grid -->
     <div class="reveal process-grid-ref">
 
       <!-- 1 Discover -->
@@ -1052,57 +1045,37 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <h3 class="step-title">Discover</h3>
-        <p class="step-desc">Stakeholder interviews & market research to understand the full problem space.</p>
+        <p class="step-desc">Every project starts by understanding the users, the product, and the problem. I ask questions, listen closely, and uncover what truly needs to be solved.</p>
       </div>
 
-      <!-- 2 Research -->
+      <!-- 2 Design -->
       <div class="process-step-ref">
         <div class="step-num">02</div>
-        <div class="step-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 class="step-title">Research</h3>
-        <p class="step-desc">Interviews, surveys, competitive analysis & persona creation with real users.</p>
-      </div>
-
-      <!-- 3 Define -->
-      <div class="process-step-ref">
-        <div class="step-num">03</div>
-        <div class="step-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
-        <h3 class="step-title">Define</h3>
-        <p class="step-desc">Synthesize insights into clear problem statements, HMWs & success metrics.</p>
-      </div>
-
-      <!-- 4 Ideate -->
-      <div class="process-step-ref">
-        <div class="step-num">04</div>
-        <div class="step-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <h3 class="step-title">Ideate</h3>
-        <p class="step-desc">Brainstorm solutions, rough sketches, user flows & information architecture.</p>
-      </div>
-
-      <!-- 5 Design -->
-      <div class="process-step-ref">
-        <div class="step-num">05</div>
         <div class="step-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
         </div>
         <h3 class="step-title">Design</h3>
-        <p class="step-desc">Wireframes, high-fidelity mockups, interactive prototypes & design systems.</p>
+        <p class="step-desc">I turn ideas into clear, usable interfaces focused on structure, usability, and visual clarity across web and mobile products.</p>
       </div>
 
-      <!-- 6 Test & Iterate -->
-      <div class="process-step-ref" style="border-bottom:none;">
-        <div class="step-num">06</div>
+      <!-- 3 Refine -->
+      <div class="process-step-ref">
+        <div class="step-num">03</div>
         <div class="step-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
         </div>
-        <h3 class="step-title">Test & Iterate</h3>
-        <p class="step-desc">Usability testing, feedback loops, accessibility audits & continuous refinement.</p>
+        <h3 class="step-title">Refine</h3>
+        <p class="step-desc">Through feedback and iteration, I refine designs to ensure they work in real use, not just in Figma.</p>
+      </div>
+
+      <!-- 4 Deliver -->
+      <div class="process-step-ref">
+        <div class="step-num">04</div>
+        <div class="step-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </div>
+        <h3 class="step-title">Deliver</h3>
+        <p class="step-desc">I take designs from concept to final delivery, keeping them consistent, scalable, and easy for teams to use and build on.</p>
       </div>
 
     </div><!-- /process-grid-ref -->
