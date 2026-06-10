@@ -21,12 +21,12 @@ No build tools required — open `index.html` directly in a browser.
 
 ## Sections
 
-1. **Hero** — Headline, subheadline, CTAs, portrait
+1. **Hero** — Headline, subheadline, CTAs, portrait (no scroll hint)
 2. **Image Marquee** — Infinite auto-scrolling strip of all 5 project images
 3. **About** — Personal bio, design philosophy, skills grid, tools
 4. **Projects** — BeSafr, SkillEX, Periax, Retwix, PassForge — all HNG 2026 internship projects
 5. **Design Process** — 4-step 2×2 grid: Discover, Design, Refine, Deliver ("How I Think Through Design")
-6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements incl. PassForge live app
+6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements incl. PassForge live app; proper 3-level heading hierarchy (h2 → h3 → h4)
 7. **Contact** — Email, LinkedIn, Behance, Resume download
 8. **Footer** — Branding + social links
 
