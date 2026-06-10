@@ -154,7 +154,7 @@
     .float-c { animation: float 7s ease-in-out infinite 2.4s; }
 
     .hero-word { opacity: 0; animation: fadeUp .75s ease forwards; }
-    .d1{animation-delay:.1s} .d2{animation-delay:.25s} .d3{animation-delay:.4s} .d4{animation-delay:.6s} .d5{animation-delay:.8s}
+    .d1{animation-delay:.1s} .d2{animation-delay:.25s} .d3{animation-delay:.4s} .d4{animation-delay:.6s} .d5{animation-delay:.8s} .d6{animation-delay:1s}
 
     .reveal {
       opacity: 0; transform: translateY(28px);
@@ -620,73 +620,69 @@
 
 
 <!-- ═══════════════ HERO ═══════════════ -->
-<section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
 
   <!-- Bg layers -->
   <div class="absolute inset-0 dotgrid opacity-100 pointer-events-none"></div>
   <div class="hero-dark-grad absolute inset-0 bg-gradient-to-br from-indigo-950/25 via-transparent to-purple-950/15 pointer-events-none"></div>
 
   <!-- Orbs -->
-  <div class="hero-orb absolute top-16 right-16 w-[480px] h-[480px] rounded-full bg-indigo-600/8 blur-3xl float-a pointer-events-none"></div>
-  <div class="hero-orb absolute bottom-10 left-4  w-[320px] h-[320px] rounded-full bg-purple-600/8 blur-3xl float-b pointer-events-none"></div>
-  <div class="hero-orb absolute top-1/2  left-1/3 w-[200px] h-[200px] rounded-full bg-sky-600/5   blur-2xl float-c pointer-events-none"></div>
+  <div class="hero-orb absolute top-16 right-16 w-[520px] h-[520px] rounded-full bg-indigo-600/8 blur-3xl float-a pointer-events-none"></div>
+  <div class="hero-orb absolute bottom-10 left-4  w-[360px] h-[360px] rounded-full bg-purple-600/8 blur-3xl float-b pointer-events-none"></div>
+  <div class="hero-orb absolute top-1/2  left-1/3 w-[240px] h-[240px] rounded-full bg-sky-600/5   blur-2xl float-c pointer-events-none"></div>
 
-  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-24 w-full">
-    <div class="max-w-2xl space-y-8">
+  <div class="relative max-w-5xl mx-auto px-5 sm:px-8 py-24 w-full flex flex-col items-center text-center gap-7">
 
-      <!-- Status badge -->
-      <div class="hero-word d1 inline-flex items-center gap-2 px-3.5 py-1.5 glass rounded-full text-xs font-medium"
-           style="border-color:rgba(99,102,241,.35); color:#a5b4fc">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        Open to opportunities
-      </div>
+    <!-- Role descriptor -->
+    <p class="hero-word d1 text-xs font-semibold tracking-[0.28em] uppercase" style="color:var(--muted)">
+      Designer &nbsp;·&nbsp; Researcher &nbsp;·&nbsp; Problem Solver
+    </p>
 
-      <!-- Headline -->
-      <div class="space-y-1">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.06] tracking-tight">
-          <span class="hero-word d1 block" style="color:var(--text)">Designing</span>
-          <span class="hero-word d2 block grad">intuitive</span>
-          <span class="hero-word d3 block" style="color:var(--text)">digital</span>
-          <span class="hero-word d4 block" style="color:var(--text)">experiences.</span>
-        </h1>
-      </div>
+    <!-- Headline -->
+    <h1 class="hero-word d2 text-5xl sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-bold leading-[1.06] tracking-tight">
+      <span style="color:var(--text)">Designing Thoughtful</span><br/>
+      <span class="grad">Digital Experiences.</span>
+    </h1>
 
-      <!-- Sub -->
-      <p class="hero-word d4 text-lg leading-relaxed" style="color:var(--muted)">
-        I'm <strong style="color:var(--text)">Onyinyechi Alikor</strong>, a Product Designer focused on
-        creating user-centered experiences through research, strategy, and thoughtful design.
-      </p>
+    <!-- Sub -->
+    <p class="hero-word d3 text-base sm:text-lg leading-relaxed max-w-lg" style="color:var(--muted)">
+      I'm <strong style="color:var(--text); font-weight:600;">Onyinyechi Alikor</strong> — a Product Designer who turns friction into flow through research, strategy, and craft.
+    </p>
 
-      <!-- CTAs -->
-      <div class="hero-word d5 flex flex-wrap gap-3">
-        <a href="#projects" class="btn-p">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          View My Work
-        </a>
-        <a href="#contact" class="btn-s">
-          Contact Me
-        </a>
-      </div>
-
-      <!-- Stats -->
-      <div class="hero-word d5 flex items-center gap-8 pt-2">
-        <div>
-          <div class="text-2xl font-black" style="color:var(--text)">4+</div>
-          <div class="text-xs" style="color:var(--subtle)">Projects Shipped</div>
-        </div>
-        <div class="w-px h-10" style="background:var(--border)"></div>
-        <div>
-          <div class="text-2xl font-black" style="color:var(--text)">HNG</div>
-          <div class="text-xs" style="color:var(--subtle)">Internship</div>
-        </div>
-        <div class="w-px h-10" style="background:var(--border)"></div>
-        <div>
-          <div class="text-2xl font-black" style="color:var(--text)">100%</div>
-          <div class="text-xs" style="color:var(--subtle)">User-Centered</div>
-        </div>
-      </div>
-
+    <!-- Available badge -->
+    <div class="hero-word d4 inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm font-medium"
+         style="border-color:rgba(99,102,241,.35); color:#a5b4fc">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      Open to new opportunities
     </div>
+
+    <!-- CTAs -->
+    <div class="hero-word d5 flex flex-wrap gap-3 justify-center pt-1">
+      <a href="#projects" class="btn-p">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        View My Work
+      </a>
+      <a href="#contact" class="btn-s">Contact Me</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-word d6 flex items-center gap-10 pt-4">
+      <div class="text-center">
+        <div class="text-2xl font-black" style="color:var(--text)">5</div>
+        <div class="text-xs" style="color:var(--subtle)">Products Shipped</div>
+      </div>
+      <div class="w-px h-10" style="background:var(--border)"></div>
+      <div class="text-center">
+        <div class="text-2xl font-black" style="color:var(--text)">HNG</div>
+        <div class="text-xs" style="color:var(--subtle)">2026 Internship</div>
+      </div>
+      <div class="w-px h-10" style="background:var(--border)"></div>
+      <div class="text-center">
+        <div class="text-2xl font-black" style="color:var(--text)">100%</div>
+        <div class="text-xs" style="color:var(--subtle)">User-Centered</div>
+      </div>
+    </div>
+
   </div>
 
 </section>
