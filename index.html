@@ -156,6 +156,14 @@
     .hero-word { opacity: 0; animation: fadeUp .75s ease forwards; }
     .d1{animation-delay:.1s} .d2{animation-delay:.25s} .d3{animation-delay:.4s} .d4{animation-delay:.6s} .d5{animation-delay:.8s} .d6{animation-delay:1s}
 
+    /* Availability badge text cycling */
+    #avail-text {
+      display: inline-block;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    #avail-text.avail-exit { opacity: 0; transform: translateY(-5px); }
+    #avail-text.avail-enter { opacity: 0; transform: translateY(5px); }
+
     .reveal {
       opacity: 0; transform: translateY(28px);
       transition: opacity .65s ease, transform .65s ease;
@@ -761,7 +769,7 @@
     <div class="hero-word d4 inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm font-medium"
          style="border-color:rgba(99,102,241,.35); color:#a5b4fc">
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      Open to new opportunities
+      Open to new <span id="avail-text">opportunity</span>
     </div>
 
     <!-- CTAs -->
@@ -1513,6 +1521,21 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // --- Availability badge text cycler ---
+  const availTexts = ['opportunity', 'collaboration'];
+  let availIdx = 0;
+  const availEl = document.getElementById('avail-text');
+  setInterval(() => {
+    availEl.classList.add('avail-exit');
+    setTimeout(() => {
+      availIdx = (availIdx + 1) % availTexts.length;
+      availEl.textContent = availTexts[availIdx];
+      availEl.classList.remove('avail-exit');
+      availEl.classList.add('avail-enter');
+      requestAnimationFrame(() => requestAnimationFrame(() => availEl.classList.remove('avail-enter')));
+    }, 260);
+  }, 3000);
 
   // --- Dynamic copyright year ---
   document.getElementById('copy-year').textContent = new Date().getFullYear();
