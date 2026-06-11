@@ -44,7 +44,7 @@ No build tools required — open `index.html` directly in a browser.
 
 All five projects were completed during the **HNG 2026 Internship** (Product Design Track).
 
-Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (hero card), SkillEX + Periax stack on the right, Retwix + PassForge fill the bottom row. Responsive: 6-col at tablet, single column on mobile.
+Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (hero card), SkillEX + Periax stack on the right, Retwix + PassForge fill the bottom row. All four small cards share equal 300px height. Responsive: 6-col at tablet, single column on mobile.
 
 ---
 
@@ -76,7 +76,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 
 - **Dark / Light mode** toggle — preference saved in `localStorage`
 - **Clean & minimal aesthetic** — neutral outline-pill tags, soft card hover (−3 px), reduced section gradient mesh opacity, generous section spacing (`py-28`)
-- **Infinite scroll image marquee** — auto-scrolling strip of all 5 project screenshots after the hero; contained within page margins with rounded corners; pauses on card hover, resumes on leave; hover reveals project category + name label with dark gradient; subtle image zoom (1.07) on hover
+- **Infinite scroll image marquee** — auto-scrolling strip of all 5 project screenshots after the hero; contained within page margins with rounded corners; scrolls continuously (no pause on hover); hover reveals project category + name label with dark gradient; subtle image zoom (1.07) on hover
 - **Gradient mesh section backgrounds** — very subtle radial-gradient per section (3–7% opacity dark, 3–5% light)
 - **OA monogram logo** in navbar with indigo badge
 - **Sun / pill / moon theme toggle** — knob slides with CSS transform
