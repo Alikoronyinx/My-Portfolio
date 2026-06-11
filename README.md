@@ -83,6 +83,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 - **Sticky navbar** with blur-on-scroll
 - **Scroll-triggered reveal animations** via `IntersectionObserver`
 - **Centered hero layout** — all content center-aligned; role descriptor tagline, large bold headline with gradient accent, concise sub intro, availability badge, and CTA buttons
+- **Availability badge animation** — "Open to new" stays static while "opportunity" and "collaboration" cycle with a smooth slide-up fade every 3 seconds
 - **Hero entrance animations** — staggered fade-up across 6 delay classes (d1–d6)
 - **Bento project grid** — editorial 12-col grid with mixed card sizes; full-image cards with ghost project numbers (01–05) faintly visible top-right
 - **Project card hover reveal** — dark gradient from bottom fades in on hover (consistent with carousel style) exposing category, title, description + frosted-glass CTA button; image scales to 1.07 beneath the overlay
