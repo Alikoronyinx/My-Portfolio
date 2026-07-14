@@ -69,6 +69,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 | `images/flows.png` | Design Process step 02 (Flows) |
 | `images/wireframe.png` | Design Process step 03 (Wireframes) |
 | `images/prototype.png` | Design Process step 04 (Prototyping) |
+| `images/testing.png` | Design Process step 05 (User Testing) |
 
 ---
 
@@ -96,7 +97,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 - **Centered hero layout** — all content center-aligned; role descriptor tagline, large bold headline with gradient accent, concise sub intro, availability badge, and CTA buttons
 - **Availability badge animation** — "Open to new" stays static while "opportunity" and "collaboration" cycle with a smooth slide-up fade every 3 seconds
 - **Hero entrance animations** — staggered fade-up across 6 delay classes (d1–d6)
-- **ZeeFrames-style design process** — 2-column grid layout (steps left, sticky image right); 6 steps: Discovery, Flows, Wireframes, UI Design, Prototyping, User Testing; vertical track line with animated indigo fill driven by scroll position; each step has a dot on the track that glows when active; inactive steps dim to `opacity: 0.28`; active step highlighted in full white with indigo subtitle; sticky image panel swaps image per active step with a smooth opacity crossfade and animated bottom label overlay (step number + subtitle + title); responsive — below 900 px collapses to single column with image stacked above steps
+- **ZeeFrames-style design process** — 2-column grid layout (steps left, sticky image right); 6 steps: Discovery, Flows, Wireframes, UI Design, Prototyping, User Testing; vertical track line with animated indigo fill driven by scroll position; each step has a dot on the track that glows when active; inactive steps dim to `opacity: 0.28`; active step highlighted in full white with indigo subtitle; sticky image panel swaps image per active step with a smooth opacity crossfade and animated bottom label overlay (step number + subtitle + title); responsive — below 900 px collapses to single column, shared sticky panel is hidden and each step shows its own dedicated image directly below its description text
 - **Bento project grid** — editorial 12-col grid with mixed card sizes; full-image cards with ghost project numbers (01–05) faintly visible top-right
 - **Project card hover reveal** — dark gradient from bottom fades in on hover (consistent with carousel style) exposing category, title, description + frosted-glass CTA button; image scales to 1.07 beneath the overlay
 - **Project cards clickable** — opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
