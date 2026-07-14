@@ -696,10 +696,13 @@
     .ps-subtitle { font-size:1.0625rem; color:var(--muted); margin-top:6px; margin-bottom:16px; }
     .ps-desc { font-size:.9375rem; line-height:1.7; color:var(--muted); }
 
+    /* Per-step inline image (mobile only, hidden on desktop) */
+    .ps-step-img { display:none; }
+
     /* Mobile */
     @media(max-width:900px) {
-      .ps-layout { grid-template-columns:1fr; gap:36px; }
-      .ps-sticky { position:relative; top:0; order:-1; }
+      .ps-layout { grid-template-columns:1fr; gap:0; }
+      .ps-sticky { display:none; }
       .ps-steps-col { padding-left:36px; }
       .ps-line-track { left:11px; }
       .ps-step-dot { left:-26px; }
@@ -707,6 +710,16 @@
       .ps-title { font-size:1.75rem; }
       .ps-subtitle { font-size:.9375rem; }
       .ps-step { padding-bottom:56px; }
+      .ps-step-img {
+        display:block;
+        width:100%;
+        border-radius:12px;
+        overflow:hidden;
+        margin-top:20px;
+        aspect-ratio:527/506;
+        object-fit:cover;
+        box-shadow:0 0 0 1px rgba(99,102,241,.12), 0 16px 40px -8px rgba(99,102,241,.15);
+      }
     }
     @media(max-width:480px) {
       .ps-steps-col { padding-left:28px; }
@@ -1285,6 +1298,7 @@
           <h3 class="ps-title">Discovery</h3>
           <h4 class="ps-subtitle">Research &amp; Domain Analysis</h4>
           <p class="ps-desc">Every project starts with listening. I map the problem space, study users in their context, audit competitors, and surface real constraints — before a single wireframe is drawn.</p>
+          <img class="ps-step-img" src="images/discovery.jpg" alt="Discovery" loading="lazy">
         </div>
 
         <div class="ps-step reveal" data-img="images/flows.png" data-alt="Flows" data-num="02" data-subtitle="User Journey &amp; Information Architecture">
@@ -1293,6 +1307,7 @@
           <h3 class="ps-title">Flows</h3>
           <h4 class="ps-subtitle">User Journey &amp; Information Architecture</h4>
           <p class="ps-desc">I map every path a user takes — happy paths, edge cases, and error states. Clear flows mean fewer surprises for the team and fewer frustrations for users.</p>
+          <img class="ps-step-img" src="images/flows.png" alt="Flows" loading="lazy">
         </div>
 
         <div class="ps-step reveal" data-img="images/wireframe.png" data-alt="Wireframes" data-num="03" data-subtitle="Low-Fidelity Design">
@@ -1301,6 +1316,7 @@
           <h3 class="ps-title">Wireframes</h3>
           <h4 class="ps-subtitle">Low-Fidelity Design</h4>
           <p class="ps-desc">I sketch layout, hierarchy, and structure before any visual polish. Low-fidelity means fast iteration and honest feedback — stakeholders focus on function, not colour.</p>
+          <img class="ps-step-img" src="images/wireframe.png" alt="Wireframes" loading="lazy">
         </div>
 
         <div class="ps-step reveal" data-img="images/prototype.png" data-alt="Prototyping" data-num="04" data-subtitle="Interaction Design">
@@ -1309,6 +1325,7 @@
           <h3 class="ps-title">Prototyping</h3>
           <h4 class="ps-subtitle">Interaction Design</h4>
           <p class="ps-desc">Clickable prototypes let real people experience the product before any code is written. I test interactions, transitions, and micro-moments to make the experience feel right.</p>
+          <img class="ps-step-img" src="images/prototype.png" alt="Prototyping" loading="lazy">
         </div>
 
         <div class="ps-step reveal" data-img="images/prototype.png" data-alt="Testing" data-num="05" data-subtitle="Usability Testing">
@@ -1317,6 +1334,7 @@
           <h3 class="ps-title">Testing</h3>
           <h4 class="ps-subtitle">Usability Testing</h4>
           <p class="ps-desc">I put prototypes in front of real users, watch where they hesitate, and measure what matters. Insights feed directly back into refining the design until it truly works.</p>
+          <img class="ps-step-img" src="images/prototype.png" alt="User Testing" loading="lazy">
         </div>
 
       </div><!-- /ps-steps-col -->
