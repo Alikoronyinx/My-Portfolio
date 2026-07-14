@@ -153,6 +153,57 @@
     .float-b { animation: float 8s ease-in-out infinite 1.2s; }
     .float-c { animation: float 7s ease-in-out infinite 2.4s; }
 
+    /* ── Hero background layers ──────────────────────────────────── */
+
+    /* Gradient lights */
+    .h-light { position:absolute; border-radius:50%; }
+    .h-l1 { top:-12%;left:-12%;width:72%;height:60%;background:radial-gradient(ellipse,rgba(139,92,246,.20) 0%,transparent 70%);filter:blur(55px);animation:h-drift-l1 22s ease-in-out infinite; }
+    .h-l2 { bottom:-18%;right:-12%;width:62%;height:55%;background:radial-gradient(ellipse,rgba(167,139,250,.17) 0%,transparent 70%);filter:blur(55px);animation:h-drift-l2 28s ease-in-out infinite; }
+    .h-l3 { top:32%;left:38%;width:42%;height:42%;background:radial-gradient(ellipse,rgba(56,189,248,.09) 0%,transparent 70%);filter:blur(65px);animation:h-drift-l3 32s ease-in-out infinite; }
+    @keyframes h-drift-l1 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(9%,13%)} 66%{transform:translate(4%,5%)} }
+    @keyframes h-drift-l2 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(-11%,-9%)} 66%{transform:translate(-5%,-4%)} }
+    @keyframes h-drift-l3 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(7%,-11%)} 66%{transform:translate(-4%,6%)} }
+
+    /* Aurora bands */
+    .h-aurora { position:absolute; left:-30%; width:160%; }
+    .h-a1 { top:6%;height:260px;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,.07) 40%,rgba(167,139,250,.05) 70%,transparent 100%);filter:blur(42px);animation:h-aurora-r 30s ease-in-out infinite; }
+    .h-a2 { top:22%;height:180px;background:linear-gradient(180deg,transparent 0%,rgba(99,102,241,.05) 50%,transparent 100%);filter:blur(58px);animation:h-aurora-l 38s ease-in-out infinite 6s; }
+    .h-a3 { bottom:12%;height:200px;background:linear-gradient(180deg,transparent 0%,rgba(167,139,250,.06) 45%,rgba(56,189,248,.03) 80%,transparent 100%);filter:blur(50px);animation:h-aurora-r 34s ease-in-out infinite 12s reverse; }
+    @keyframes h-aurora-r { 0%,100%{transform:translateX(0)} 50%{transform:translateX(-220px)} }
+    @keyframes h-aurora-l { 0%,100%{transform:translateX(0)} 50%{transform:translateX(200px)} }
+
+    /* Floating orbs */
+    .h-orb { position:absolute; border-radius:50%; will-change:transform; }
+    .h-o1 { width:220px;height:220px;top:12%;left:62%;background:radial-gradient(circle,rgba(167,139,250,.13) 0%,transparent 70%);filter:blur(62px);animation:h-fo-a 20s ease-in-out infinite; }
+    .h-o2 { width:160px;height:160px;top:62%;left:10%;background:radial-gradient(circle,rgba(99,102,241,.10) 0%,transparent 70%);filter:blur(45px);animation:h-fo-b 24s ease-in-out infinite 3s; }
+    .h-o3 { width:110px;height:110px;top:73%;left:72%;background:radial-gradient(circle,rgba(139,92,246,.09) 0%,transparent 70%);filter:blur(31px);animation:h-fo-c 18s ease-in-out infinite 7s; }
+    .h-o4 { width:85px;height:85px;top:28%;left:42%;background:radial-gradient(circle,rgba(56,189,248,.07) 0%,transparent 70%);filter:blur(24px);animation:h-fo-a 27s ease-in-out infinite 1.5s; }
+    .h-o5 { width:65px;height:65px;top:48%;left:88%;background:radial-gradient(circle,rgba(196,181,253,.09) 0%,transparent 70%);filter:blur(18px);animation:h-fo-b 22s ease-in-out infinite 5s; }
+    .h-o6 { width:130px;height:130px;top:84%;left:38%;background:radial-gradient(circle,rgba(167,139,250,.06) 0%,transparent 70%);filter:blur(37px);animation:h-fo-c 30s ease-in-out infinite 9s; }
+    @keyframes h-fo-a { 0%,100%{transform:translate(0,0)} 25%{transform:translate(45px,18px)} 50%{transform:translate(14px,32px)} 75%{transform:translate(-20px,10px)} }
+    @keyframes h-fo-b { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-38px,-22px)} 50%{transform:translate(22px,-32px)} 75%{transform:translate(-12px,16px)} }
+    @keyframes h-fo-c { 0%,100%{transform:translate(0,0)} 25%{transform:translate(28px,-32px)} 50%{transform:translate(-32px,16px)} 75%{transform:translate(12px,-12px)} }
+
+    /* Glass blob (mouse-following + morph) */
+    .h-blob-wrap { position:absolute; top:50%; left:28%; transform:translate(-50%,-50%); will-change:transform; }
+    .h-blob { width:680px; height:580px; background:radial-gradient(ellipse at 38% 42%,rgba(167,139,250,.22) 0%,transparent 55%),radial-gradient(ellipse at 62% 58%,rgba(99,102,241,.18) 0%,transparent 55%),radial-gradient(ellipse at 50% 50%,rgba(139,92,246,.12) 0%,transparent 70%); filter:blur(80px); will-change:transform,border-radius; animation:h-blob-morph 14s ease-in-out infinite; }
+    @keyframes h-blob-morph {
+      0%,100% { border-radius:42% 58% 58% 42%/42% 42% 58% 58%; transform:scale(1); }
+      25%      { border-radius:66% 34% 34% 66%/62% 66% 34% 38%; transform:scale(1.04); }
+      50%      { border-radius:52% 48% 62% 38%/57% 38% 62% 43%; transform:scale(1.01); }
+      75%      { border-radius:36% 64% 52% 48%/47% 57% 43% 53%; transform:scale(0.98); }
+    }
+    @media (max-width:640px) { .h-blob-wrap{left:50%} .h-blob{width:360px;height:320px;filter:blur(55px)} }
+
+    /* Grid overlay */
+    .h-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(99,102,241,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.045) 1px,transparent 1px); background-size:72px 72px; -webkit-mask-image:radial-gradient(ellipse 78% 78% at 50% 50%,black 18%,transparent 100%); mask-image:radial-gradient(ellipse 78% 78% at 50% 50%,black 18%,transparent 100%); }
+
+    /* Noise / grain */
+    .h-noise { position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:256px 256px; opacity:.032; mix-blend-mode:overlay; }
+
+    /* Edge vignette */
+    .h-vignette { position:absolute; inset:0; background:radial-gradient(ellipse 110% 110% at 50% 50%,transparent 50%,rgba(8,8,8,.72) 100%); }
+
     .hero-word { opacity: 0; animation: fadeUp .75s ease forwards; }
     .d1{animation-delay:.1s} .d2{animation-delay:.25s} .d3{animation-delay:.4s} .d4{animation-delay:.6s} .d5{animation-delay:.8s} .d6{animation-delay:1s}
 
@@ -285,24 +336,26 @@
     [data-theme="light"] .stag { color: #374151; background: rgba(255,255,255,0.95); border-color: rgba(15,23,42,0.09); }
     [data-theme="light"] .stag:hover { color: #6366f1; }
 
-    /* Hero dark-gradient overlay → hidden in light */
-    [data-theme="light"] .hero-dark-grad { display: none; }
-
     /* Dot grid lighter in light mode */
     [data-theme="light"] .dotgrid {
       background-image: radial-gradient(circle, rgba(99,102,241,0.07) 1px, transparent 1px);
     }
 
-    /* Orb glow: more visible in light */
-    [data-theme="light"] .hero-orb { opacity: 0.5; }
+    /* Hero background: lighter in light mode */
+    [data-theme="light"] .h-blob { opacity: .45; }
+    [data-theme="light"] .h-l1 { opacity: .5; }
+    [data-theme="light"] .h-l2 { opacity: .5; }
+    [data-theme="light"] .h-l3 { opacity: .4; }
+    [data-theme="light"] .h-vignette { background: radial-gradient(ellipse 110% 110% at 50% 50%, transparent 50%, rgba(238,241,246,.85) 100%); }
 
-    /* Project + process cards */
+    /* Project cards */
     [data-theme="light"] .pb-item {
       background: #ffffff;
       box-shadow: 0 2px 12px rgba(15,23,42,0.06);
     }
-    [data-theme="light"] .process-step-ref { background: #ffffff; }
-    [data-theme="light"] .process-step-ref:hover { background: rgba(99,102,241,0.05); }
+    /* Process steps */
+    [data-theme="light"] .ps-line-col::before { background: linear-gradient(to bottom, #6366f1 0%, rgba(99,102,241,.25) 100%); }
+    [data-theme="light"] .ps-img-wrap { background: rgba(15,23,42,0.04); }
 
     /* Modal */
     [data-theme="light"] .modal-box { background: #ffffff; box-shadow: 0 24px 80px rgba(15,23,42,0.18); }
@@ -311,9 +364,6 @@
     /* Testimonial cards + experience */
     [data-theme="light"] .tcard { background: #ffffff; }
 
-    /* Process grid border */
-    [data-theme="light"] .process-grid-ref { border-color: rgba(15,23,42,0.07); }
-    [data-theme="light"] .process-step-ref { border-color: rgba(15,23,42,0.07); }
 
     /* Light mode: same gradient mesh at lower opacity, clean white/gray base */
     [data-theme="light"] #about {
@@ -580,35 +630,90 @@
       .pb-item { min-height: 260px; grid-column: auto !important; grid-row: auto !important; }
     }
 
-    /* ══ PROCESS GRID ══ */
-    .process-grid-ref {
-      display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
-      border:1px solid var(--border); border-radius:20px; overflow:hidden;
+    /* ══ PROCESS STEPS ══ */
+    .ps-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+
+    /* ── Sticky image (right col) ── */
+    .ps-sticky { position:sticky; top:7rem; }
+    .ps-sticky-img-wrap {
+      border-radius:16px; overflow:hidden; aspect-ratio:527/506;
+      background:var(--surface); position:relative;
+      box-shadow:0 0 0 1px rgba(99,102,241,.12), 0 32px 80px -12px rgba(99,102,241,.18);
     }
-    @media(max-width:480px){ .process-grid-ref { grid-template-columns:1fr; } }
-    .process-step-ref {
-      padding:36px 32px; border-right:1px solid var(--border); border-bottom:1px solid var(--border);
-      background:var(--surface); transition:background .3s; position:relative; overflow:hidden;
+    .ps-sticky-img-wrap img {
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition:opacity .45s cubic-bezier(.4,0,.2,1);
     }
-    [data-theme="light"] .process-step-ref { background:rgba(255,255,255,.85); }
-    .process-step-ref:hover { background:rgba(99,102,241,.07); }
-    .process-step-ref:nth-child(2n)      { border-right:none; }
-    .process-step-ref:nth-last-child(-n+2) { border-bottom:none; }
-    .step-num {
-      font-family:'Instrument Serif',Georgia,serif; font-style:italic;
-      font-size:3rem; line-height:1; margin-bottom:12px;
-      color:rgba(255,255,255,.06); transition:color .3s;
+    .ps-sticky-img-wrap img.ps-fade { opacity:0; }
+    .ps-img-label {
+      position:absolute; bottom:0; left:0; right:0; padding:20px 24px;
+      background:linear-gradient(to top,rgba(8,8,8,.88) 0%,transparent 100%);
+      pointer-events:none;
     }
-    [data-theme="light"] .step-num { color:rgba(0,0,0,.07); }
-    .process-step-ref:hover .step-num { color:rgba(99,102,241,.25); }
-    .step-icon {
-      width:44px; height:44px; border-radius:12px;
-      background:rgba(99,102,241,.12); display:flex; align-items:center;
-      justify-content:center; color:#6366f1; margin-bottom:14px; transition:all .3s;
+    .ps-img-label-num { font-size:.625rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#a78bfa; margin-bottom:4px; }
+    .ps-img-label-title { font-size:.9375rem; font-weight:600; color:#fff; }
+
+    /* ── Steps column (left col) ── */
+    .ps-steps-col { position:relative; padding-left:50px; }
+
+    /* Vertical track line */
+    .ps-line-track {
+      position:absolute; left:16px; top:14px; bottom:4px;
+      width:2px; border-radius:2px;
+      background:rgba(255,255,255,.07); overflow:hidden;
     }
-    .process-step-ref:hover .step-icon { background:#6366f1; color:#fff; }
-    .step-title { font-size:1rem; font-weight:600; color:var(--text); margin-bottom:6px; }
-    .step-desc  { font-size:.8125rem; color:var(--muted); line-height:1.6; }
+    /* Animated fill driven by JS */
+    .ps-line-fill {
+      width:100%; height:0%;
+      background:linear-gradient(to bottom,#6366f1,#a78bfa);
+      border-radius:2px;
+      transition:height .4s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Individual step */
+    .ps-step { position:relative; padding-bottom:80px; transition:opacity .4s ease; }
+    .ps-step:last-child { padding-bottom:0; }
+    .ps-step:not(.ps-active) { opacity:.28; }
+
+    /* Dot on the track */
+    .ps-step-dot {
+      position:absolute; left:-35px; top:12px;
+      width:8px; height:8px; border-radius:50%;
+      background:rgba(99,102,241,.15);
+      border:2px solid rgba(99,102,241,.2);
+      transition:background .35s, border-color .35s, box-shadow .35s;
+    }
+    .ps-step.ps-active .ps-step-dot {
+      background:#6366f1; border-color:#6366f1;
+      box-shadow:0 0 12px 3px rgba(99,102,241,.45);
+    }
+
+    /* Step number — only visible on mobile */
+    .ps-num-inline { display:none; font-size:.875rem; font-weight:500; color:var(--subtle); margin-bottom:4px; }
+
+    /* Typography — matching ZeeFrames' fs_36 fw_600 / fs_18 / fs_16 */
+    .ps-title { font-size:2.25rem; font-weight:600; line-height:1.1; letter-spacing:-.02em; color:var(--text); margin-bottom:0; }
+    .ps-subtitle { font-size:1.0625rem; color:var(--muted); margin-top:6px; margin-bottom:16px; }
+    .ps-desc { font-size:.9375rem; line-height:1.7; color:var(--muted); }
+
+    /* Mobile */
+    @media(max-width:900px) {
+      .ps-layout { grid-template-columns:1fr; gap:36px; }
+      .ps-sticky { position:relative; top:0; order:-1; }
+      .ps-steps-col { padding-left:36px; }
+      .ps-line-track { left:11px; }
+      .ps-step-dot { left:-26px; }
+      .ps-num-inline { display:block; }
+      .ps-title { font-size:1.75rem; }
+      .ps-subtitle { font-size:.9375rem; }
+      .ps-step { padding-bottom:56px; }
+    }
+    @media(max-width:480px) {
+      .ps-steps-col { padding-left:28px; }
+      .ps-line-track { left:8px; }
+      .ps-step-dot { left:-22px; }
+      .ps-title { font-size:1.5rem; }
+    }
 
     /* ══ MODAL ══ */
     .modal-bg {
@@ -735,14 +840,34 @@
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
 
-  <!-- Bg layers -->
-  <div class="absolute inset-0 dotgrid opacity-100 pointer-events-none"></div>
-  <div class="hero-dark-grad absolute inset-0 bg-gradient-to-br from-indigo-950/25 via-transparent to-purple-950/15 pointer-events-none"></div>
-
-  <!-- Orbs -->
-  <div class="hero-orb absolute top-16 right-16 w-[520px] h-[520px] rounded-full bg-indigo-600/8 blur-3xl float-a pointer-events-none"></div>
-  <div class="hero-orb absolute bottom-10 left-4  w-[360px] h-[360px] rounded-full bg-purple-600/8 blur-3xl float-b pointer-events-none"></div>
-  <div class="hero-orb absolute top-1/2  left-1/3 w-[240px] h-[240px] rounded-full bg-sky-600/5   blur-2xl float-c pointer-events-none"></div>
+  <!-- Hero background layers -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <!-- Gradient lights -->
+    <div class="h-light h-l1"></div>
+    <div class="h-light h-l2"></div>
+    <div class="h-light h-l3"></div>
+    <!-- Aurora bands -->
+    <div class="h-aurora h-a1"></div>
+    <div class="h-aurora h-a2"></div>
+    <div class="h-aurora h-a3"></div>
+    <!-- Floating orbs -->
+    <div class="h-orb h-o1"></div>
+    <div class="h-orb h-o2"></div>
+    <div class="h-orb h-o3"></div>
+    <div class="h-orb h-o4"></div>
+    <div class="h-orb h-o5"></div>
+    <div class="h-orb h-o6"></div>
+    <!-- Glass blob (spring follows mouse via JS) -->
+    <div class="h-blob-wrap" id="heroBlobWrap">
+      <div class="h-blob"></div>
+    </div>
+    <!-- Grid overlay -->
+    <div class="h-grid"></div>
+    <!-- Noise / grain -->
+    <div class="h-noise"></div>
+    <!-- Edge vignette -->
+    <div class="h-vignette"></div>
+  </div>
 
   <div class="relative max-w-5xl mx-auto px-5 sm:px-8 py-24 w-full flex flex-col items-center text-center gap-7">
 
@@ -786,8 +911,8 @@
       </div>
       <div class="w-px h-10" style="background:var(--border)"></div>
       <div class="text-center">
-        <div class="text-2xl font-black" style="color:var(--text)">HNG</div>
-        <div class="text-xs" style="color:var(--subtle)">2026 Internship</div>
+        <div class="text-2xl font-black" style="color:var(--text)">3+</div>
+        <div class="text-xs" style="color:var(--subtle)">Years Experience</div>
       </div>
       <div class="w-px h-10" style="background:var(--border)"></div>
       <div class="text-center">
@@ -807,20 +932,20 @@
   <div class="img-strip-track">
     <!-- Set 1 -->
     <div class="img-strip-card">
-      <img src="images/saftyapp.png" alt="BeSafr Safety App" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Safety App</span><span class="img-strip-label-name">BeSafr</span></div>
+      <img src="images/discovery.jpg" alt="Discovery" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Research</span><span class="img-strip-label-name">Discovery</span></div>
     </div>
     <div class="img-strip-card">
-      <img src="images/Edtech.png" alt="SkillEX Ed-Tech" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Ed-Tech</span><span class="img-strip-label-name">SkillEX</span></div>
+      <img src="images/flows.png" alt="Flows" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">User Journey</span><span class="img-strip-label-name">Flows</span></div>
     </div>
     <div class="img-strip-card">
-      <img src="images/fintech.png" alt="Periax Health Tech" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Health Tech</span><span class="img-strip-label-name">Periax</span></div>
+      <img src="images/wireframe.png" alt="Wireframes" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Low-Fidelity</span><span class="img-strip-label-name">Wireframes</span></div>
     </div>
     <div class="img-strip-card">
-      <img src="images/social.png" alt="Retwix Fictional World" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Fictional World</span><span class="img-strip-label-name">Retwix</span></div>
+      <img src="images/prototype.png" alt="Prototype" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Interaction</span><span class="img-strip-label-name">Prototype</span></div>
     </div>
     <div class="img-strip-card">
       <img src="images/passforge.png" alt="PassForge Event Tech" />
@@ -828,20 +953,20 @@
     </div>
     <!-- Set 2 — duplicate for seamless loop -->
     <div class="img-strip-card">
-      <img src="images/saftyapp.png" alt="BeSafr Safety App" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Safety App</span><span class="img-strip-label-name">BeSafr</span></div>
+      <img src="images/discovery.jpg" alt="Discovery" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Research</span><span class="img-strip-label-name">Discovery</span></div>
     </div>
     <div class="img-strip-card">
-      <img src="images/Edtech.png" alt="SkillEX Ed-Tech" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Ed-Tech</span><span class="img-strip-label-name">SkillEX</span></div>
+      <img src="images/flows.png" alt="Flows" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">User Journey</span><span class="img-strip-label-name">Flows</span></div>
     </div>
     <div class="img-strip-card">
-      <img src="images/fintech.png" alt="Periax Health Tech" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Health Tech</span><span class="img-strip-label-name">Periax</span></div>
+      <img src="images/wireframe.png" alt="Wireframes" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Low-Fidelity</span><span class="img-strip-label-name">Wireframes</span></div>
     </div>
     <div class="img-strip-card">
-      <img src="images/social.png" alt="Retwix Fictional World" />
-      <div class="img-strip-label"><span class="img-strip-label-cat">Fictional World</span><span class="img-strip-label-name">Retwix</span></div>
+      <img src="images/prototype.png" alt="Prototype" />
+      <div class="img-strip-label"><span class="img-strip-label-cat">Interaction</span><span class="img-strip-label-name">Prototype</span></div>
     </div>
     <div class="img-strip-card">
       <img src="images/passforge.png" alt="PassForge Event Tech" />
@@ -1051,7 +1176,7 @@
           <h3 class="pb-name">BeSafr</h3>
         </div>
         <div class="pb-hover">
-          <span class="pb-cat">Safety App · HNG 2026</span>
+          <span class="pb-cat">Safety App</span>
           <h3 class="pb-title-lg">BeSafr</h3>
           <p class="pb-desc">A personal safety app with real-time crowd-sourced alerts, emergency contacts, and SOS features — designed to keep users safe at all times.</p>
           <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1067,7 +1192,7 @@
           <h3 class="pb-name">SkillEX</h3>
         </div>
         <div class="pb-hover">
-          <span class="pb-cat">Ed-Tech · HNG 2026</span>
+          <span class="pb-cat">Ed-Tech</span>
           <h3 class="pb-title-lg">SkillEX</h3>
           <p class="pb-desc">A peer-to-peer skill exchange platform connecting learners with mentors across disciplines.</p>
           <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1083,7 +1208,7 @@
           <h3 class="pb-name">Periax</h3>
         </div>
         <div class="pb-hover">
-          <span class="pb-cat">Health Tech · HNG 2026</span>
+          <span class="pb-cat">Health Tech</span>
           <h3 class="pb-title-lg">Periax</h3>
           <p class="pb-desc">A clinical trial management web app that reduces admin burden and improves workflow clarity for healthcare teams.</p>
           <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1099,7 +1224,7 @@
           <h3 class="pb-name">Retwix</h3>
         </div>
         <div class="pb-hover">
-          <span class="pb-cat">Fictional World · HNG 2026</span>
+          <span class="pb-cat">Fictional World</span>
           <h3 class="pb-title-lg">Retwix</h3>
           <p class="pb-desc">A webapp for creators, writers and storytellers to build and organize fictional worlds in one place.</p>
           <span class="pb-cta">View case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1115,7 +1240,7 @@
           <h3 class="pb-name">PassForge</h3>
         </div>
         <div class="pb-hover">
-          <span class="pb-cat">Event Tech · HNG 2026</span>
+          <span class="pb-cat">Event Tech</span>
           <h3 class="pb-title-lg">PassForge</h3>
           <p class="pb-desc">A web app for creating and managing event tickets — designed to make event setup fast, simple, and accessible for any organiser.</p>
           <span class="pb-cta">View live app <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
@@ -1135,60 +1260,79 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
 
     <!-- Header -->
-    <div class="reveal mb-10">
+    <div class="reveal mb-20 max-w-2xl">
       <div class="flex items-center gap-3 mb-4">
-        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">Design Process</span>
+        <span class="text-xs font-semibold tracking-[.18em] uppercase text-indigo-400">My Design Process</span>
         <div class="h-px w-20 bg-gradient-to-r from-indigo-500/50 to-transparent"></div>
       </div>
-      <h2 class="text-4xl lg:text-5xl font-black tracking-tight" style="color:var(--text)">
-        How I Think Through <span class="grad">Design</span>
+      <h2 class="text-4xl lg:text-5xl font-black tracking-tight mb-5" style="color:var(--text)">
+        From Idea To <span class="grad">Execution</span>
       </h2>
+      <p class="text-base leading-relaxed" style="color:var(--muted)">Every great product starts with a clear process. Here's how I move from a fuzzy brief to a polished, user-tested solution.</p>
     </div>
 
-    <!-- 2×2 Grid -->
-    <div class="reveal process-grid-ref">
+    <!-- Two-column layout: scrolling steps + one sticky image -->
+    <div class="ps-layout">
 
-      <!-- 1 Discover -->
-      <div class="process-step-ref">
-        <div class="step-num">01</div>
-        <div class="step-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <!-- Left col: ZeeFrames-style steps with vertical track line -->
+      <div class="ps-steps-col">
+        <!-- Vertical track line + animated fill -->
+        <div class="ps-line-track"><div class="ps-line-fill" id="psLineFill"></div></div>
+
+        <div class="ps-step ps-active reveal" data-img="images/discovery.jpg" data-alt="Discovery" data-num="01" data-subtitle="Research &amp; Domain Analysis">
+          <div class="ps-step-dot"></div>
+          <span class="ps-num-inline">01</span>
+          <h3 class="ps-title">Discovery</h3>
+          <h4 class="ps-subtitle">Research &amp; Domain Analysis</h4>
+          <p class="ps-desc">Every project starts with listening. I map the problem space, study users in their context, audit competitors, and surface real constraints — before a single wireframe is drawn.</p>
         </div>
-        <h3 class="step-title">Discover</h3>
-        <p class="step-desc">Every project starts by understanding the users, the product, and the problem. I ask questions, listen closely, and uncover what truly needs to be solved.</p>
+
+        <div class="ps-step reveal" data-img="images/flows.png" data-alt="Flows" data-num="02" data-subtitle="User Journey &amp; Information Architecture">
+          <div class="ps-step-dot"></div>
+          <span class="ps-num-inline">02</span>
+          <h3 class="ps-title">Flows</h3>
+          <h4 class="ps-subtitle">User Journey &amp; Information Architecture</h4>
+          <p class="ps-desc">I map every path a user takes — happy paths, edge cases, and error states. Clear flows mean fewer surprises for the team and fewer frustrations for users.</p>
+        </div>
+
+        <div class="ps-step reveal" data-img="images/wireframe.png" data-alt="Wireframes" data-num="03" data-subtitle="Low-Fidelity Design">
+          <div class="ps-step-dot"></div>
+          <span class="ps-num-inline">03</span>
+          <h3 class="ps-title">Wireframes</h3>
+          <h4 class="ps-subtitle">Low-Fidelity Design</h4>
+          <p class="ps-desc">I sketch layout, hierarchy, and structure before any visual polish. Low-fidelity means fast iteration and honest feedback — stakeholders focus on function, not colour.</p>
+        </div>
+
+        <div class="ps-step reveal" data-img="images/prototype.png" data-alt="Prototyping" data-num="04" data-subtitle="Interaction Design">
+          <div class="ps-step-dot"></div>
+          <span class="ps-num-inline">04</span>
+          <h3 class="ps-title">Prototyping</h3>
+          <h4 class="ps-subtitle">Interaction Design</h4>
+          <p class="ps-desc">Clickable prototypes let real people experience the product before any code is written. I test interactions, transitions, and micro-moments to make the experience feel right.</p>
+        </div>
+
+        <div class="ps-step reveal" data-img="images/prototype.png" data-alt="Testing" data-num="05" data-subtitle="Usability Testing">
+          <div class="ps-step-dot"></div>
+          <span class="ps-num-inline">05</span>
+          <h3 class="ps-title">Testing</h3>
+          <h4 class="ps-subtitle">Usability Testing</h4>
+          <p class="ps-desc">I put prototypes in front of real users, watch where they hesitate, and measure what matters. Insights feed directly back into refining the design until it truly works.</p>
+        </div>
+
+      </div><!-- /ps-steps-col -->
+
+      <!-- Right col: single sticky image, swapped by JS as steps scroll into view -->
+      <div class="ps-sticky">
+        <div class="ps-sticky-img-wrap">
+          <img id="psImg" src="images/discovery.jpg" alt="Discovery" loading="eager">
+          <div class="ps-img-label">
+            <p class="ps-img-label-num" id="psLabelNum">01 — Research &amp; Domain Analysis</p>
+            <p class="ps-img-label-title" id="psLabelTitle">Discovery</p>
+          </div>
+        </div>
       </div>
 
-      <!-- 2 Design -->
-      <div class="process-step-ref">
-        <div class="step-num">02</div>
-        <div class="step-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-        </div>
-        <h3 class="step-title">Design</h3>
-        <p class="step-desc">I turn ideas into clear, usable interfaces focused on structure, usability, and visual clarity across web and mobile products.</p>
-      </div>
-
-      <!-- 3 Refine -->
-      <div class="process-step-ref">
-        <div class="step-num">03</div>
-        <div class="step-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-        </div>
-        <h3 class="step-title">Refine</h3>
-        <p class="step-desc">Through feedback and iteration, I refine designs to ensure they work in real use, not just in Figma.</p>
-      </div>
-
-      <!-- 4 Deliver -->
-      <div class="process-step-ref">
-        <div class="step-num">04</div>
-        <div class="step-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </div>
-        <h3 class="step-title">Deliver</h3>
-        <p class="step-desc">I take designs from concept to final delivery, keeping them consistent, scalable, and easy for teams to use and build on.</p>
-      </div>
-
-    </div><!-- /process-grid-ref -->
+    </div><!-- /ps-layout -->
   </div>
 </section>
 
@@ -1217,22 +1361,21 @@
         <h3 class="text-xl font-semibold mb-8" style="color:var(--text)">Timeline</h3>
         <div>
 
-          <!-- HNG -->
+          <!-- Product Designer -->
           <div class="tline-item">
             <div class="tline-dot" style="background:#6366f1"></div>
             <div class="glass rounded-2xl p-5 hover:border-indigo-500/30 transition-all cursor-default" style="border-color:var(--border)">
               <div class="flex items-start justify-between gap-4 mb-1">
-                <h4 class="font-bold" style="color:var(--text)">HNG Internship</h4>
-                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2026</span>
+                <h4 class="font-bold" style="color:var(--text)">Product Designer</h4>
+                <span class="text-xs flex-shrink-0" style="color:var(--subtle)">2022 – Present</span>
               </div>
-              <p class="text-xs font-semibold text-indigo-400 mb-2">Product Design Track</p>
-              <p class="text-sm leading-relaxed" style="color:var(--muted)">Intensive industry-standard design internship. Shipped 5 products with cross-functional teams under tight deadlines.</p>
+              <p class="text-xs font-semibold text-indigo-400 mb-2">Freelance · 3+ Years</p>
+              <p class="text-sm leading-relaxed" style="color:var(--muted)">Designing end-to-end digital products across safety, health tech, ed-tech, and event tech — from discovery research to high-fidelity delivery with real-world impact.</p>
               <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">BeSafr</span>
-                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">SkillEX</span>
-                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Periax</span>
-                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Retwix</span>
-                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">PassForge</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">UX Research</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Product Design</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Prototyping</span>
+                <span class="px-2 py-0.5 text-xs rounded-full text-indigo-300" style="background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2)">Figma</span>
               </div>
             </div>
           </div>
@@ -1273,15 +1416,6 @@
             </div>
           </a>
 
-          <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-indigo-500/30 transition-all group cursor-default" style="border-color:var(--border)">
-            <div class="w-10 h-10 rounded-xl bg-indigo-600/15 border border-indigo-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-600/25 transition-colors">
-              <i data-lucide="award" class="w-5 h-5 text-indigo-400"></i>
-            </div>
-            <div>
-              <p class="font-semibold text-sm mb-1" style="color:var(--text)">HNG Internship Graduate</p>
-              <p class="text-xs" style="color:var(--muted)">Completed Product Design track with shipped, real-world projects</p>
-            </div>
-          </div>
 
           <div class="glass rounded-2xl p-5 flex items-start gap-4 hover:border-purple-500/30 transition-all group cursor-default" style="border-color:var(--border)">
             <div class="w-10 h-10 rounded-xl bg-purple-600/15 border border-purple-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600/25 transition-colors">
@@ -1534,6 +1668,83 @@
     }, 260);
   }, 3000);
 
+  // --- Hero blob: spring-physics mouse follow ---
+  (function () {
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    var wrap = document.getElementById('heroBlobWrap');
+    if (!wrap) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, vx = 0, vy = 0;
+    var K = 0.038, D = 0.86;
+    window.addEventListener('mousemove', function (e) {
+      tx = (e.clientX / window.innerWidth  - 0.5) * 80;
+      ty = (e.clientY / window.innerHeight - 0.5) * 60;
+    }, { passive: true });
+    function tick() {
+      vx = vx * D + (tx - cx) * K;
+      vy = vy * D + (ty - cy) * K;
+      cx += vx; cy += vy;
+      wrap.style.transform = 'translate(calc(-50% + ' + cx.toFixed(2) + 'px), calc(-50% + ' + cy.toFixed(2) + 'px))';
+      requestAnimationFrame(tick);
+    }
+    tick();
+  }());
+
+  // --- Process sticky image: swap on scroll ---
+  (function () {
+    var psImg        = document.getElementById('psImg');
+    var psLabelNum   = document.getElementById('psLabelNum');
+    var psLabelTitle = document.getElementById('psLabelTitle');
+    var psLineFill   = document.getElementById('psLineFill');
+    var steps        = Array.prototype.slice.call(document.querySelectorAll('.ps-step[data-img]'));
+    if (!psImg || !steps.length) return;
+
+    var reduced   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var swapTimer;
+
+    function setActive(el) {
+      var idx      = steps.indexOf(el);
+      var src      = el.dataset.img;
+      var alt      = el.dataset.alt      || '';
+      var num      = el.dataset.num      || '';
+      var subtitle = el.dataset.subtitle || '';
+
+      // Active/inactive step classes
+      steps.forEach(function (s) { s.classList.remove('ps-active'); });
+      el.classList.add('ps-active');
+
+      // Animate line fill: 0 % → 100 % across all steps
+      if (psLineFill) {
+        psLineFill.style.height = (idx / (steps.length - 1) * 100) + '%';
+      }
+
+      // Swap image
+      if (psImg.getAttribute('src') === src) return;
+      clearTimeout(swapTimer);
+      if (reduced) {
+        psImg.src = src; psImg.alt = alt;
+        if (psLabelNum)   psLabelNum.textContent  = num + (subtitle ? ' — ' + subtitle : '');
+        if (psLabelTitle) psLabelTitle.textContent = alt;
+        return;
+      }
+      psImg.classList.add('ps-fade');
+      swapTimer = setTimeout(function () {
+        psImg.src = src; psImg.alt = alt;
+        if (psLabelNum)   psLabelNum.textContent  = num + (subtitle ? ' — ' + subtitle : '');
+        if (psLabelTitle) psLabelTitle.textContent = alt;
+        psImg.classList.remove('ps-fade');
+      }, 400);
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) setActive(e.target);
+      });
+    }, { rootMargin: '-8% 0px -40% 0px' });
+
+    steps.forEach(function (s) { obs.observe(s); });
+  }());
+
   // --- Dynamic copyright year ---
   document.getElementById('copy-year').textContent = new Date().getFullYear();
 
@@ -1550,7 +1761,7 @@
     besafr: {
       title: 'BeSafr',
       img: 'images/saftyapp.png',
-      tags: [{ label: 'Safety App', color: 'rgba(99,102,241,.15)', text: '#818cf8' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      tags: [{ label: 'Safety App', color: 'rgba(99,102,241,.15)', text: '#818cf8' }],
       overview: 'BeSafr is a personal safety app that empowers users to navigate unfamiliar or potentially unsafe environments with confidence. Leveraging real-time crowd-sourced alerts, smart route optimisation, and an always-accessible SOS feature, it keeps users and their loved ones informed and protected.',
       role: 'Lead Product Designer — end-to-end design from discovery research through final hi-fi prototype.',
       duration: '6 weeks',
@@ -1564,8 +1775,8 @@
     skillex: {
       title: 'SkillEX',
       img: 'images/Edtech.png',
-      tags: [{ label: 'Ed-Tech', color: 'rgba(168,85,247,.15)', text: '#c084fc' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
-      overview: 'SkillEX is a peer-to-peer skill exchange platform that connects people who want to learn with those who can teach — no money required, just skill swaps. Built during the HNG 2026 Internship with a cross-functional team of 8 designers and engineers over a 4-week sprint.',
+      tags: [{ label: 'Ed-Tech', color: 'rgba(168,85,247,.15)', text: '#c084fc' }],
+      overview: 'SkillEX is a peer-to-peer skill exchange platform that connects people who want to learn with those who can teach — no money required, just skill swaps. Designed end-to-end with a cross-functional team over a 4-week sprint.',
       role: 'UI/UX Designer — led the onboarding flow and matching interface design within a team of 8.',
       duration: '4-week sprint',
       process: ['Discover', 'Research', 'Define', 'Ideate', 'Design', 'Test'],
@@ -1578,7 +1789,7 @@
     periax: {
       title: 'Periax',
       img: 'images/fintech.png',
-      tags: [{ label: 'Health Tech', color: 'rgba(16,185,129,.15)', text: '#34d399' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      tags: [{ label: 'Health Tech', color: 'rgba(16,185,129,.15)', text: '#34d399' }],
       overview: 'Periax is a clinical trial management web application designed to streamline complex trial workflows for healthcare teams. The project focused on reducing administrative burden, improving data traceability, and creating an intuitive experience for clinical coordinators managing multi-site trials.',
       role: 'Product Designer — end-to-end design of the trial dashboard, data entry flows, and reporting interface.',
       duration: '5 weeks',
@@ -1592,7 +1803,7 @@
     retwix: {
       title: 'Retwix',
       img: 'images/social.png',
-      tags: [{ label: 'Social', color: 'rgba(244,63,94,.15)', text: '#fb7185' }, { label: 'HNG 2026', color: 'rgba(255,255,255,.07)', text: 'var(--muted)' }],
+      tags: [{ label: 'Fictional World', color: 'rgba(244,63,94,.15)', text: '#fb7185' }],
       overview: 'Retwix is a social platform redesign that tackles information overload head-on. By replacing the algorithmic fire-hose feed with an interest-graph model and surfacing "meaningful interactions" over vanity metrics, the redesign aims to restore the sense of genuine community.',
       role: 'Lead UX Designer — responsible for feed architecture, interaction patterns and engagement model.',
       duration: '4 weeks',
