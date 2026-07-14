@@ -14,18 +14,20 @@ A modern, premium, single-page portfolio website for Onyinyechi Alikor — a Pro
 | **Google Fonts — DM Sans** | Primary typeface across all body and UI text |
 | **Google Fonts — Instrument Serif** | Italic accent used in process step numbers |
 | **Vanilla JS** | Animations, dark/light mode, modal, mobile menu |
+| **React / Next.js** | `components/` — reusable UI components (DesignProcess, Hero) |
+| **Framer Motion** | `AnimatePresence` crossfade + scroll-driven animations in components |
 
-No build tools required — open `index.html` directly in a browser.
+No build tools required for the HTML portfolio — open `index.html` directly in a browser.
 
 ---
 
 ## Sections
 
 1. **Hero** — Centered bold layout: role descriptor tagline, large two-line headline ("Designing Thoughtful / Digital Experiences."), one-line sub intro, availability badge, CTAs, and stats row
-2. **Image Marquee** — Infinite auto-scrolling strip of all 5 project images
+2. **Image Marquee** — Infinite auto-scrolling strip: discovery, flows, wireframe, prototype, and passforge images
 3. **About** — Personal bio, design philosophy, skills grid, tools
 4. **Projects** — Bento grid layout: BeSafr (large hero card), SkillEX + Periax (stacked right), Retwix + PassForge (bottom row) — all HNG 2026 internship projects
-5. **Design Process** — 4-step 2×2 grid: Discover, Design, Refine, Deliver ("How I Think Through Design")
+5. **Design Process** — ZeeFrames-style 2-column layout: 6 scrolling steps (left) + sticky image panel (right); vertical track line with animated fill; scroll-driven active step highlighting
 6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements incl. PassForge live app; proper 3-level heading hierarchy (h2 → h3 → h4)
 7. **Contact** — Email, LinkedIn, Behance, Resume download
 8. **Footer** — Branding + social links
@@ -59,6 +61,15 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 | `images/social.png` | Retwix — Social Platform card |
 | `images/passforge.png` | PassForge — Event Tech card |
 
+## Process Images
+
+| File | Used In |
+|---|---|
+| `images/discovery.jpg` | Design Process step 01 (Discovery) + image marquee |
+| `images/flows.png` | Design Process step 02 (Flows) + image marquee |
+| `images/wireframe.png` | Design Process step 03 (Wireframes) + image marquee |
+| `images/prototype.png` | Design Process step 04 (Prototyping) + image marquee |
+
 ---
 
 ## Links
@@ -76,7 +87,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 
 - **Dark / Light mode** toggle — preference saved in `localStorage`
 - **Clean & minimal aesthetic** — neutral outline-pill tags, soft card hover (−3 px), reduced section gradient mesh opacity, generous section spacing (`py-28`)
-- **Infinite scroll image marquee** — auto-scrolling strip of all 5 project screenshots after the hero; contained within page margins with rounded corners; scrolls continuously (no pause on hover); hover reveals project category + name label with dark gradient; subtle image zoom (1.07) on hover
+- **Infinite scroll image marquee** — auto-scrolling strip of process images (discovery, flows, wireframe, prototype) and passforge; contained within page margins with rounded corners; scrolls continuously (no pause on hover); hover reveals project category + name label with dark gradient; subtle image zoom (1.07) on hover
 - **Gradient mesh section backgrounds** — very subtle radial-gradient per section (3–7% opacity dark, 3–5% light)
 - **OA monogram logo** in navbar with indigo badge
 - **Sun / pill / moon theme toggle** — knob slides with CSS transform
@@ -85,6 +96,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 - **Centered hero layout** — all content center-aligned; role descriptor tagline, large bold headline with gradient accent, concise sub intro, availability badge, and CTA buttons
 - **Availability badge animation** — "Open to new" stays static while "opportunity" and "collaboration" cycle with a smooth slide-up fade every 3 seconds
 - **Hero entrance animations** — staggered fade-up across 6 delay classes (d1–d6)
+- **ZeeFrames-style design process** — 2-column grid layout (steps left, sticky image right); 6 steps: Discovery, Flows, Wireframes, UI Design, Prototyping, User Testing; vertical track line with animated indigo fill driven by scroll position; each step has a dot on the track that glows when active; inactive steps dim to `opacity: 0.28`; active step highlighted in full white with indigo subtitle; sticky image panel swaps image per active step with a smooth opacity crossfade and animated bottom label overlay (step number + subtitle + title); responsive — below 900 px collapses to single column with image stacked above steps
 - **Bento project grid** — editorial 12-col grid with mixed card sizes; full-image cards with ghost project numbers (01–05) faintly visible top-right
 - **Project card hover reveal** — dark gradient from bottom fades in on hover (consistent with carousel style) exposing category, title, description + frosted-glass CTA button; image scales to 1.07 beneath the overlay
 - **Project cards clickable** — opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
@@ -96,6 +108,30 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 - **Smooth scrolling** on all anchor links
 - **Accessible** — semantic HTML, `aria-labels`, alt text on all images
 - **Dynamic copyright year** — always current via `new Date().getFullYear()`
+
+---
+
+## Components (Next.js / React)
+
+The `components/` folder contains reusable React components built with Next.js and Framer Motion — a parallel implementation of the portfolio sections for use in a Next.js app.
+
+### `components/DesignProcess/`
+
+| File | Purpose |
+|---|---|
+| `index.tsx` | Section root — state, 2-col grid, section header with `whileInView` entrance |
+| `ProcessStep.tsx` | Single step — scroll-driven line fill via `useScroll` + `useTransform`; active detection via `useInView({ margin: '-34% 0px -34% 0px' })`; inactive opacity `0.32` |
+| `StickyImage.tsx` | Sticky image panel — `AnimatePresence mode="wait"` opacity-only crossfade (no scale, no blur); animated bottom label overlay |
+| `Particles.tsx` | 12 pre-computed floating particles; hidden when `useReducedMotion()` is true |
+| `data.ts` | 6-step data array mapped to `/images/` paths |
+| `types.ts` | `Step` interface |
+
+### `components/`
+
+| File | Purpose |
+|---|---|
+| `HeroBackground.tsx` | Animated hero background layer |
+| `HeroSection.tsx` | Hero section with entrance animations |
 
 ---
 
