@@ -25,11 +25,11 @@ No build tools required for the HTML portfolio — open `index.html` directly in
 
 1. **Hero** — Centered bold layout: role descriptor tagline, large two-line headline ("Designing Thoughtful / Digital Experiences."), one-line sub intro, availability badge, CTAs, and stats row
 2. **Image Marquee** — Infinite auto-scrolling strip of the 5 project screenshots (BeSafr, SkillEX, Periax, Retwix, PassForge)
-3. **About** — Personal bio, design philosophy, skills grid, tools
+3. **About** — Personal bio, design philosophy, Core Skills tags (including HTML & CSS); Tools & Platforms section removed
 4. **Projects** — Bento grid layout: BeSafr (large hero card), SkillEX + Periax (stacked right), Retwix + PassForge (bottom row) — all HNG 2026 internship projects
 5. **Design Process** — ZeeFrames-style 2-column layout: 6 scrolling steps (left) + sticky image panel (right); vertical track line with animated fill; scroll-driven active step highlighting
 6. **Experience** — Timeline (HNG 2026, Design Practice) + achievements incl. PassForge live app; proper 3-level heading hierarchy (h2 → h3 → h4)
-7. **Contact** — Email, LinkedIn, Behance, Resume download
+7. **Contact** — Email, LinkedIn, Behance, View CV (opens Google Drive viewer)
 8. **Footer** — Branding + social links
 
 ---
@@ -104,7 +104,9 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 - **Internal modal case study** for BeSafr — full overview, process steps, challenge, solution, outcomes, metrics
 - **Glassmorphism** cards via `backdrop-filter: blur`
 - **Contact cards** — no drop shadow in dark or light mode
-- **Inline brand SVG icons** — LinkedIn, Behance, Figma, FigJam (whiteboard/amber), Maze (maze-path/coral), Notion, Miro
+- **Core Skills tags** — UX Research, Wireframing, User Flows, Prototyping, Design Systems, Usability Testing, Interaction Design, Figma, FigJam, Information Architecture, Design Thinking, Accessibility (WCAG), HTML, CSS; Tools & Platforms card grid removed
+- **CV links open in viewer** — "View Resume" / "View CV" links open the Google Drive viewer (`/view`); download behaviour removed across About CTA, Contact card, and footer icon
+- **Inline brand SVG icons** — LinkedIn, Behance, Figma (footer)
 - **Responsive** — mobile-first, tested down to 375 px
 - **Smooth scrolling** on all anchor links
 - **Accessible** — semantic HTML, `aria-labels`, alt text on all images
