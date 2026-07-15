@@ -23,7 +23,7 @@ No build tools required for the HTML portfolio — open `index.html` directly in
 
 ## Sections
 
-1. **Hero** — Centered bold layout: role descriptor tagline, large two-line headline ("Designing Thoughtful / Digital Experiences."), one-line sub intro, availability badge, CTAs, and stats row
+1. **Hero** — Centered bold layout: role descriptor tagline, large two-line headline ("Designing Thoughtful / Digital Experiences."), one-line sub intro, availability badge, CTAs, and stats row (5+ Products Shipped, 3+ Years Experience, 100% User-Centered)
 2. **Image Marquee** — Infinite auto-scrolling strip of the 5 project screenshots (BeSafr, SkillEX, Periax, Retwix, PassForge)
 3. **About** — Personal bio, design philosophy, Core Skills tags (including HTML & CSS); Tools & Platforms section removed
 4. **Projects** — Bento grid layout: BeSafr (large hero card), SkillEX + Periax (stacked right), Retwix + PassForge (bottom row) — all HNG 2026 internship projects
