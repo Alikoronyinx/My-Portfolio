@@ -1698,9 +1698,20 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) setActive(e.target);
       });
-    }, { rootMargin: '-8% 0px -40% 0px' });
+    }, { rootMargin: '-8% 0px -15% 0px' });
 
     steps.forEach(function (s) { obs.observe(s); });
+
+    // Fallback: when scrolled near the bottom of the section, activate the last step
+    var lastStep = steps[steps.length - 1];
+    var section  = document.getElementById('process');
+    window.addEventListener('scroll', function () {
+      if (!section || !lastStep) return;
+      var sectionBottom = section.getBoundingClientRect().bottom;
+      if (sectionBottom <= window.innerHeight * 0.85) {
+        setActive(lastStep);
+      }
+    }, { passive: true });
   }());
 
   // --- Dynamic copyright year ---
