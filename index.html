@@ -475,6 +475,45 @@
       box-shadow: 0 4px 18px rgba(99,102,241,0.3) !important;
     }
 
+    /* ── Hero: fix hardcoded white text in light mode ── */
+    [data-theme="light"] .hero-hi { color: rgba(15,23,42,.68); }
+    [data-theme="light"] .hero-hi-avatar { border-color: rgba(15,23,42,.14); }
+    /* Headline "Thoughtful" and "Designer" have style="color:#fff" inline — needs !important */
+    [data-theme="light"] .hero-hl > span:not(.hero-hl-orange) { color: #0f172a !important; }
+    /* Subtitle has inline style="color:rgba(255,255,255,.72)" — needs !important */
+    [data-theme="light"] #hero .d3 { color: rgba(15,23,42,.58) !important; }
+
+    /* ── Hero: reduce glow effects so they read on a light background ── */
+    [data-theme="light"] .h-a1,
+    [data-theme="light"] .h-a2,
+    [data-theme="light"] .h-a3 { opacity: .3; }
+    [data-theme="light"] .h-o1,
+    [data-theme="light"] .h-o2,
+    [data-theme="light"] .h-o3,
+    [data-theme="light"] .h-o4,
+    [data-theme="light"] .h-o5,
+    [data-theme="light"] .h-o6 { opacity: .35; }
+    [data-theme="light"] .h-noise { opacity: .01; }
+    [data-theme="light"] .h-grid {
+      background-image:
+        linear-gradient(rgba(99,102,241,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,.06) 1px, transparent 1px);
+    }
+
+    /* ── Hero stats border dividers ── */
+    [data-theme="light"] #hero .w-px { background: rgba(15,23,42,.12) !important; }
+
+    /* ── Process vertical track: invisible white stripe → visible on light ── */
+    [data-theme="light"] .ps-line-track { background: rgba(99,102,241,.12); }
+    /* Inactive steps less harsh — .28 is unreadable on light grey bg ── */
+    [data-theme="light"] .ps-step:not(.ps-active) { opacity: .45; }
+
+    /* ── Experience timeline left-border more visible on light ── */
+    [data-theme="light"] .tline-item { border-left-color: rgba(99,102,241,.22); }
+
+    /* ── About section: skill tag chip border stronger ── */
+    [data-theme="light"] .stag { border-color: rgba(99,102,241,.18); }
+
     /* ══ IMAGE MARQUEE STRIP ══ */
     .img-strip-outer {
       padding: 0 0 56px;
