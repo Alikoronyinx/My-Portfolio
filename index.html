@@ -207,6 +207,57 @@
     .hero-word { opacity: 0; animation: fadeUp .75s ease forwards; }
     .d1{animation-delay:.1s} .d2{animation-delay:.25s} .d3{animation-delay:.4s} .d4{animation-delay:.6s} .d5{animation-delay:.8s} .d6{animation-delay:1s}
 
+    /* ── New hero redesign ── */
+    .hero-hi { font-size:.9375rem; color:rgba(255,255,255,.55); display:flex; align-items:center; gap:10px; justify-content:center; letter-spacing:.01em; }
+    .hero-hi-avatar { width:34px; height:34px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid rgba(255,255,255,.25); flex-shrink:0; }
+
+    .hero-hl { font-size:clamp(3.2rem,11vw,8rem); font-weight:900; line-height:.92; letter-spacing:-.03em; text-align:center; text-transform:uppercase; }
+    .hero-hl-orange { color:#E8530A; }
+
+    /* Animated toggle switch inline with headline */
+    .hero-toggle {
+      display:inline-flex; align-items:center;
+      width:.72em; height:.46em;
+      background:#C94B0C; border-radius:100px;
+      vertical-align:middle; position:relative;
+      margin:0 .02em; top:-.04em;
+      transition:background .4s ease;
+    }
+    .hero-toggle-knob {
+      position:absolute; left:.06em; top:50%; transform:translateY(-50%);
+      width:.34em; height:.34em; background:#fff; border-radius:50%;
+      font-size:.3em; display:flex; align-items:center; justify-content:center;
+      animation:tKnob 3.6s cubic-bezier(.68,-.55,.27,1.55) infinite;
+    }
+    .hero-toggle-emoji { font-size:inherit; line-height:1; }
+    @keyframes tKnob {
+      0%,40%  { left:.06em; }
+      60%,100%{ left:calc(100% - .4em - .06em); }
+    }
+    .hero-toggle { animation:tBg 3.6s ease infinite; }
+    @keyframes tBg {
+      0%,40%  { background:#C94B0C; }
+      60%,100%{ background:#7C3AED; }
+    }
+
+    /* Floating skill pills */
+    .hero-pills { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .hpill {
+      position:absolute; border-radius:100px; padding:7px 15px;
+      font-size:.625rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+      white-space:nowrap; display:flex; align-items:center; gap:6px;
+      animation:pillDrift var(--pd,7s) ease-in-out infinite;
+      animation-delay:var(--pdy,0s);
+      transform:rotate(var(--pr,0deg));
+    }
+    @keyframes pillDrift {
+      0%,100%{ transform:translateY(0) rotate(var(--pr,0deg)); }
+      50%    { transform:translateY(-14px) rotate(var(--pr,0deg)); }
+    }
+    .hpill-dot { width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.7; }
+
+    @media(max-width:640px){ .hero-pills { display:none; } .hero-hl { font-size:clamp(2.4rem,13vw,3.6rem); } }
+
     /* Availability badge text cycling */
     #avail-text {
       display: inline-block;
@@ -882,33 +933,59 @@
     <div class="h-vignette"></div>
   </div>
 
-  <div class="relative max-w-5xl mx-auto px-5 sm:px-8 py-24 w-full flex flex-col items-center text-center gap-7">
+  <!-- Floating skill pills -->
+  <div class="hero-pills" aria-hidden="true">
+    <!-- Left side -->
+    <div class="hpill" style="left:2%;top:22%;background:rgba(236,72,153,.15);color:#f472b6;border:1px solid rgba(236,72,153,.3);--pr:-8deg;--pd:7s;--pdy:0s">
+      <span class="hpill-dot"></span>UX Research
+    </div>
+    <div class="hpill" style="left:-1%;top:42%;background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3);--pr:-5deg;--pd:8.5s;--pdy:.8s">
+      <span class="hpill-dot"></span>Wireframing
+    </div>
+    <div class="hpill" style="left:3%;top:62%;background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3);--pr:-10deg;--pd:6.5s;--pdy:1.6s">
+      <span class="hpill-dot"></span>User Flows
+    </div>
+    <div class="hpill" style="left:1%;top:78%;background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3);--pr:-6deg;--pd:9s;--pdy:.4s">
+      <span class="hpill-dot"></span>Prototyping
+    </div>
+    <!-- Right side -->
+    <div class="hpill" style="right:1%;top:20%;background:rgba(249,115,22,.15);color:#fb923c;border:1px solid rgba(249,115,22,.3);--pr:7deg;--pd:7.5s;--pdy:.6s">
+      <span class="hpill-dot"></span>Design Systems
+    </div>
+    <div class="hpill" style="right:0%;top:40%;background:rgba(20,184,166,.15);color:#2dd4bf;border:1px solid rgba(20,184,166,.3);--pr:9deg;--pd:8s;--pdy:1.2s">
+      <span class="hpill-dot"></span>Usability Testing
+    </div>
+    <div class="hpill" style="right:2%;top:58%;background:rgba(234,179,8,.15);color:#fbbf24;border:1px solid rgba(234,179,8,.3);--pr:6deg;--pd:7s;--pdy:2s">
+      <span class="hpill-dot"></span>Interaction Design
+    </div>
+    <div class="hpill" style="right:3%;top:75%;background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.3);--pr:11deg;--pd:9.5s;--pdy:.2s">
+      <span class="hpill-dot"></span>Figma
+    </div>
+  </div>
 
-    <!-- Role descriptor -->
-    <p class="hero-word d1 text-xs font-semibold tracking-[0.28em] uppercase" style="color:var(--muted)">
-      Designer &nbsp;·&nbsp; Researcher &nbsp;·&nbsp; Problem Solver
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-8 py-24 w-full flex flex-col items-center text-center gap-6">
+
+    <!-- Hey, I'm [avatar] Onyinyechi -->
+    <p class="hero-word d1 hero-hi">
+      Hey, I'm
+      <img src="images/myimage.jpeg" alt="Onyinyechi Alikor" class="hero-hi-avatar">
+      Onyinyechi
     </p>
 
-    <!-- Headline -->
-    <h1 class="hero-word d2 text-5xl sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-bold leading-[1.06] tracking-tight">
-      <span style="color:var(--text)">Designing Thoughtful</span><br/>
-      <span class="grad">Digital Experiences.</span>
+    <!-- Massive headline -->
+    <h1 class="hero-word d2 hero-hl">
+      <span style="color:#fff;">Thoughtful</span><br/>
+      <span class="hero-hl-orange">PR<span class="hero-toggle"><span class="hero-toggle-knob">🙂</span></span>DUCT</span><br/>
+      <span style="color:#fff;">Designer</span>
     </h1>
 
     <!-- Sub -->
-    <p class="hero-word d3 text-base sm:text-lg leading-relaxed max-w-lg" style="color:var(--muted)">
-      I'm <strong style="color:var(--text); font-weight:600;">Onyinyechi Alikor</strong> — a Product Designer who turns confusion into flow through research, strategy, and craft.
+    <p class="hero-word d3 text-sm sm:text-base leading-relaxed max-w-md" style="color:rgba(255,255,255,.5);">
+      Turning user problems into elegant digital products through<br class="hidden sm:block"> research, strategy, and craft.
     </p>
 
-    <!-- Available badge -->
-    <div class="hero-word d4 inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-sm font-medium"
-         style="border-color:rgba(99,102,241,.35); color:#a5b4fc">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      Open to new <span id="avail-text">opportunity</span>
-    </div>
-
     <!-- CTAs -->
-    <div class="hero-word d5 flex flex-wrap gap-3 justify-center pt-1">
+    <div class="hero-word d4 flex flex-wrap gap-3 justify-center pt-2">
       <a href="#projects" class="btn-p">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         View My Work
@@ -917,7 +994,7 @@
     </div>
 
     <!-- Stats -->
-    <div class="hero-word d6 flex items-center gap-10 pt-4">
+    <div class="hero-word d5 flex items-center gap-10 pt-4">
       <div class="text-center">
         <div class="text-2xl font-black" style="color:var(--text)">5+</div>
         <div class="text-xs" style="color:var(--subtle)">Products Shipped</div>
