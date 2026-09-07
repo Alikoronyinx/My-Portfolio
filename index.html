@@ -240,26 +240,23 @@
       60%,100%{ background:#7C3AED; }
     }
 
-    /* Floating skill pills — 3D sticker style, settle at bottom on load */
+    /* Floating skill pills — 3D sticker style, fall from top on load */
     .hero-pills { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
     .hpill {
       position:absolute; border-radius:100px; padding:8px 18px;
       font-size:.6rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
       white-space:nowrap; display:flex; align-items:center; gap:6px;
-      /* drop-in entrance then gentle float */
-      animation:
-        pillDrop 0.85s cubic-bezier(.34,1.56,.64,1) var(--pdy,0s) both,
-        pillDrift var(--pd,7s) ease-in-out calc(var(--pdy,0s) + 0.9s) infinite;
+      /* single animation: fall from top, bounce, settle */
+      opacity:0;
+      animation: pillDrop 1.1s cubic-bezier(.22,1,.36,1) var(--pdy,0s) forwards;
       /* 3D raised sticker effect */
       box-shadow:0 4px 0 0 var(--pill-sh,rgba(0,0,0,.45)), 0 8px 22px rgba(0,0,0,.3);
     }
     @keyframes pillDrop {
-      from { opacity:0; transform:translateY(-32px) rotate(var(--pr,0deg)); }
-      to   { opacity:1; transform:translateY(0px)   rotate(var(--pr,0deg)); }
-    }
-    @keyframes pillDrift {
-      0%,100%{ transform:translateY(0px)   rotate(var(--pr,0deg)); }
-      50%    { transform:translateY(-10px) rotate(var(--pr,0deg)); }
+      0%   { opacity:0; transform: translateY(-95vh) rotate(var(--pr,0deg)); }
+      70%  { opacity:1; transform: translateY(6px)   rotate(var(--pr,0deg)); }
+      85%  { transform: translateY(-4px) rotate(var(--pr,0deg)); }
+      100% { opacity:1; transform: translateY(0px)   rotate(var(--pr,0deg)); }
     }
     .hpill-dot { width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.5; flex-shrink:0; }
 
