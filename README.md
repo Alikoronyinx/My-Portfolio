@@ -23,7 +23,7 @@ No build tools required for the HTML portfolio — open `index.html` directly in
 
 ## Sections
 
-1. **Hero** — Centered bold layout: role descriptor tagline, large two-line headline ("Designing Thoughtful / Digital Experiences."), one-line sub intro, availability badge, CTAs, and stats row (5+ Products Shipped, 3+ Years Experience, 100% User-Centered)
+1. **Hero** — Redesigned inspired by gracedaniyan.com: "Hey, I'm [avatar] Onyinyechi" greeting, massive 3-line all-caps headline (THOUGHTFUL / PR[toggle]DUCT / DESIGNER), animated toggle switch replacing the O in PRODUCT (indigo → violet), subtitle, availability badge, CTAs, stats row (5+ Products Shipped, 3+ Years Experience, 100% User-Centered); 11 solid 3D sticker-style skill pills drop from the top of the page on load and settle in a single overlapping row at the bottom of the hero
 2. **Image Marquee** — Infinite auto-scrolling strip of the 5 project screenshots (BeSafr, SkillEX, Periax, Retwix, PassForge)
 3. **About** — Personal bio, design philosophy, Core Skills tags (including HTML & CSS); Tools & Platforms section removed
 4. **Projects** — Bento grid layout: BeSafr (large hero card), SkillEX + Periax (stacked right), Retwix + PassForge (bottom row) — all HNG 2026 internship projects
@@ -86,7 +86,7 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 
 ## Features
 
-- **Dark / Light mode** toggle — preference saved in `localStorage`
+- **Dark / Light mode** toggle — preference saved in `localStorage`; comprehensive light mode overrides fix hero white text, reduce glow effects (aurora/orbs/noise), strengthen process track line and timeline border, and raise inactive step opacity to 0.45 for readability on light backgrounds
 - **Clean & minimal aesthetic** — neutral outline-pill tags, soft card hover (−3 px), reduced section gradient mesh opacity, generous section spacing (`py-28`)
 - **Infinite scroll image marquee** — auto-scrolling strip of the 5 project screenshots (BeSafr, SkillEX, Periax, Retwix, PassForge); contained within page margins with rounded corners; scrolls continuously (no pause on hover); hover reveals project category + name label with dark gradient; subtle image zoom (1.07) on hover
 - **Gradient mesh section backgrounds** — very subtle radial-gradient per section (3–7% opacity dark, 3–5% light)
@@ -94,10 +94,11 @@ Grid layout: 12-column bento grid across 3 rows — BeSafr spans left 2 rows (he
 - **Sun / pill / moon theme toggle** — knob slides with CSS transform
 - **Sticky navbar** with blur-on-scroll
 - **Scroll-triggered reveal animations** via `IntersectionObserver`
-- **Centered hero layout** — all content center-aligned; role descriptor tagline, large bold headline with gradient accent, concise sub intro, availability badge, and CTA buttons
+- **Hero redesign** — gracedaniyan.com-inspired layout: avatar greeting, 3-line all-caps headline, animated toggle switch (indigo `#4f46e5 → #7C3AED`) replacing the O in PRODUCT, PRODUCT text in primary indigo `#6366f1`; page background `#0D0D0D`
+- **Hero skill pills** — 11 solid 3D sticker-style pills (pastel solid backgrounds, dark text, per-pill bottom box-shadow for raised depth); drop from `translateY(-95vh)` with spring bounce on page open, cascade left-to-right via staggered `--pdy` delay (0–0.6s); settle in a single overlapping row at `bottom:4%` spanning full hero width with `z-index` 1–11; hidden on mobile (`max-width:640px`)
 - **Availability badge animation** — "Open to new" stays static while "opportunity" and "collaboration" cycle with a smooth slide-up fade every 3 seconds
 - **Hero entrance animations** — staggered fade-up across 6 delay classes (d1–d6)
-- **ZeeFrames-style design process** — 2-column grid layout (steps left, sticky image right); 6 steps: Discovery, Flows, Wireframes, UI Design, Prototyping, User Testing; vertical track line with animated indigo fill driven by scroll position; each step has a dot on the track that glows when active; inactive steps dim to `opacity: 0.28`; active step highlighted in full white with indigo subtitle; sticky image panel swaps image per active step with a smooth opacity crossfade and animated bottom label overlay (step number + subtitle + title); `IntersectionObserver` rootMargin `-8% 0px -15% 0px` ensures all steps (including Prototyping and Testing at the bottom of the page) can activate; scroll fallback activates the last step when the section bottom nears the viewport; responsive — below 900 px collapses to single column, shared sticky panel is hidden and each step shows its own dedicated image directly below its description text
+- **ZeeFrames-style design process** — 2-column grid layout (steps left, sticky image right); 5 steps: Discovery, Flows, Wireframes, Prototyping, User Testing; vertical track line with animated indigo fill driven by scroll position; each step has a dot on the track that glows when active; inactive steps dim to `opacity: 0.28` (dark) / `opacity: 0.45` (light); active step highlighted in full white with indigo subtitle; sticky image panel swaps image per active step with a smooth opacity crossfade and animated bottom label overlay (step number + subtitle + title); `IntersectionObserver` rootMargin `-8% 0px -15% 0px` ensures all steps (including Prototyping and Testing at the bottom of the page) can activate; scroll fallback activates the last step when the section bottom nears the viewport; responsive — below 900 px collapses to single column, shared sticky panel is hidden and each step shows its own dedicated image directly below its description text
 - **Bento project grid** — editorial 12-col grid with mixed card sizes; full-image cards with ghost project numbers (01–05) faintly visible top-right
 - **Project card hover reveal** — dark gradient from bottom fades in on hover (consistent with carousel style) exposing category, title, description + frosted-glass CTA button; image scales to 1.07 beneath the overlay
 - **Project cards clickable** — opens Behance case study (SkillEX, Periax, Retwix), live app (PassForge), or internal modal (BeSafr)
