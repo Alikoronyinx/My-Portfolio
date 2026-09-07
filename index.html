@@ -240,20 +240,26 @@
       60%,100%{ background:#7C3AED; }
     }
 
-    /* Floating skill pills — 3D sticker style */
+    /* Floating skill pills — 3D sticker style, settle at bottom on load */
     .hero-pills { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
     .hpill {
       position:absolute; border-radius:100px; padding:8px 18px;
       font-size:.6rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
       white-space:nowrap; display:flex; align-items:center; gap:6px;
-      animation:pillDrift var(--pd,7s) ease-in-out infinite;
-      animation-delay:var(--pdy,0s);
+      /* drop-in entrance then gentle float */
+      animation:
+        pillDrop 0.85s cubic-bezier(.34,1.56,.64,1) var(--pdy,0s) both,
+        pillDrift var(--pd,7s) ease-in-out calc(var(--pdy,0s) + 0.9s) infinite;
       /* 3D raised sticker effect */
       box-shadow:0 4px 0 0 var(--pill-sh,rgba(0,0,0,.45)), 0 8px 22px rgba(0,0,0,.3);
     }
+    @keyframes pillDrop {
+      from { opacity:0; transform:translateY(-32px) rotate(var(--pr,0deg)); }
+      to   { opacity:1; transform:translateY(0px)   rotate(var(--pr,0deg)); }
+    }
     @keyframes pillDrift {
-      0%,100%{ transform:translateY(var(--pill-ty,0px)) rotate(var(--pr,0deg)); }
-      50%    { transform:translateY(calc(var(--pill-ty,0px) - 10px)) rotate(var(--pr,0deg)); }
+      0%,100%{ transform:translateY(0px)   rotate(var(--pr,0deg)); }
+      50%    { transform:translateY(-10px) rotate(var(--pr,0deg)); }
     }
     .hpill-dot { width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.5; flex-shrink:0; }
 
@@ -934,42 +940,41 @@
     <div class="h-vignette"></div>
   </div>
 
-  <!-- Floating skill pills -->
+  <!-- Floating skill pills — all start at bottom, drop in on load -->
   <div class="hero-pills" aria-hidden="true">
-    <!-- Left side -->
-    <div class="hpill" style="left:5%;top:22%;background:#f9a8d4;color:#4a1942;--pill-sh:#c8799f;--pr:-8deg;--pd:7s;--pdy:0s">
+    <!-- Row 1 (top ~76%) -->
+    <div class="hpill" style="left:1%;top:76%;background:#f9a8d4;color:#4a1942;--pill-sh:#c8799f;--pr:-8deg;--pd:7s;--pdy:0s">
       <span class="hpill-dot"></span>UX Research
     </div>
-    <div class="hpill" style="left:4%;top:42%;background:#c4b5fd;color:#2d1b5e;--pill-sh:#957fdb;--pr:-5deg;--pd:8.5s;--pdy:.8s">
+    <div class="hpill" style="left:15%;top:75%;background:#c4b5fd;color:#2d1b5e;--pill-sh:#957fdb;--pr:-5deg;--pd:8.5s;--pdy:.12s">
       <span class="hpill-dot"></span>Wireframing
     </div>
-    <div class="hpill" style="left:5%;top:62%;background:#93c5fd;color:#1e3a5f;--pill-sh:#5a9fd4;--pr:-10deg;--pd:6.5s;--pdy:1.6s">
-      <span class="hpill-dot"></span>User Flows
-    </div>
-    <div class="hpill" style="left:4%;top:78%;background:#6ee7b7;color:#064e3b;--pill-sh:#3dbb8f;--pr:-6deg;--pd:9s;--pdy:.4s">
-      <span class="hpill-dot"></span>Prototyping
-    </div>
-    <!-- Centre -->
-    <div class="hpill" style="left:30%;top:10%;background:#bbf7d0;color:#14532d;--pill-sh:#6edca0;--pr:-4deg;--pd:8s;--pdy:.3s">
+    <div class="hpill" style="left:29%;top:77%;background:#bbf7d0;color:#14532d;--pill-sh:#6edca0;--pr:-4deg;--pd:8s;--pdy:.24s">
       <span class="hpill-dot"></span>Accessibility
     </div>
-    <div class="hpill" style="left:52%;top:14%;background:#fed7aa;color:#7c2d12;--pill-sh:#d4955a;--pr:5deg;--pd:7.2s;--pdy:1s">
-      <span class="hpill-dot"></span>Design Thinking
-    </div>
-    <div class="hpill" style="left:40%;top:72%;background:#e9d5ff;color:#3b0764;--pill-sh:#c084fc;--pr:-3deg;--pd:9s;--pdy:1.8s">
-      <span class="hpill-dot"></span>Info Architecture
-    </div>
-    <!-- Right side -->
-    <div class="hpill" style="right:5%;top:20%;background:#fdba74;color:#7c2d12;--pill-sh:#d48942;--pr:7deg;--pd:7.5s;--pdy:.6s">
+    <div class="hpill" style="left:44%;top:75%;background:#fdba74;color:#7c2d12;--pill-sh:#d48942;--pr:6deg;--pd:7.5s;--pdy:.36s">
       <span class="hpill-dot"></span>Design Systems
     </div>
-    <div class="hpill" style="right:4%;top:40%;background:#5eead4;color:#134e4a;--pill-sh:#2dc0a8;--pr:9deg;--pd:8s;--pdy:1.2s">
+    <div class="hpill" style="left:59%;top:77%;background:#5eead4;color:#134e4a;--pill-sh:#2dc0a8;--pr:8deg;--pd:8s;--pdy:.48s">
       <span class="hpill-dot"></span>Usability Testing
     </div>
-    <div class="hpill" style="right:5%;top:58%;background:#fde68a;color:#713f12;--pill-sh:#d4b454;--pr:6deg;--pd:7s;--pdy:2s">
+    <div class="hpill" style="right:1%;top:76%;background:#fde68a;color:#713f12;--pill-sh:#d4b454;--pr:5deg;--pd:7s;--pdy:.6s">
       <span class="hpill-dot"></span>Interaction Design
     </div>
-    <div class="hpill" style="right:4%;top:75%;background:#a5b4fc;color:#1e1b4b;--pill-sh:#7987d8;--pr:11deg;--pd:9.5s;--pdy:.2s">
+    <!-- Row 2 (top ~84%) -->
+    <div class="hpill" style="left:6%;top:84%;background:#93c5fd;color:#1e3a5f;--pill-sh:#5a9fd4;--pr:-9deg;--pd:6.5s;--pdy:.06s">
+      <span class="hpill-dot"></span>User Flows
+    </div>
+    <div class="hpill" style="left:21%;top:85%;background:#fed7aa;color:#7c2d12;--pill-sh:#d4955a;--pr:4deg;--pd:7.2s;--pdy:.18s">
+      <span class="hpill-dot"></span>Design Thinking
+    </div>
+    <div class="hpill" style="left:38%;top:83%;background:#e9d5ff;color:#3b0764;--pill-sh:#c084fc;--pr:-3deg;--pd:9s;--pdy:.3s">
+      <span class="hpill-dot"></span>Info Architecture
+    </div>
+    <div class="hpill" style="left:55%;top:85%;background:#6ee7b7;color:#064e3b;--pill-sh:#3dbb8f;--pr:-6deg;--pd:9s;--pdy:.42s">
+      <span class="hpill-dot"></span>Prototyping
+    </div>
+    <div class="hpill" style="right:7%;top:84%;background:#a5b4fc;color:#1e1b4b;--pill-sh:#7987d8;--pr:10deg;--pd:9.5s;--pdy:.54s">
       <span class="hpill-dot"></span>Figma
     </div>
   </div>
@@ -1799,26 +1804,6 @@
       if (sectionBottom <= window.innerHeight * 0.85) {
         setActive(lastStep);
       }
-    }, { passive: true });
-  }());
-
-  // --- Scroll-driven pill drop in hero ---
-  (function() {
-    var hero = document.getElementById('hero');
-    var pills = Array.prototype.slice.call(document.querySelectorAll('.hpill'));
-    if (!hero || !pills.length) return;
-    var pillData = pills.map(function(p) {
-      var style = p.getAttribute('style') || '';
-      var m = style.match(/top:\s*([\d.]+)%/);
-      var topPct = m ? parseFloat(m[1]) : 50;
-      return { pill: p, travelPct: Math.max(0, 86 - topPct) };
-    });
-    window.addEventListener('scroll', function() {
-      var heroH = hero.offsetHeight;
-      var progress = Math.min(1, Math.max(0, (window.scrollY) / (heroH * 0.65)));
-      pillData.forEach(function(d) {
-        d.pill.style.setProperty('--pill-ty', (progress * (d.travelPct / 100) * heroH) + 'px');
-      });
     }, { passive: true });
   }());
 
